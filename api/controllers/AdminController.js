@@ -18,7 +18,7 @@ module.exports = {
 
   giftcard: (req,res) => {
     Type.find().exec(function(err,foundType) {
-      Giftcard.find().exec(function (err, foundGiftcard) {
+      Giftcard.find().populate('type').exec(function (err, foundGiftcard) {
         if (err) return res.negotiate(err);
         else {
           console.log(foundGiftcard);
@@ -33,7 +33,6 @@ module.exports = {
       return res.badRequest();
     }
     let params = req.allParams();
-    console.log(params);
     Giftcard.create(params).exec(function(err,result){
       if (err) return res.negotiate(err);
       else {

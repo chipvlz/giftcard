@@ -13,7 +13,11 @@ module.exports = {
     },
     description: {
       type: 'string'
-    }
+    },
+    giftcards: {
+      collection: 'giftcard',
+      via: 'type'
+    },
   }
 };
 

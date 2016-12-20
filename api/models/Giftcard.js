@@ -28,6 +28,10 @@ module.exports = {
     products: {
       collection: 'product',
       via: 'cid'
+    },
+    type: {
+      type: 'array',
+      model: 'type'
     }
 
   }
