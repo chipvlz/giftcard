@@ -129,3 +129,62 @@
 
   </div>
 </div>
+
+
+<!--// Modal Del Card -->
+<div class="modal fade" id="delCardModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> DELETE CARD</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you ready to delete this Gift Card ?</p>
+        <form class="form-horizontal" id="del-card-form">
+          <input type="text" class="sr-only" name="id" value="">
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-danger"><i class="fa fa-remove fa-sm"></i> Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--// Modal Edit Type-->
+<div class="modal fade" id="editCardModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> EDIT CARD</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal center-block" id="edit-card-form">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="sr-only" name="id" value="">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter type name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="description">Desc</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Edit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
