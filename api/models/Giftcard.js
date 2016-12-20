@@ -15,10 +15,6 @@ module.exports = {
     image: {
       type: 'string'
     },
-    type: {
-      type: 'array',
-      required: true
-    },
     description: {
       type: 'longtext'
     },

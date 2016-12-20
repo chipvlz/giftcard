@@ -15,6 +15,31 @@ a {
   padding:0;
   margin:0;
 }
+
+form#add-new-type label {
+  padding-top:12px;
+}
+form#add-new-type input {
+  max-width:400px;
+  height:42px;
+}
+table tr {
+  height:50px;
+}
+thead {
+  background: #e2e2e2;
+}
+.panel-heading {
+  font-size:16px;
+  color:#fff !important;
+  background:#7ab55c !important;
+  height:50px;
+  padding:14px 15px;
+}
+.table tr th, .table tr td {
+  vertical-align: middle !important;
+}
+
 .sidenav li:hover, a:hover, a:focus {
   color:#7ab55c;
   text-decoration: none;

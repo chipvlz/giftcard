@@ -17,15 +17,33 @@ module.exports = {
   },
 
   giftcard: (req,res) => {
+    Type.find().exec(function(err,foundType) {
+      Giftcard.find().exec(function (err, foundGiftcard) {
+        if (err) return res.negotiate(err);
+        else {
+          console.log(foundGiftcard);
+          return res.view('admin/giftcard', {foundGiftcard,foundType});
+        }
+      })
+    })
+  },
+
+  agift: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
     let params = req.allParams();
-    Giftcard.find().exec(function(err,foundGiftcard){
+    console.log(params);
+    Giftcard.create(params).exec(function(err,result){
       if (err) return res.negotiate(err);
-      else return res.view('admin/giftcard',{foundGiftcard})
+      else {
+
+      }
+      sails.sockets.blast('add/giftcard',{msg:result})
     })
   },
 
   product: (req,res) => {
-    let params = req.allParams();
     Product.find().exec(function(err,foundProduct){
       if (err) return res.negotiate(err);
       else return res.view('admin/product',{foundProduct})
@@ -39,7 +57,7 @@ module.exports = {
       })
   },
 
-  addtype: (req,res) => {
+  atype: (req,res) => {
     if (!req.isSocket) {
       return res.badRequest();
     }
@@ -47,6 +65,26 @@ module.exports = {
     console.log(params);
     Type.create(params).exec(function(err,result){
       sails.sockets.blast('add/type',{msg:result})
+    })
+  },
+
+  dtype: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
+    let params = req.allParams();
+    Type.destroy({id:params.id}).exec(function(err){
+      sails.sockets.blast('del/type',{msg:'Deleted Successfull'})
+    })
+  },
+
+  etype: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
+    let params = req.allParams();
+    Type.update({id:params.id},params).exec(function(err,result){
+      sails.sockets.blast('edit/type',{msg:result})
     })
   }
 

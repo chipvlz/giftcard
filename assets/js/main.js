@@ -25,7 +25,7 @@ $(function() {
   });
   // Khi client nhận thông báo login-success từ server sẽ chuyển user sang trang home
   socket.on('user/login-success', function() {
-    window.location = '/trangchu';
+    window.location = '/home';
   });
 
   $('#register').submit(function (r) {
@@ -69,22 +69,62 @@ $(function() {
     });
   });
 
+  // Manager Gift Card Type
   $('#add-new-type').submit(function(t){
     t.preventDefault();
     var data = $('#add-new-type').serialize();
-    socket.get('/admin/addtype?'+data);
-    alert(data);
-  });
-  socket.on('add/type',function(recieve){
-    alert('ok');
-    console.log(recieve.msg);
+    socket.get('/admin/atype?'+data);
   });
 
-  $('.list-table table tbody tr').each(function(){
+  socket.on('add/type',function(recieve){
+    location.reload();
+  });
+
+  $('#list-type table tbody tr').each(function(){
     $(this).click(function(){
       var searchID = $(this).find('td.td-id').text();
-      $('')
+      var searchName = $(this).find('td.type-name').text();
+      var searchDescription = $(this).find('td.type-description').text();
+      $('#delTypeModal input[name=id]').val(searchID);
+      $('#editTypeModal input[name=id]').val(searchID);
+      $('#editTypeModal input[name=name]').val(searchName);
+      $('#editTypeModal input[name=description]').val(searchDescription);
+
+      // $('#edit-type-form').submit(function(){
     })
+  });
+
+  $('#del-type-form').submit(function (dt) {
+    dt.preventDefault();
+    var data = $('#del-type-form').serialize();
+    socket.get('/admin/dtype?'+data);
+    $('#delTypeModal').modal('hide');
+  });
+
+  socket.on('del/type',function(recieve){
+    location.reload();
+  });
+
+  $('#edit-type-form').submit(function (et) {
+    et.preventDefault();
+    var data = $('#edit-type-form').serialize();
+    socket.get('/admin/etype?'+data);
+    $('#editTypeModal').modal('hide');
+  });
+
+  socket.on('edit/type',function(recieve){
+    location.reload();
+  });
+
+  // Manager Gift Card
+  $('#add-new-giftcard').submit(function(g){
+    g.preventDefault();
+    var data = $('#add-new-giftcard').serialize();
+    socket.get('/admin/agift?'+data);
+  });
+
+  socket.on('add/giftcard',function(){
+    location.reload();
   });
 
   // Xóa multi ID
