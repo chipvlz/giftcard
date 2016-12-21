@@ -1,0 +1,198 @@
+{
+  "data": {
+    "giftcard": [
+      {
+        "name": "asdad",
+        "type": 4,
+        "description": "dsada",
+        "detail": "<p>dsada</p>\r\n",
+        "term": "<p>dsada</p>\r\n",
+        "thumbnail": "dsad",
+        "createdAt": "2016-12-20T19:42:07.762Z",
+        "updatedAt": "2016-12-20T19:42:07.762Z",
+        "id": 4
+      }
+    ],
+    "product": [],
+    "type": [
+      {
+        "name": "Egift",
+        "description": "Electric dellivery for online use only",
+        "createdAt": "2016-12-20T17:13:45.667Z",
+        "updatedAt": "2016-12-20T17:15:23.788Z",
+        "id": 4
+      },
+      {
+        "name": "Physical",
+        "description": "Dellivered by mail for use in-store",
+        "createdAt": "2016-12-20T17:17:54.847Z",
+        "updatedAt": "2016-12-20T17:17:54.847Z",
+        "id": 6
+      }
+    ],
+    "user": [
+      {
+        "email": "kingasawa@gmail.com",
+        "password": "41b77ee00cfeed693504005e1881c2f0",
+        "name": "Khánh Trần",
+        "birthday": "28/04/1983",
+        "group": "Admin",
+        "avatar": "no-avatar.png",
+        "point": 10,
+        "about": "viết nội dung giới thiệu về bản thân của bạn",
+        "createdAt": "2016-10-03T06:16:12.002Z",
+        "updatedAt": "2016-10-03T06:16:12.002Z",
+        "id": 26
+      }
+    ]
+  },
+  "schema": {
+    "giftcard": {
+      "name": {
+        "type": "string"
+      },
+      "image": {
+        "type": "string"
+      },
+      "description": {
+        "type": "longtext"
+      },
+      "detail": {
+        "type": "longtext"
+      },
+      "terms": {
+        "type": "longtext"
+      },
+      "type": {
+        "type": "integer",
+        "model": "type",
+        "foreignKey": true,
+        "alias": "type"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "product": {
+      "code": {
+        "type": "string",
+        "unique": true
+      },
+      "value": {
+        "type": "integer"
+      },
+      "price": {
+        "type": "integer"
+      },
+      "quantity": {
+        "type": "integer",
+        "defaultsTo": 1
+      },
+      "status": {
+        "type": "string"
+      },
+      "cid": {
+        "type": "integer",
+        "model": "giftcard",
+        "foreignKey": true,
+        "alias": "cid"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "type": {
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "group": {
+        "type": "string",
+        "defaultsTo": "Member"
+      },
+      "name": {
+        "type": "string"
+      },
+      "birthday": {
+        "type": "string"
+      },
+      "avatar": {
+        "type": "string",
+        "defaultsTo": "no-avatar.png"
+      },
+      "point": {
+        "type": "integer",
+        "defaultsTo": 10
+      },
+      "about": {
+        "type": "longtext",
+        "defaultsTo": "viết nội dung giới thiệu về bản thân của bạn"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "user": {
+      "id": 27
+    },
+    "giftcard": {
+      "id": 4
+    },
+    "product": {},
+    "type": {
+      "id": 6
+    }
+  }
+}

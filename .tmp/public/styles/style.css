@@ -1,0 +1,85 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+body {
+  background:#f1f1f1 !important;
+  letter-spacing: 0.8px;
+}
+a {
+  font-size:15px;
+  color:#5a5a5a;
+  text-decoration: none;
+}
+.container {
+  width:100% !important;
+}
+#admin-page {
+  padding:0;
+  margin:0;
+}
+
+form#add-new-type label {
+  padding-top:12px;
+}
+form#add-new-type input {
+  max-width:400px;
+  height:42px;
+}
+table tr {
+  height:50px;
+}
+thead {
+  background: #e2e2e2;
+}
+.panel-heading {
+  font-size:16px;
+  color:#fff !important;
+  background:#7ab55c !important;
+  height:50px;
+  padding:14px 15px;
+}
+.table tr th, .table tr td {
+  vertical-align: middle !important;
+}
+
+.sidenav li:hover, a:hover, a:focus {
+  color:#7ab55c;
+  text-decoration: none;
+}
+.navbar {
+  height:80px;
+  margin-bottom:0;
+}
+a.navbar-brand, .navbar-nav > li > a {
+  line-height:50px;
+}
+.sidenav {
+  padding:0;
+  border-right:1px solid #e2e2e2;
+  background: #fff;
+  margin-top:-1px;
+
+
+}
+.sidenav .fa.pull-right {
+  line-height:40px;
+}
+
+li.list-group-item {
+  border-right:none;
+  font-weight: 300;
+  height: 60px;
+  line-height: 40px;
+  margin-bottom: -1px !important;
+  border-radius: 0 !important;
+}
+.list-table {
+  padding:0;
+}
+
+#imageInput {
+  width:100%;
+}
+@media (min-width: 1200px) {
+  .container {
+    width:100%;
+  }
+}
