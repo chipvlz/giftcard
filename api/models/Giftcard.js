@@ -12,7 +12,7 @@ module.exports = {
       type: 'string',
       required:true
     },
-    image: {
+    thumbnail: {
       type: 'string'
     },
     description: {
@@ -30,7 +30,6 @@ module.exports = {
       via: 'cid'
     },
     type: {
-      type: 'array',
       model: 'type'
     }
 

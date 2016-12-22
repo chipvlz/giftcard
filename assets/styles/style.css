@@ -15,7 +15,15 @@ a {
   padding:0;
   margin:0;
 }
-
+#edit-card , ul.breadcrumb{
+  margin-top:15px;
+}
+#list-child {
+  margin-bottom:0 !important;
+}
+#list-child li.list-group-item {
+  background:#f5f5f5 !important;
+}
 form#add-new-type label {
   padding-top:12px;
 }
@@ -78,8 +86,26 @@ li.list-group-item {
 #imageInput {
   width:100%;
 }
+
+td.card-image img {
+  max-width:100px;
+}
 @media (min-width: 1200px) {
   .container {
     width:100%;
   }
+}
+.rotated {
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  -webkit-transition: all 0.4s; /* Safari */
+  transition: all 0.4s;
+}
+.arotated {
+  -webkit-transform:rotate(0deg);
+  -moz-transform:rotate(0deg);
+  -o-transform:rotate(0deg);
+  -webkit-transition: all 0.4s; /* Safari */
+  transition: all 0.4s;
 }

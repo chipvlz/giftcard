@@ -29,6 +29,9 @@ module.exports = {
     },
     cid: {
       model: 'giftcard'
+    },
+    owner: {
+      model: 'product'
     }
   }
 };

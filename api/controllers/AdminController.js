@@ -21,7 +21,6 @@ module.exports = {
       Giftcard.find().populate('type').exec(function (err, foundGiftcard) {
         if (err) return res.negotiate(err);
         else {
-          console.log(foundGiftcard);
           return res.view('admin/giftcard', {foundGiftcard,foundType});
         }
       })
@@ -33,17 +32,48 @@ module.exports = {
       return res.badRequest();
     }
     let params = req.allParams();
+    console.log(params);
     Giftcard.create(params).exec(function(err,result){
       if (err) return res.negotiate(err);
       else {
-
+        sails.sockets.blast('add/giftcard',{msg:result})
       }
-      sails.sockets.blast('add/giftcard',{msg:result})
+
+    })
+  },
+
+  dgift: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
+    let params = req.allParams();
+    Giftcard.destroy({id:params.id}).exec(function(err){
+      sails.sockets.blast('del/gift',{msg:'Deleted Successfull'})
+    })
+  },
+
+  cardedit: (req,res) => {
+    let params = req.allParams();
+    Type.find().exec(function(err,foundType) {
+      Giftcard.findOne({id: params.id}).exec(function (err, foundCard) {
+        return res.view('admin/edit_giftcard', {foundCard,foundType})
+      })
+    })
+  },
+
+
+  egift: (req,res) => {
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
+    let params = req.allParams();
+    Giftcard.update({id:params.id},params).exec(function(err,result){
+      sails.sockets.blast('edit/gift',{msg:result})
     })
   },
 
   product: (req,res) => {
-    Product.find().exec(function(err,foundProduct){
+    Product.find().populate('cid').populate('owner').exec(function(err,foundProduct){
       if (err) return res.negotiate(err);
       else return res.view('admin/product',{foundProduct})
     })
@@ -84,6 +114,20 @@ module.exports = {
     let params = req.allParams();
     Type.update({id:params.id},params).exec(function(err,result){
       sails.sockets.blast('edit/type',{msg:result})
+    })
+  },
+
+  user: (req,res) => {
+    User.find().populate('groupid').exec(function(err,foundUser){
+      if (err) return res.negotiate(err);
+      else return res.view('admin/user',{foundUser})
+    })
+  },
+
+  usergroup: (req,res) => {
+    Usergroup.find().exec(function(err,foundUsergroup){
+      if (err) return res.negotiate(err);
+      else return res.view('admin/usergroup',{foundUsergroup})
     })
   }
 

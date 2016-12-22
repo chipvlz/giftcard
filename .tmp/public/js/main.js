@@ -3,14 +3,24 @@ $(function() {
   socket.get('/socket');
 
   $(document).ready(function(){
+
     var getHeight = $( window ).height()-80;
     $('.sidenav').css('height',getHeight);
 
     var checkPath = window.location.pathname;
-    if (checkPath == '/admin/giftcard') {
+    if (checkPath.match(/giftcard/gi)) {
       CKEDITOR.replace('detail');
       CKEDITOR.replace('term');
     }
+    if (checkPath.match('/giftcard/edit')){
+      var checkCardType = $('input.card-type').val();
+      $('input#type-'+checkCardType).attr('checked','checked')
+    }
+
+    $('a.user-list').click(function(){
+      $(this).find('i.fa-chevron-right').toggleClass('rotated');
+    });
+
 
   });
 
@@ -124,6 +134,51 @@ $(function() {
   });
 
   socket.on('add/giftcard',function(){
+    location.reload();
+  });
+
+  $('#list-card table tbody tr').each(function(){
+    $(this).click(function(){
+      var searchID = $(this).find('td.td-id').text();
+      var searchImage = $(this).find('td.card-image img').attr('src');
+      var searchName = $(this).find('td.card-name').text();
+      var searchType = $(this).find('td.card-type').text();
+      var searchDescription = $(this).find('td.card-desc').text();
+      var searchDetail = $(this).find('td.card-detail').text();
+      var searchTerm = $(this).find('td.card-term').text();
+      $('#delCardModal input[name=id]').val(searchID);
+      $('#editCardModal input[name=id]').val(searchID);
+      $('#editCardModal input[name=name]').val(searchName);
+      $('#editCardModal h4 strong').html(searchName);
+      $('#editCardModal img').attr('src',searchImage);
+      $('#editCardModal textarea[name=description]').text(searchDescription);
+      $('#editCardModal textarea[name=detail]').html(searchDetail);
+      $('#editCardModal textarea[name=term]').html(searchTerm);
+
+
+      // $('#edit-type-form').submit(function(){
+    })
+  });
+
+  $('#del-card-form').submit(function (dc) {
+    dc.preventDefault();
+    var data = $('#del-card-form').serialize();
+    socket.get('/admin/dgift?'+data);
+    $('#delCardModal').modal('hide');
+  });
+
+  socket.on('del/gift',function(){
+    location.reload();
+  });
+
+  $('#edit-card-form').submit(function (ec) {
+    ec.preventDefault();
+    var data = $('#edit-card-form').serialize();
+    socket.get('/admin/egift?'+data);
+    $('#editCardModal').modal('hide');
+  });
+
+  socket.on('edit/gift',function(){
     location.reload();
   });
 

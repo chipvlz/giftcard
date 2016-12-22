@@ -1,0 +1,78 @@
+<%- partial ('navbar.ejs') %>
+
+<div class="container" id="edit-giftcard">
+  <div class="col-sm-3 sidenav">
+    <%- partial ('menu-side.ejs') %>
+  </div>
+  <div class="col-sm-9">
+    <ul class="breadcrumb">
+      <li><a href="/admin">Dashboard</a></li>
+      <li><a href="/admin/giftcard">Gift Card</a></li>
+      <li><a class="active">Edit</a></li>
+
+    </ul>
+    <div id="edit-card" class="panel panel-default">
+      <div class="panel-heading"><i class="fa fa-pencil-square-o"></i> Edit Gift Card <strong><%= foundCard.name %></strong>
+        <!--<img style="width:60px;float:right;margin-top:-8px" src="">-->
+      </div>
+    <div class="panel-body">
+
+      <hr>
+      <form class="form-horizontal center-block" id="edit-card-form">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="name">Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="sr-only" name="id" value="<%= foundCard.id %>">
+            <input type="text" class="card-type sr-only" value="<%= foundCard.type %>">
+            <input style="background: url(<%= foundCard.thumbnail %>) no-repeat right;background-size: 80px;" type="text" class="form-control" name="name" id="name" value="<%= foundCard.name %>">
+          </div>
+        </div>
+        <div class="form-group input-type">
+          <label class="control-label col-sm-2" for="type">Type</label>
+          <div class="col-sm-10">
+            <% _.each(foundType, function(type) { %>
+            <label class="radio-inline"><input type="radio" id="type-<%= type.id %>" name="type" value="<%= type.id %>"><%= type.name %></label>
+            <% }) %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="description">Description</label>
+          <div class="col-sm-10">
+            <textarea rows="5" class="form-control" name="description" id="description"><%= foundCard.description %></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="detail">Detail</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" name="detail" id="detail"><%= foundCard.detail %></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="term">Term of Use</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" name="term" id="term"><%= foundCard.term %></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="file">Image</label>
+          <div class="col-sm-10">
+            <div class="input-group">
+              <input type="text" class="form-control" name="thumbnail" id='thumbInput' value="<%= foundCard.thumbnail %>">
+              <div class="input-group-btn">
+                <button id="uploadDone" type="button" class="btn btn-warning" data-toggle="modal" data-target="#thumbnailModal">
+                  <i class="fa fa-picture-o"></i>  Upload</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i> Edit Gift Card</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+  </div>
+

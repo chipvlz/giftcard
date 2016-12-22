@@ -2,15 +2,26 @@
   "data": {
     "giftcard": [
       {
-        "name": "asdad",
+        "name": "iTunes",
         "type": 4,
-        "description": "dsada",
-        "detail": "<p>dsada</p>\r\n",
-        "term": "<p>dsada</p>\r\n",
-        "thumbnail": "dsad",
-        "createdAt": "2016-12-20T19:42:07.762Z",
-        "updatedAt": "2016-12-20T19:42:07.762Z",
-        "id": 4
+        "description": "The Apple iTunes Store offers music, movies, audiobooks, music videos, games, iPhone apps, iTunes U and free podcasts. The iTunes store also offers free iTunes software for playing and organizing digital music and video files on Apple and PC computers, iPods, iPhones and iPads. Buy iTunes gift cards to save on the latest music and movie trends. iTunes gift cards are great gifts for anyone who loves music, movies or books. DANS",
+        "detail": "<h2><strong>Delivery &amp; Redemption</strong></h2>\r\n\r\n<ul>\r\n<li>This eGift card can be redeemed online only.</li>\r\n<li>Most eGift cards are delivered to your Raise account instantly, but please allow up to 24 hours.</li>\r\n</ul>\r\n\r\n<h2><strong>Card Details</strong></h2>\r\n\r\n<ul>\r\n<li>Free delivery</li>\r\n<li>Gift cards cannot be used to purchase other gift cards</li>\r\n</ul>\r\n",
+        "term": "<h2><strong>Raise</strong></h2>\r\n\r\n<p>For questions about redeeming gift cards, please visit our&nbsp;<a href=\"https://help.example.com/\">Help Center</a>.</p>\r\n\r\n<p>All trademarks not owned by Raise that appear on this site are the property of their respective owners. Raise is not the issuer of any of the gift cards or other closed-loop products on Raise and is not related to any merchant whose trademark and gift cards appear on Raise for sale. All gift cards sold on our marketplace are backed by the&nbsp;<a href=\"https://www.example.com/return-policy\" target=\"_blank\">Raise Guarantee</a>&nbsp;for the first 100 days after purchase.&nbsp;<a href=\"https://www.example.com/terms\" target=\"_blank\">View full Raise Terms of Use.</a></p>\r\n\r\n<h2><strong>iTunes</strong></h2>\r\n\r\n<p>Valid only on iTunes Store for U.S. Requires iTunes account and prior acceptance of license and usage terms. To open an account you must be 13+ and in the U.S. Compatible software, hardware, and Internet access required. Not redeemable for cash, no refunds or exchanges (except as required by law). Card may not be used to purchase any other merchandise, allowances or iTunes gifting. Data collection and use subject to Apple Customer Privacy Policy, see www.apple.com/privacy, unless stated otherwise. Risk of loss and title for card passes to purchaser on transfer. Cards are issued and managed by Apple Value Services, LLC (Issuer). Neither Apple nor Issuer is responsible for any loss or damage resulting from lost or stolen cards or use without permission. Apple and its licensees, affiliates, and licensors make no warranties, express or implied, with respect to card or the iTunes Store and disclaim any warranty to the fullest extent available. These limitations may not apply to you. Void where prohibited. Not for resale. Subject to full terms and conditions, see www.apple.com/legal/itunes/us/gifts.html. Content and pricing subject to availability at the time of actual download. Content purchased from the iTunes Store is for personal lawful use only. Don&rsquo;t steal music. &copy;2014 Apple Inc. All rights reserved.</p>\r\n",
+        "thumbnail": "/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png",
+        "createdAt": "2016-12-21T21:19:52.658Z",
+        "updatedAt": "2016-12-21T23:42:58.743Z",
+        "id": 6
+      },
+      {
+        "name": "Walmart",
+        "type": 4,
+        "description": "Walmart is an American grocery and discount home goods store that sells food, electronics, home furnishing, video games and baby gear. Buy Walmart gift cards to save on men's and women's apparel, discount food and grocery products, plus home and gardening supplies. Stores available nationwide. Walmart gift cards are a great gifts for moms and families.",
+        "detail": "<h2><strong>Delivery &amp; Redemption</strong></h2>\r\n\r\n<ul>\r\n<li>This eGift card can be redeemed online.</li>\r\n<li>This printable voucher can be redeemed on location.</li>\r\n<li>Most eGift cards and printable vouchers are delivered to your Raise account instantly, but please allow up to 24 hours.</li>\r\n<li>Gift cards may not be used toward the purchase of other gift cards. Gift cards cannot be used to pay for Money orders, Portrait Studio products, third party hair salon products and services, Vision Center eye exams, or third party Vision Center purchases. Can also be redeemed at Sam&#39;s Club and samsclub.com. Manager may be required to key in redemption code.</li>\r\n</ul>\r\n\r\n<h2><strong>Card Details</strong></h2>\r\n\r\n<ul>\r\n<li>Free delivery</li>\r\n<li>Gift cards cannot be used to purchase other gift cards</li>\r\n</ul>\r\n",
+        "term": "<h2><strong>Raise</strong></h2>\r\n\r\n<p>For questions about redeeming gift cards, please visit our&nbsp;<a href=\"https://help.example.com/\">Help Center</a>.</p>\r\n\r\n<p>All trademarks not owned by Raise that appear on this site are the property of their respective owners. Raise is not the issuer of any of the gift cards or other closed-loop products on Raise and is not related to any merchant whose trademark and gift cards appear on Raise for sale. All gift cards sold on our marketplace are backed by the&nbsp;<a href=\"https://www.example.com/return-policy\" target=\"_blank\">Raise Guarantee</a>&nbsp;for the first 100 days after purchase.&nbsp;<a href=\"https://www.example.com/terms\" target=\"_blank\">View full Raise Terms of Use.</a></p>\r\n\r\n<h2><strong>Walmart</strong></h2>\r\n\r\n<p>For balance inquiry, call 1-888-537-5503 or go to Walmart.com/gift cards or samsclub.com. Use this card for purchases of merchandise and services at any retail or online format of Walmart Stores Inc. in the U.S. or Puerto Rico, including Sam&#39;s Club. The balance of this card is solely a liability of Walmart Stores Arkansas, LLC. This card cannot be redeemed for cash except where required by law. Lost or stolen cards cannot be replaced without original receipt. Terms and conditions subject to change without notice. See Walmart.com for complete terms. Gift Cards purchased through unauthorized resellers or internet sites are not guaranteed by Walmart and will not be replaced for any reason. In the case of fraud, misrepresentation, abuse, or violation of the terms and conditions, Walmart reserves the right to refuse acceptance of this card and to take all available action, including the forfeiture of any remaining card balance.</p>\r\n",
+        "thumbnail": "/images/thumbnail/fc443d2e-82cb-4a76-85fc-69e10e9c0802.png",
+        "createdAt": "2016-12-21T23:39:25.529Z",
+        "updatedAt": "2016-12-21T23:42:14.217Z",
+        "id": 7
       }
     ],
     "product": [],
@@ -44,14 +55,15 @@
         "updatedAt": "2016-10-03T06:16:12.002Z",
         "id": 26
       }
-    ]
+    ],
+    "usergroup": []
   },
   "schema": {
     "giftcard": {
       "name": {
         "type": "string"
       },
-      "image": {
+      "thumbnail": {
         "type": "string"
       },
       "description": {
@@ -147,9 +159,11 @@
       "password": {
         "type": "string"
       },
-      "group": {
-        "type": "string",
-        "defaultsTo": "Member"
+      "groupid": {
+        "type": "integer",
+        "model": "usergroup",
+        "foreignKey": true,
+        "alias": "groupid"
       },
       "name": {
         "type": "string"
@@ -165,9 +179,50 @@
         "type": "integer",
         "defaultsTo": 10
       },
-      "about": {
-        "type": "longtext",
-        "defaultsTo": "viết nội dung giới thiệu về bản thân của bạn"
+      "balance": {
+        "type": "float",
+        "defaultsTo": 0
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "usergroup": {
+      "name": {
+        "type": "string"
+      },
+      "admin": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "seller": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "buyer": {
+        "type": "integer",
+        "defaultsTo": 1
+      },
+      "moderator": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "member": {
+        "type": "integer",
+        "defaultsTo": 1
+      },
+      "ban": {
+        "type": "integer",
+        "defaultsTo": 0
       },
       "id": {
         "type": "integer",
@@ -188,11 +243,12 @@
       "id": 27
     },
     "giftcard": {
-      "id": 4
+      "id": 7
     },
     "product": {},
     "type": {
       "id": 6
-    }
+    },
+    "usergroup": {}
   }
 }

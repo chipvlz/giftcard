@@ -19,9 +19,8 @@ module.exports = {
       minLength: 6,
       required: true
     },
-    group: {
-      type: 'string',
-      defaultsTo: 'Member'
+    groupid: {
+      model: 'usergroup'
     },
     name: {
       type: 'string',
@@ -38,9 +37,13 @@ module.exports = {
       type: 'integer',
       defaultsTo:10
     },
-    about: {
-      type: 'longtext',
-      defaultsTo: 'viết nội dung giới thiệu về bản thân của bạn'
+    balance: {
+      type: 'float',
+      defaultsTo: 0
+    },
+    products: {
+      collection: 'product',
+      via: 'owner'
     }
 
   },
