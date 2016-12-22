@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-default" id="navbar-home">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -6,20 +6,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand glyphicon glyphicon-heart" href="#"></a>
+      <a class="navbar-brand glyphicon glyphicon-heart" href="/home"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="search-input input-lg form-control" placeholder="Live search by brand">
+        </div>
+      </form>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/trangchu">Trang Chủ</a></li>
-        <li><a href="#">Menu 1</a></li>
-        <li><a href="#">Menu 2</a></li>
-        <li><a href="#">Menu 3</a></li>
-        <li><a href="#">Menu 4</a></li>
+        <li><a href="#">I'M BUYER</a></li>
+        <li><a href="#">I'M SELLER</a></li>
       </ul>
       <% if(!req.session.user_id){ %>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/register"><span class="fa fa-user-plus"></span> Đăng Ký</a></li>
-        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+        <li><a href="/register"><span class="fa fa-user-plus"></span> REGISTER</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> SIGN IN</a></li>
       </ul>
       <% } else { %>
       <ul class="nav navbar-nav navbar-right">

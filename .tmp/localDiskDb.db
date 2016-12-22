@@ -100,10 +100,13 @@
         "unique": true
       },
       "value": {
-        "type": "integer"
+        "type": "float"
       },
       "price": {
-        "type": "integer"
+        "type": "float"
+      },
+      "save": {
+        "type": "float"
       },
       "quantity": {
         "type": "integer",
