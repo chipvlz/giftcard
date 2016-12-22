@@ -45,11 +45,11 @@
             <th class="sr-only">ID</th>
             <th>Gift Card</th>
             <th>Gift Code</th>
-            <th>Seller</th>
             <th>Value</th>
             <th>Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Seller</th>
+            <th>Action</th>
+
           </tr>
           </thead>
           <tbody>
@@ -58,11 +58,14 @@
             <td class="sr-only td-id"><%= product.id %></td>
             <td class="type-name"><%= product.cid.name %></td>
             <td class="type-name"><%= product.code %></td>
-            <td class="type-name"><%= product.owner.name %></td>
             <td class="type-name"><%= product.value %></td>
             <td class="type-name"><%= product.price %></td>
-            <td><a href="#" data-toggle="modal" data-target="#editTypeModal"><i class="fa fa-pencil-square-o"></i></a></td>
-            <td><a href="#" data-toggle="modal" data-target="#delTypeModal"><i class="fa fa-trash-o"></i></a></td>
+            <td class="type-name"><%= product.owner.name %></td>
+            <td>
+              <a href="#" data-toggle="modal" data-target="#editTypeModal"><i class="fa fa-pencil-square-o"></i></a>
+              <a href="#" data-toggle="modal" data-target="#delTypeModal"><i class="fa fa-trash-o"></i></a>
+            </td>
+
 
           </tr>
           <% }) %>

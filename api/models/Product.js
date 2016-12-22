@@ -13,12 +13,15 @@ module.exports = {
       unique: true
     },
     value: {
-      type: 'integer',
+      type: 'float',
       required: true
     },
     price: {
-      type: 'integer',
+      type: 'float',
       required: true
+    },
+    save: {
+      type: 'float'
     },
     quantity: {
       type: 'integer',
@@ -31,7 +34,7 @@ module.exports = {
       model: 'giftcard'
     },
     owner: {
-      model: 'product'
+      model: 'user'
     }
   }
 };

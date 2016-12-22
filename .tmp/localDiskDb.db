@@ -118,6 +118,12 @@
         "foreignKey": true,
         "alias": "cid"
       },
+      "owner": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "owner"
+      },
       "id": {
         "type": "integer",
         "autoIncrement": true,
