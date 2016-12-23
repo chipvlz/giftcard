@@ -25,6 +25,12 @@ module.exports = {
     terms: {
       type: 'longtext'
     },
+    price: {
+      type: 'string'
+    },
+    save: {
+      type: 'float'
+    },
     products: {
       collection: 'product',
       via: 'cid'

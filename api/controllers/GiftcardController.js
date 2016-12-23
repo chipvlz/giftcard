@@ -6,6 +6,16 @@
  */
 
 module.exports = {
-	
+	index: (req,res) => {
+	  Giftcard.find().populate('type')
+      .exec(function(err,foundCard){
+        if (err) return res.negotiate(err);
+        else return res.view('giftcard/index',{foundCard})
+      })
+  },
+  view: (req,res) => {
+    let params = req.allParams();
+
+  }
 };
 

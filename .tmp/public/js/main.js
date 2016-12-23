@@ -2,13 +2,35 @@ $(function() {
   var socket = io.sails.connect();
   socket.get('/socket');
 
-  $(document).ready(function(){
+  $('#myCarousel1').carousel('pause',{
+    interval: 4000
+  });
 
+
+  $('.multi-slide .item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i=0;i<4;i++) {
+      next=next.next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  });
+
+  $(document).ready(function(){
+    $('#myCarousel1 .item:first').addClass('active');
     var getHeight = $( window ).height()-80;
     $('.sidenav').css('height',getHeight);
 
     var checkPath = window.location.pathname;
-    if (checkPath.match(/giftcard/gi)) {
+    if (checkPath.match(/giftcard\//gi)) {
       CKEDITOR.replace('detail');
       CKEDITOR.replace('term');
     }

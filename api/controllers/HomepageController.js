@@ -14,7 +14,10 @@ module.exports = {
       textDesc: '',
       textVersion: '1.0.1'
     };
-    return res.view("homepage",data)
+    Giftcard.find().exec(function(err,foundCard){
+      return res.view("homepage",{foundCard});
+    });
+
   }
 };
 

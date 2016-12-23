@@ -1,24 +1,93 @@
-<%- partial ('common/navbar.ejs') %>
+<nav class="navbar navbar-fixed-top navbar-default" id="navbar-home">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand glyphicon glyphicon-heart" href="/home"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="search-input input-lg form-control" placeholder="Live search by brand">
+        </div>
+      </form>
+      <ul class="nav navbar-nav">
+        <li><a href="#">I'M BUYER</a></li>
+        <li><a href="#">I'M SELLER</a></li>
+      </ul>
+      <% if(!req.session.user_id){ %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/register"><span class="fa fa-user-plus"></span> REGISTER</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> SIGN IN</a></li>
+      </ul>
+      <% } else { %>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span> <%= req.session.user.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% if(req.session.user.group == 'Admin'){ %>
+            <li><a href="/admin"><span class="glyphicon glyphicon-tasks"></span> Đến trang Admin</a></li>
+            <% } else { %>
+            <li><a href="/view/user/<%= req.session.user.id %>"><span class="glyphicon glyphicon-tasks"></span> Chỉnh sửa thông tin</a></li>
+            <% } %>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
+          </ul>
+        </li>
+
+
+      </ul>
+      <% } %>
+    </div>
+  </div>
+</nav>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img src="/images/slide/slide1.jpg" alt="slide1">
+      <div class="carousel-caption">
+
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <a href="#"><span>Shop Now</span></a>
+      </div>
     </div>
 
     <div class="item">
       <img src="/images/slide/slide2.jpg" alt="slide2">
+      <div class="carousel-caption">
+
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <a href="#"><span>Enter Today</span></a>
+      </div>
     </div>
 
     <div class="item">
       <img src="/images/slide/slide3.jpg" alt="slide3">
+      <div class="carousel-caption">
+
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <a href="#"><span>Hot Promotion</span></a>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="/images/slide/slide4.jpg" alt="slide3">
+      <div class="carousel-caption">
+
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <a href="#"><span>Hot Promotion</span></a>
+      </div>
     </div>
 
   </div>
@@ -33,11 +102,40 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
 <div class="container col-search">
   <div class="input-group margin-bottom-sm text-center">
     <input class="form-control" type="text" placeholder="Email address">
     <span class="input-group-addon"><i class="fa fa-search"></i></span>
   </div>
 </div>
+
+<div class="container text-center col-brand"><a href="/giftcard"><h3> View All Brands</h3></a>
+
+  <div class="carousel slide multi-slide" data-interval="false" id="myCarousel1">
+    <div class="carousel-inner">
+
+      <% _.each(foundCard, function(card) { %>
+      <div class="item">
+        <div class="col-xs-4 col-sm-2 col-md-2">
+          <a href="/giftcard/<%= card.id %>"><img src="<%= card.thumbnail %>" class="img-responsive"></a>
+          <div class="caption">
+            <p><%= card.name%></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <a class="left carousel-control" href="#myCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <a class="right carousel-control" href="#myCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+  </div>
+
+</div>
+
+
+
+
+
+
 
 
