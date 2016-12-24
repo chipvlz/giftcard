@@ -15,10 +15,13 @@ module.exports = {
   },
   view: (req,res) => {
     let params = req.allParams();
-    Giftcard.findOne({id:params.id}).populate('products')
+    Giftcard.findOne({id:params.id}).populate('products').populate('type')
       .exec(function(err,foundCard) {
         if (err) return res.negotiate(err);
-        else return res.view('giftcard/view',{foundCard})
+        else {
+          console.log(foundCard);
+          return res.view('giftcard/view',{foundCard})
+        }
       })
   }
 };

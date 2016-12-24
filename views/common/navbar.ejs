@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-default">
+<nav class="navbar navbar-fixed-top navbar-default" style="line-height:75px;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -9,7 +9,7 @@
       <a class="navbar-brand glyphicon glyphicon-heart" href="/home"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-left" style="margin-top:0">
         <div class="form-group">
           <input type="text" class="search-input input-lg form-control" placeholder="Live search by brand">
         </div>
@@ -24,21 +24,60 @@
         <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> SIGN IN</a></li>
       </ul>
       <% } else { %>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span>
-            <%= req.session.user.name %> <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <% if(req.session.user.group == 'Admin'){ %>
-            <li><a href="/admin"><span class="glyphicon glyphicon-tasks"></span> Admin Area</a></li>
-            <li><a href="/user/view/<%= req.session.user.id %>"><span class="glyphicon glyphicon-tasks"></span> Member Area</a></li>
-            <% } else { %>
-            <li><a href="/user/view/<%= req.session.user.id %>"><span class="glyphicon glyphicon-tasks"></span> Member Area</a></li>
-            <% } %>
-            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
-          </ul>
-        </li>
-      </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin-right:20px;">
+      <div class="btn-group">
+        <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <%= req.session.user.name %></a>
+        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <% if(req.session.user.group == 'Admin'){ %>
+          <li><a href="/admin"><i class="fa fa-pencil fa-fw"></i> Admin Panel</a></li>
+          <% } %>
+          <li><a href="/user"><i class="fa fa-trash-o fa-fw"></i> Member Panel</a></li>
+
+          <li class="divider"></li>
+          <li><a href="/logout"><i class="fa fa-unlock"></i> Logout</a></li>
+        </ul>
+      </div>
+        <a href="#" class="btn btn-primary" rel="popover" data-content='' data-placement="bottom" data-original-title="Fill in form">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge" style="position:absolute;top:15px;"></span>
+        </a>
+        </ul>
       <% } %>
     </div>
   </div>
 </nav>
+
+
+<div id="popover-content" style="display: none" >
+
+  <div class="media">
+    <div class="media-left">
+      <img src="http://localhost:1337/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png" class="media-object" style="width:80px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">iTunes</h4>
+      <p>$139.11</p>
+    </div>
+    <div class="media-right">
+      <a class="btn btn-default" href="path/to/settings" aria-label="Settings">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div><hr>
+
+  <div class="media">
+    <div class="media-left">
+      <img src="http://localhost:1337/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png" class="media-object" style="width:80px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">iTunes</h4>
+      <p>$139.11</p>
+    </div>
+  </div><hr>
+  <h4>Total: <span>$123456</span></h4>
+
+
+
+</div>

@@ -23,8 +23,28 @@ $(function() {
     }
   });
 
+  $('a[rel=popover]').popover({
+    html: 'true',
+    placement: 'bottom',
+    content : function() {
+      return $('#popover-content').html();
+    }
+  });
+
+  $('tr.tr-product ').each(function(){
+    $(this).find('a.add-to-cart').click(function(){
+      $(this).addClass('cart-added');
+    })
+  });
+
   $(document).ready(function(){
 
+    // $("[data-toggle=popover]").popover();
+    $('td.giftcard-detail').each(function(){
+      var $this = $(this);
+      var t = $this.text();
+      $this.html(t.replace('&lt','<').replace('&gt', '>').replace(/\\r\\n/g, '<br />').replace(new RegExp("\\\\", "g"), ""));
+    });
 
     $('#list-giftcard').DataTable({
       "language": {
@@ -82,7 +102,7 @@ $(function() {
     });
 
     var checkPath = window.location.pathname;
-    if (checkPath.match(/giftcard\//gi)) {
+    if (checkPath.match(/admin\/giftcard/gi)) {
       CKEDITOR.replace('detail');
       CKEDITOR.replace('term');
     }

@@ -1,53 +1,65 @@
 <%- partial ('../common/navbar.ejs') %>
-<div class="container-fluid" id="giftcard-page">
+<div class="container-fluid" id="giftcard-view">
 
-  <div class="col-sm-2 col-md-2">
-    <ul class="list-group">
-      <li class="list-group-item list-title"> <strong>Price</strong></li><hr>
-      <a href="#"><li class="list-group-item">$25 and Under</li></a>
-      <a href="#"><li class="list-group-item">$25 - $50</li></a>
-      <a href="#"><li class="list-group-item">$50 - $100</li></a>
-      <a href="#"><li class="list-group-item">$100 - $250</li></a>
-      <a href="#"><li class="list-group-item">$250 - $500</li></a>
-      <a href="#"><li class="list-group-item">$500+</li></a>
+  <div class="col-sm-3 col-md-3">
+  <div class="left-view">
+    <img class="img-responsive" src="<%= foundCard.thumbnail %>" alt="<%= foundCard.name %>">
+    <h5>How one to sell?</h5>
+    <p><a href="#"><%= foundCard.name %> gift cards</a> </p>
+    <hr>
+    <h5>The Example Guarantee</h5>
+    <p>Gift cards on our marketplace are provided by verified sellers. All orders are covered by our 100 Day Money-Back Guarantee.</p>
+    <hr>
+    <h5>Gift Card Icon Legend</h5>
+    <p><span>Egift</span> eGiftcards can be redeemed online only. Most are delivered to your Raise account instantly, but please allow up to 24 hours.</p>
+    <p><span>Physical</span> Physical gift cards can be redeemed in store. They are delivered by USPS to your shipping address in 3-14 business days.</p>
+    <hr>
+    <h5>Free Shipping</h5>
+    <p>All gift cards are delivered for free. Delivery times may vary for multiple gift cards in one order depending on the type of card and the seller.</p>
+  </div>
 
-
-    </ul>
-    <ul class="list-group">
-      <li class="list-group-item list-title"> <strong>Card Type</strong></li><hr>
-      <a href="#"><li class="list-group-item">Physical</li></a>
-      <a href="#"><li class="list-group-item">Electronic</li></a>
-
-
-
-    </ul>
 
   </div>
-  <div class="col-sm-10 col-md-10">
-    <div class="row col-title">
-      <h3>Buy Gift Cards <a href=""><i class="fa fa-info-circle"></i></a>
-        <div class="btn-group pull-right">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Sort by Name <span class="caret"></span></button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Newest</a></li>
-            <li><a href="#">Most Popular</a></li>
-            <li><a href="#">Highest Discount</a></li>
-            <li><a href="#">Lowest Discount</a></li>
-          </ul>
-        </div>
+  <div class="col-sm-9 col-md-9">
+    <h3>Buy Gift Cards</h3>
+    <div class="panel panel-default">
 
-      </h3>
-    </div><hr>
+      <div class="panel-body table-responsive list-table" id="list-card">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th class="sr-only">ID</th>
+            <th class="col-md-3 text-center" colspan="2">Type</th>
+            <th>Value</th>
+            <th>% Off</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% _.each(foundCard.products, function(product) { %>
+          <tr class="tr-product" id="product-<%= product.id %>">
+            <td class="sr-only td-id"><%= product.id %></td>
+            <td class="col-md-1"><img src="<%= foundCard.thumbnail %>"></td>
+            <td class="type-name"><%= foundCard.type %></td>
+            <td class="type-name">$<%= product.value %></td>
+            <td class="col-md-3"><%= product.save %>%</td>
+            <td class="product-price">$<%= product.price %>
+              <span style="float:left;width:100%" class="product-detail"><a data-toggle="collapse" data-target="#detail-<%= product.id %>" href="#">+Detail</a></span>
+            </td>
+            <td class="col-md-1">
+              <a class="add-to-cart btn btn-success" href="#">
+                <i class="fa fa-shopping-cart fa-lg"></i> Buy Now</a>
+            </td>
+          </tr>
+          <tr class="collapse" id="detail-<%= product.id %>">
+            <td class="giftcard-detail" colspan="7"><%= foundCard.detail %></td>
+          </tr>
+          <% }) %>
 
-    <div class="col-allbrand">
-
-
+          </tbody>
+        </table>
+      </div>
     </div>
-
-
-
-
-
   </div>
 </div>
