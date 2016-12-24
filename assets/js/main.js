@@ -256,6 +256,12 @@ $(function() {
     location.reload();
   });
 
+  $('#sell-giftcard-form').submit(function (sc) {
+    sc.preventDefault();
+    var data = $('#sell-giftcard-form').serialize();
+    socket.get('/user/sellgc?'+data);
+  });
+
   // Xóa multi ID
   $("#removeid").click(function(event){
     event.preventDefault();

@@ -75,6 +75,25 @@ module.exports = {
     })
   },
 
+  sellgc: (req,res) => {
+    let params = req.allParams();
+    console.log('params:',params);
+    Giftcard.findOne({id:params.cid}).exec(function(err,foundCard){
+      Product.create(params).exec(function(err,result){
+        console.log('result:',result);
+      let socketdata = {
+        name: foundCard.name,
+        type: foundCard.type,
+        value: result.value,
+        price: result.price,
+        save: result.save,
+        date: result.createdAt
+      };
+      sails.sockets.blast('new/giftcard',{msg:socketdata})
+      })
+    })
+  },
+
   allusers: (req, res) => {
     User.find(function (err, users) {
       res.view('admin/users',{users})

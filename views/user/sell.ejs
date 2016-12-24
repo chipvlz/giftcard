@@ -43,6 +43,7 @@
         <form id="sell-giftcard-form">
           <div class="form-group">
             <label for="cid">Gift Card Type</label>
+            <input type="text" class="sr-only" name="owner" id="owner" value="<%= req.session.user.id %>">
             <input type="text" class="sr-only" name="cid" id="cid">
             <input type="text" class="form-control" id="giftcard">
           </div>
@@ -71,14 +72,8 @@
               <input class="form-control" type="text" name="save" id="save">
             </div>
           </div>
-          <div class="form-group">
-            <label for="status">Status</label>
-            <input type="text" class="sr-only" name="owner" id="owner">
-            <div class="radio">
-              <label><input type="radio" name="status" value="1"> Active </label>
-              <label><input type="radio" name="status" value="0"> Deactive </label>
-            </div>
-          </div><hr>
+
+          <hr>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
       </div>
