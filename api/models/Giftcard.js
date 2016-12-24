@@ -28,6 +28,15 @@ module.exports = {
     price: {
       type: 'string'
     },
+    filter_category: {
+      type: 'longtext'
+    },
+    filter_price: {
+      type: 'longtext'
+    },
+    filter_alphabet: {
+      type: 'string'
+    },
     save: {
       type: 'float'
     },

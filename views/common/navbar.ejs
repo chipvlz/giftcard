@@ -25,18 +25,18 @@
       </ul>
       <% } else { %>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span> <%= req.session.user.name %> <span class="caret"></span></a>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span>
+            <%= req.session.user.name %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <% if(req.session.user.group == 'Admin'){ %>
-            <li><a href="/admin"><span class="glyphicon glyphicon-tasks"></span> Đến trang Admin</a></li>
+            <li><a href="/admin"><span class="glyphicon glyphicon-tasks"></span> Admin Area</a></li>
+            <li><a href="/user/view/<%= req.session.user.id %>"><span class="glyphicon glyphicon-tasks"></span> Member Area</a></li>
             <% } else { %>
-            <li><a href="/view/user/<%= req.session.user.id %>"><span class="glyphicon glyphicon-tasks"></span> Chỉnh sửa thông tin</a></li>
+            <li><a href="/user/view/<%= req.session.user.id %>"><span class="glyphicon glyphicon-tasks"></span> Member Area</a></li>
             <% } %>
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
           </ul>
         </li>
-
-
       </ul>
       <% } %>
     </div>

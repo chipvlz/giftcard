@@ -1,6 +1,9 @@
 /* Remove the navbar's default margin-bottom and rounded borders */
+html {
+  min-height:100%;
+}
 body {
-  background:#fff !important;
+  background:#f5f5f5 !important;
   letter-spacing: 0.8px;
 }
 a {
@@ -16,10 +19,16 @@ a {
 .navbar-nav > .open > a:focus {
   background: none !important;
 }
+#navbar-home .dropdown-menu, #navbar-home .dropdown-menu > li > a:hover, #navbar-home  .dropdown-menu > li > a:focus {
+  background: rgba(255, 255, 255, 0.15);
+}
 .dropdown-menu,.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-  background: rgba(0, 0, 0, 0.25);
+  background: #fff;
 }
 
+#navbar-home .col-title .dropdown-menu, #navbar-home .col-title .dropdown-menu > li > a:hover, #navbar-home  .col-title .dropdown-menu > li > a:focus {
+  background: rgba(255, 255, 255, 0.15);
+}
 .col-title .dropdown-menu,.col-title .dropdown-menu > li > a:hover, .col-title .dropdown-menu > li > a:focus {
   background: #fff;
 }
@@ -58,6 +67,39 @@ a {
   line-height:30px;
 }
 
+#user-page .col-sm-12 {
+  margin-left:240px;
+}
+#user-page .row {
+  margin-left:0;
+}
+#user-page .well {
+  background:#fff;
+}
+#list-giftcard_length, #list-giftcard_info, #list-giftcard_paginate {
+  display:none;
+}
+#list-giftcard_filter {
+  min-height: 50px;
+  padding: 10px;
+}
+#list-giftcard_filter input {
+  min-width: 280px;
+  height: 30px;
+  border: 1px solid #7ab55c;
+}
+.show-table {
+  display:table !important;
+}
+
+table.dataTable {
+  display:none;
+}
+a i.fa.fa-bars {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e4e4e4;
+}
 #navbar-home .search-input {
   opacity:0.8;
   padding-left:32px;
@@ -73,7 +115,7 @@ a {
 .container {
   width:100% !important;
 }
-#admin-page {
+#admin-page,#user-page {
   padding:0;
   margin:0;
 }
@@ -109,7 +151,14 @@ thead {
 .table tr th, .table tr td {
   vertical-align: middle !important;
 }
+.sidenav {
 
+  min-height:100%;
+  position: fixed;
+  width:240px;
+  -webkit-transition: all 0.6s; /* Safari */
+  transition: all 0.6s;
+}
 .sidenav li:hover, a:hover, a:focus {
   color:#7ab55c;
   text-decoration: none;
@@ -121,13 +170,25 @@ thead {
 a.navbar-brand, .navbar-nav > li > a {
   line-height:50px;
 }
+#register-page , #login-page {
+  max-width:500px;
+  margin-top:90px;
+  background:#fff;
+  padding:15px;
+}
+#register-page form,#login-page form {
+  padding:15px;
+  background:#fff;
+}
+#register-page input,#login-page input {
+  height:50px;
+}
+
+
 .sidenav {
   padding:0;
   border-right:1px solid #e2e2e2;
   background: #fff;
-  margin-top:-1px;
-
-
 }
 .sidenav .fa.pull-right {
   line-height:40px;
@@ -277,9 +338,30 @@ td.card-image img {
     min-height: 0;
   }
 }
-
+.aright {
+  display:none !important;
+}
 @media (max-width: 1065px) {
   #giftcard-page li.list-group-item {
     font-size:14px;
+  }
+}
+
+.main-content {
+  padding-right:20px;
+  margin-left:260px;
+}
+@media (max-width: 768px) {
+  .sidenav {
+    margin-left:-240px;
+  }
+  .main-content {
+    margin-left:20px;
+  }
+  .menu-active {
+    margin-left: 0px !important;
+  }
+  .aright {
+    display:inline-block !important;
   }
 }

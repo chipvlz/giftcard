@@ -58,14 +58,29 @@ module.exports = {
         })
       }
     });
-
   },
+
+  view: (req,res) => {
+    let params = req.allParams();
+    User.findOne({id:params.id}).populate('products')
+      .exec(function(err,foundUser){
+        return res.view('user/index',{foundUser})
+      })
+  },
+
+  sell: (req,res) => {
+    let params = req.allParams();
+    Giftcard.find().populate('type').exec(function(err,foundGiftcard){
+      res.view('user/sell',{foundGiftcard})
+    })
+  },
+
   allusers: (req, res) => {
     User.find(function (err, users) {
-
       res.view('admin/users',{users})
     })
   },
+
   userid: (req,res) => {
     let params = req.allParams();
 
@@ -75,9 +90,7 @@ module.exports = {
       var edit = 'no'
     }
     User.findOne({'id':params.id}).exec(function(err,userdata){
-
       res.view('user/info',{userdata,edit});
-
     })
   }
 };

@@ -19,15 +19,67 @@ $(function() {
       if (!next.length) {
         next = $(this).siblings(':first');
       }
-
       next.children(':first-child').clone().appendTo($(this));
     }
   });
 
   $(document).ready(function(){
+
+
+    $('#list-giftcard').DataTable({
+      "language": {
+        "search": "Live search gift card (Autocomplete) "
+      },
+      "lengthMenu": [[5, -1], [5, "All"]]
+    });
+    $('#list-giftcard_filter input').keyup(function(){
+      if ($(this).val().length == 1) {
+        $('table.dataTable').addClass('show-table');
+      }
+      if ($(this).val().length == 0) {
+        $('table.dataTable').removeClass('show-table');
+      }
+    });
+
+    if (window.location.pathname == '/user/sell') {
+      var findUrl = window.location.href.split('&type=');
+      var findType = findUrl[1];
+      var findId = findUrl[0].split('id=')[1];
+      $('#giftcard').val(findType);
+      $('#cid').val(findId);
+
+      $('#value').keyup(function(){
+        $('#price').val($('#value').val());
+        var realsave = $('#value').val() - $('#price').val();
+        var persensave = realsave*100/$('#value').val();
+        $('#save').val(persensave);
+      });
+
+      $('#price').keyup(function(){
+        var realsave = $('#value').val() - $('#price').val();
+        var persensave = realsave*100/$('#value').val();
+        $('#save').val(persensave.toFixed(1));
+      })
+    }
+
+
+
     $('#myCarousel1 .item:first').addClass('active');
-    var getHeight = $( window ).height()-80;
-    $('.sidenav').css('height',getHeight);
+    // var getHeight = $( window ).height()-80;
+    // $('.sidenav').css('height',getHeight);
+
+    $('.menu-button .aright').click(function(){
+      $('.sidenav').addClass('menu-active');
+      $('.aright').addClass('sr-only');
+      $('.aleft').removeClass('sr-only');
+    });
+
+    $('.menu-button .aleft').click(function(){
+      $('.sidenav').removeClass('menu-active');
+      $('.aleft').addClass('sr-only');
+      $('.aright').removeClass('sr-only');
+
+    });
 
     var checkPath = window.location.pathname;
     if (checkPath.match(/giftcard\//gi)) {
@@ -42,9 +94,9 @@ $(function() {
     $('a.user-list').click(function(){
       $(this).find('i.fa-chevron-right').toggleClass('rotated');
     });
-
-
   });
+
+
 
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server

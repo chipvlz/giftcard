@@ -1,7 +1,6 @@
 <%- partial ('../common/navbar.ejs') %>
-<div class="container">
-  <h2>Đăng Nhập</h2>
-  <span class="help-block">Đăng nhập để sử dụng đầy đủ chức năng của Website mà không bị giới hạn .</span>
+<div class="container" id="login-page">
+
   <form role="form" class="form-signin" id="login">
     <div class="form-group has-feedback">
       <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -15,15 +14,11 @@
       <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Nhập mật khẩu" required>
     </div>
 
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Ghi nhớ
-      </label>
-    </div>
+
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng Nhập</button>
   </form>
 
 
 </div>
-<%- partial ('../common/footer.ejs') %>
+
