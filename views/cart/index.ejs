@@ -1,0 +1,41 @@
+<%- partial ('../common/navbar.ejs') %>
+<div id="cart-page">
+<div class="panel panel-success">
+  <div class="panel-heading"><i class="fa fa-shopping-cart fa-lg"></i> Your shopping cart</div>
+  <div class="panel-body">
+    <table class="table table-responsive table-hover">
+      <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>% Off</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% _.each(foundCart, function(cart) { %>
+      <tr class="tr-product" id="product-">
+        <td class="card-img col-md-1 hidden-xs"><img style="max-width:80px" src="<%= cart.image %>"></td>
+        <td class="card-name"><%= cart.name %></td>
+
+        <td class="card-type"><%= cart.type %></td>
+        <td class="product-value">$<%= cart.value %></td>
+        <td class="product-save col-md-3"><%= cart.save %>%</td>
+        <td class="product-price">$<%= cart.price %></td>
+        <td class="col-md-1">
+          <a class="add-to-cart btn btn-danger" href="#">
+            <i class="fa fa-trash-o fa-lg"></i> Remove</a>
+        </td>
+      </tr>
+      <% }) %>
+      </tbody>
+    </table><hr>
+    <div class="total panel-body">TOTAL: <strong></strong></div>
+  </div>
+
+  <div class="panel-footer"></div>
+</div>
+</div>

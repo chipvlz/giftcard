@@ -193,6 +193,12 @@ thead {
 a.navbar-brand, .navbar-nav > li > a {
   line-height:50px;
 }
+#cart-page {
+  margin-top:90px;
+  max-width:900px;
+  margin-left:auto;
+  margin-right:auto;
+}
 #register-page , #login-page {
   max-width:500px;
   margin-top:90px;
@@ -398,6 +404,9 @@ td.card-image img {
   .aright {
     display:inline-block !important;
   }
+  #giftcard-view , .col-sm-12{
+    padding:0;
+  }
 }
 
 .popover {
@@ -406,4 +415,19 @@ td.card-image img {
 .cart-added {
   opacity:0.5;
   background:rgba(0, 0, 0, 0.1);
+}
+.popover-content {
+  padding:3px;
+}
+.popover-content .media {
+  border-bottom: 1px solid #efefef;
+  padding: 0 0 10px 0;
+  margin-bottom: 0;
+}
+.navbar-default .navbar-nav > li > a {
+  font-size:12px;
+  font-weight:bold;
+}
+.alert-dismissable .close {
+  right:0;
 }

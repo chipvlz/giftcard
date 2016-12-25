@@ -1,7 +1,89 @@
-<%- partial ('../common/navbar.ejs') %>
+<nav class="navbar navbar-fixed-top navbar-default" style="line-height:75px;" id="buy-giftcard-page">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand glyphicon glyphicon-heart" href="/home"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <form class="navbar-form navbar-left" style="margin-top:0">
+        <div class="form-group">
+          <input type="text" class="search-input input-lg form-control" placeholder="Live search by brand">
+        </div>
+      </form>
+      <ul class="nav navbar-nav">
+        <li><a href="#">I'M BUYER</a></li>
+        <li><a href="#">I'M SELLER</a></li>
+      </ul>
+      <% if(!req.session.user_id){ %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/register"><span class="fa fa-user-plus"></span> SIGN UP</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
+        <a href="#" class="btn btn-primary" rel="popover" data-content='' data-placement="bottom" data-original-title="Shopping cart">
+          <i class="fa fa-shopping-cart"></i><% if(foundCart) { %><span class="badge" style="position:absolute;top:15px;"><%= foundCart.length %></span><% } %>
+        </a>
+      </ul>
+      <% } else { %>
+      <ul class="nav navbar-nav navbar-right" style="margin-right:20px;">
+        <div class="btn-group">
+          <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <%= req.session.user.name %></a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+            <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if(req.session.user.group == 'Admin'){ %>
+            <li><a href="/admin"><i class="fa fa-pencil fa-fw"></i> Admin Panel</a></li>
+            <% } %>
+            <li><a href="/user"><i class="fa fa-trash-o fa-fw"></i> Member Panel</a></li>
+
+            <li class="divider"></li>
+            <li><a href="/logout"><i class="fa fa-unlock"></i> Logout</a></li>
+          </ul>
+        </div>
+        <a href="#" class="btn btn-primary" rel="popover" data-content='' data-placement="bottom" data-original-title="Shopping cart">
+          <i class="fa fa-shopping-cart"></i><% if (foundCart) { %><span class="badge" style="position:absolute;top:15px;"><%= foundCart.length %></span><% } %>
+        </a>
+      </ul>
+      <% } %>
+    </div>
+  </div>
+</nav>
+
+
+<div id="popover-content" style="display:none" >
+
+  <% if(foundCart.length > 0) { %>
+  <% _.each(foundCart, function(cart) { %>
+
+  <div class="media alert alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <span class="sr-only have-cart"><%= cart.pid %></span>
+
+    <div class="media-left">
+      <img src="<%= cart.image %>" class="media-object" style="width:80px">
+    </div>
+    <div class="media-body">
+      <h5 class="media-heading"><%= cart.name %> <span class="badge"><%= cart.type %></span></h5>
+      <p>$<%= cart.price %></p>
+    </div>
+  </div>
+  <% }) %>
+  <div class="total-price"><a href="/cart/view?sid=<%= foundCart[0].sid %>" type="button" class="btn btn-success">View Cart Detail</a></div>
+
+  <% } %>
+
+  <!--<h4>Total: <span>$123456</span></h4>-->
+
+
+
+</div>
+
 <div class="container-fluid" id="giftcard-view">
 
-  <div class="col-sm-3 col-md-3">
+  <div class="hidden-xs hidden-sm col-md-3">
   <div class="left-view">
     <img class="img-responsive" src="<%= foundCard.thumbnail %>" alt="<%= foundCard.name %>">
     <h5>How one to sell?</h5>
@@ -17,19 +99,19 @@
     <h5>Free Shipping</h5>
     <p>All gift cards are delivered for free. Delivery times may vary for multiple gift cards in one order depending on the type of card and the seller.</p>
   </div>
-
-
   </div>
-  <div class="col-sm-9 col-md-9">
+  <div class="col-sm-12 col-md-9 col-xs-12">
     <h3>Buy Gift Cards</h3>
     <div class="panel panel-default">
 
-      <div class="panel-body table-responsive list-table" id="list-card">
-        <table class="table table-hover">
+      <div class="panel-body list-table" id="list-card">
+        <table class="table table-responsive table-hover">
           <thead>
           <tr>
             <th class="sr-only">ID</th>
-            <th class="col-md-3 text-center" colspan="2">Type</th>
+            <th class="sr-only">Name</th>
+            <th class="hidden-xs"></th>
+            <th class="col-md-3 text-center" colspan="1">Type</th>
             <th>Value</th>
             <th>% Off</th>
             <th>Price</th>
@@ -40,10 +122,11 @@
           <% _.each(foundCard.products, function(product) { %>
           <tr class="tr-product" id="product-<%= product.id %>">
             <td class="sr-only td-id"><%= product.id %></td>
-            <td class="col-md-1"><img src="<%= foundCard.thumbnail %>"></td>
-            <td class="type-name"><%= foundCard.type %></td>
-            <td class="type-name">$<%= product.value %></td>
-            <td class="col-md-3"><%= product.save %>%</td>
+            <td class="sr-only card-name"><%= foundCard.name %></td>
+            <td class="card-img col-md-1 hidden-xs"><img src="<%= foundCard.thumbnail %>"></td>
+            <td class="card-type"><%= foundCard.type.name %></td>
+            <td class="product-value">$<%= product.value %></td>
+            <td class="product-save col-md-3"><%= product.save %>%</td>
             <td class="product-price">$<%= product.price %>
               <span style="float:left;width:100%" class="product-detail"><a data-toggle="collapse" data-target="#detail-<%= product.id %>" href="#">+Detail</a></span>
             </td>
@@ -56,7 +139,6 @@
             <td class="giftcard-detail" colspan="7"><%= foundCard.detail %></td>
           </tr>
           <% }) %>
-
           </tbody>
         </table>
       </div>

@@ -31,13 +31,58 @@ $(function() {
     }
   });
 
-  $('tr.tr-product ').each(function(){
-    $(this).find('a.add-to-cart').click(function(){
-      $(this).addClass('cart-added');
+  $('tr.tr-product a.add-to-cart').each(function(){
+    $(this).click(function(){
+      $(this).unbind("click");
+      var setID = $(this).closest('tr.tr-product').find('td.td-id').text();
+      var setNAME = $(this).closest('tr.tr-product').find('td.card-name').text();
+      var setIMG = $(this).closest('tr.tr-product').find('img').attr("src");
+      var setTYPE = $(this).closest('tr.tr-product').find('td.card-type').text();
+      var setSAVE = parseFloat($(this).closest('tr.tr-product').find('td.product-save').text().replace('%',''));
+      var setVALUE = parseFloat($(this).closest('tr.tr-product').find('td.product-value').text().replace('$',''));
+      var setPRICE = parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$',''));
+      let cartData = {
+        id :  $(this).closest('tr.tr-product').find('td.td-id').text(),
+        name: $(this).closest('tr.tr-product').find('td.card-name').text(),
+        img : $(this).closest('tr.tr-product').find('img').attr("src"),
+        type : $(this).closest('tr.tr-product').find('td.card-type').text(),
+        price : parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$','')),
+      };
+      console.log(cartData);
+      socket.post('/cart/add',cartData);
+
+      $(this).closest('tr.tr-product').addClass('cart-added');
+      $(this).attr('disabled','disabled');
+
+      $('.popover-content').append('abcdef')
     })
   });
 
+  // <div class="media alert alert-dismissable">
+  //   <span class="sr-only have-cart"><%= cart.pid %></span>
+  //   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  // <div class="media-left">
+  //   <img src="<%= cart.image %>" class="media-object" style="width:80px">
+  //   </div>
+  //   <div class="media-body">
+  //   <h4 class="media-heading"><%= cart.name %></h4>
+  // <p><%= cart.type %></p>
+  //   </div>
+  //   <div class="media-right">
+  // <%= cart.price %>
+  //   </div>
+  //   </div>
+
   $(document).ready(function(){
+
+    $('#popover-content span.have-cart').each(function(){
+      var productID = $(this).text();
+      if (productID !== 'null') {
+        $('tr#product-'+productID).addClass('cart-added');
+        $('tr#product-'+productID+' a').unbind("click");
+      }
+    });
+
 
     // $("[data-toggle=popover]").popover();
     $('td.giftcard-detail').each(function(){
@@ -80,6 +125,14 @@ $(function() {
         var persensave = realsave*100/$('#value').val();
         $('#save').val(persensave.toFixed(1));
       })
+    } else if (window.location.pathname == '/cart/view') {
+      var total_price = [];
+      $('td.product-price').each(function(){
+        var oneprice = parseFloat($(this).text().replace('$',''));
+        total_price.push(oneprice);
+      });
+      var total = total_price.reduce((a,b) => a+b,0);
+      $('div.total strong').text(total);
     }
 
 
@@ -98,8 +151,8 @@ $(function() {
       $('.sidenav').removeClass('menu-active');
       $('.aleft').addClass('sr-only');
       $('.aright').removeClass('sr-only');
-
     });
+
 
     var checkPath = window.location.pathname;
     if (checkPath.match(/admin\/giftcard/gi)) {
