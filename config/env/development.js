@@ -21,6 +21,7 @@ module.exports = {
     // connection: 'someMysqlServer'
     connection: 'localDiskDb',
     migrate: 'alter'
-  }
+  },
+  port:2810
 
 };
