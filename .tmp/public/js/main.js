@@ -84,6 +84,30 @@ $(function() {
     window.location.reload();
   });
 
+  $('a.next-process').click(function(){
+    $(this).find('i.fa-spinner').removeClass('sr-only');
+    $(this).find('i.fa-share-square-o').addClass('sr-only');
+    var jsonData = [];
+    var totalData = $('div.total strong').text();
+    let sessionId = window.location.search.split('?sid=')[1];
+    $('tr.tr-cart').each(function(){
+      var eachData = {
+        name : $(this).find('td.card-name').text(),
+        sku : $(this).find('td.card-type').text(),
+        price : parseFloat($(this).find('td.product-price').text().replace('$','')),
+        currency : 'USD',
+        quantity : 1
+      };
+      jsonData.push(eachData);
+    });
+    var data = {totalData,jsonData,sessionId};
+    socket.post('/payment/test',data);
+  });
+
+  socket.on('create/invoice',function(recieve){
+    window.location = '../payment/checkout?invoice='+recieve.msg;
+  });
+
   // <div class="media alert alert-dismissable">
   //   <span class="sr-only have-cart"><%= cart.pid %></span>
   //   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

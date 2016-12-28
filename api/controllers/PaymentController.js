@@ -18,7 +18,7 @@ module.exports = {
   index: (req,res) => {
     let params = req.allParams();
 
-    if (params.pro)
+
     var create_payment_json = {
         "intent": "sale",
         "payer": {
@@ -30,13 +30,14 @@ module.exports = {
         },
         "transactions": [{
           "item_list": {
-            "items": [{
+            "items": [
+              {
               "name": "iTunes Gift Card",
               "sku": "JAGDGS",
               "price": "131.11",
               "currency": "USD",
               "quantity": 1
-            }]
+              }]
           },
           "amount": {
             "currency": "USD",
@@ -55,7 +56,63 @@ module.exports = {
           res.json(payment);
         }
       });
-    }
+    },
+  test: (req,res) => {
+    let params = req.allParams();
+    console.log(params);
+    sails.sockets.join(req,params.sessionId);
+
+    var create_payment_json = {
+      "intent": "sale",
+      "payer": {
+        "payment_method": "paypal"
+      },
+      "redirect_urls": {
+        "return_url": "localhost:2810/payment/success",
+        "cancel_url": "localhost:2810/cart"
+      },
+      "transactions": [{
+        "item_list": {
+          "items": params.jsonData
+        },
+        "amount": {
+          "currency": "USD",
+          "total": params.totalData
+        },
+        "description": "Thank you for buying iTunes Gift Card."
+      }]
+    };
+
+    paypal.payment.create(create_payment_json, function (error,payment) {
+      if (error) {
+        throw error;
+      } else {
+        Invoice.create({
+          invoice: payment.id,
+          intent: payment.intent,
+          state: payment.state,
+          amount: payment.transactions[0].amount.total,
+          items: payment.transactions[0].item_list.items,
+          date: payment.create_time,
+          link: payment.links[1].href
+        }).exec(function(err,result){
+          if (err) return res.negotiate(err);
+          else {
+            console.log(result);
+            sails.sockets.broadcast(params.sessionId,'create/invoice',{msg:result.invoice});
+          }
+        })
+      }
+    });
+  },
+
+  checkout: (req,res) => {
+    let params = req.allParams();
+    console.log('invoice params',params);
+    Invoice.findOne(params).exec(function(err,foundInvoice){
+      return res.view('cart/invoice',foundInvoice);
+    })
+  }
 
 };
 
