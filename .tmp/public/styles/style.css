@@ -371,9 +371,9 @@ td.card-image img {
     background: rgba(2, 4, 32, 0.8);
     border:none;
   }
-  .col-md-2 {
-    display:none;
-  }
+  /*.col-md-2 {*/
+    /*display:none;*/
+  /*}*/
   .jumbotron {
     min-height: 0;
   }

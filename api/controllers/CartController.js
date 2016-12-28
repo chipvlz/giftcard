@@ -29,13 +29,22 @@ module.exports = {
   },
   view: (req,res) => {
     let params = req.allParams();
-    console.log(params);
     let session_id = req.signedCookies['sails.sid'];
 
     Cart.find({sid:params.sid}).exec(function(err,foundCart){
-      console.log(foundCart);
       res.view('cart/index',{foundCart})
     });
+  },
+
+  remove: (req,res) => {
+    if (!req.isSocket) {return res.badRequest();}
+    let params = req.allParams();
+    console.log(params);
+    sails.sockets.join(req,params.sessionId);
+    Cart.destroy({id:params.id}).exec(function(err){
+      if (err) return res.negotiate(err);
+      else sails.sockets.broadcast(params.sessionId,'remove/cart');
+    })
   }
 };
 

@@ -6,6 +6,7 @@
     <table class="table table-responsive table-hover">
       <thead>
       <tr>
+        <th class="sr-only">ID</th>
         <th>Image</th>
         <th>Name</th>
         <th>Type</th>
@@ -17,7 +18,8 @@
       </thead>
       <tbody>
       <% _.each(foundCart, function(cart) { %>
-      <tr class="tr-product" id="product-">
+      <tr class="tr-cart" id="cart-<%= cart.id %>">
+        <td class="product-id sr-only"><%= cart.id %></td>
         <td class="card-img col-md-1 hidden-xs"><img style="max-width:80px" src="<%= cart.image %>"></td>
         <td class="card-name"><%= cart.name %></td>
 
@@ -26,8 +28,11 @@
         <td class="product-save col-md-3"><%= cart.save %>%</td>
         <td class="product-price">$<%= cart.price %></td>
         <td class="col-md-1">
-          <a class="add-to-cart btn btn-danger" href="#">
+          <a class="remove-item btn btn-danger" href="#">
             <i class="fa fa-trash-o fa-lg"></i> Remove</a>
+          <a class="sr-only reloading btn btn-warning" href="#">
+          <i class="fa fa-spinner fa-pulse"></i> Removing...</a>
+
         </td>
       </tr>
       <% }) %>
@@ -36,6 +41,10 @@
     <div class="total panel-body">TOTAL: <strong></strong></div>
   </div>
 
-  <div class="panel-footer"></div>
+  <div class="panel-footer">
+    <button onclick="goBack()" type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Continue Shopping</button>
+    <button type="button" class="btn btn-success"><i class="fa fa-share-square-o"></i> Next Process</button>
+
+  </div>
 </div>
 </div>

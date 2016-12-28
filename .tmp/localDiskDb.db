@@ -2,74 +2,46 @@
   "data": {
     "cart": [
       {
-        "date": "Sun Dec 25 2016 14:31:39 GMT-0800 (PST)",
-        "pid": 1,
-        "sid": "_sWhajoUnLKkTQQC0jzlxAfcFYtTP74F",
-        "image": "/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png",
-        "name": "iTunes",
-        "type": "Egift",
-        "value": null,
-        "save": null,
-        "price": 131.3,
-        "createdAt": "2016-12-25T22:31:39.040Z",
-        "updatedAt": "2016-12-25T22:31:39.040Z",
-        "id": 39
-      },
-      {
-        "date": "Sun Dec 25 2016 14:48:58 GMT-0800 (PST)",
-        "pid": 1,
-        "sid": "7rQPQL6Pefsrwkq74qbsxOCuH7JUF6kn",
-        "image": "/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png",
-        "name": "iTunes",
-        "type": "Egift",
-        "value": null,
-        "save": null,
-        "price": 131.3,
-        "createdAt": "2016-12-25T22:48:58.538Z",
-        "updatedAt": "2016-12-25T22:48:58.538Z",
-        "id": 40
-      },
-      {
-        "date": "Sun Dec 25 2016 14:53:12 GMT-0800 (PST)",
+        "date": "Tue Dec 27 2016 19:30:28 GMT-0800 (PST)",
         "pid": 2,
-        "sid": "7rQPQL6Pefsrwkq74qbsxOCuH7JUF6kn",
+        "sid": "yCMcTJpvIbLqv1Mt834UEygiH_W9iVQW",
         "image": "/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png",
         "name": "iTunes",
         "type": "Egift",
         "value": null,
         "save": null,
         "price": 1110,
-        "createdAt": "2016-12-25T22:53:12.325Z",
-        "updatedAt": "2016-12-25T22:53:12.325Z",
-        "id": 41
+        "createdAt": "2016-12-28T03:30:28.026Z",
+        "updatedAt": "2016-12-28T03:30:28.026Z",
+        "id": 52
       },
       {
-        "date": "Sun Dec 25 2016 14:58:21 GMT-0800 (PST)",
+        "date": "Tue Dec 27 2016 20:16:29 GMT-0800 (PST)",
         "pid": 1,
-        "sid": "7oNk-HzFiDFAIj6jjP6b99pgd7HG6C__",
+        "sid": "UemNvPIPEQbYbKAqMY_fzFrA9brzzhI0",
         "image": "/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png",
         "name": "iTunes",
         "type": "Egift",
-        "value": null,
-        "save": null,
+        "value": 139.11,
+        "save": 5.6,
         "price": 131.3,
-        "createdAt": "2016-12-25T22:58:21.275Z",
-        "updatedAt": "2016-12-25T22:58:21.275Z",
-        "id": 42
+        "createdAt": "2016-12-28T04:16:29.735Z",
+        "updatedAt": "2016-12-28T04:16:29.735Z",
+        "id": 57
       },
       {
-        "date": "Sun Dec 25 2016 15:07:30 GMT-0800 (PST)",
+        "date": "Tue Dec 27 2016 20:16:36 GMT-0800 (PST)",
         "pid": 2,
-        "sid": "7oNk-HzFiDFAIj6jjP6b99pgd7HG6C__",
+        "sid": "UemNvPIPEQbYbKAqMY_fzFrA9brzzhI0",
         "image": "/images/thumbnail/64808604-291d-4e45-adcb-0ec51f43ede7.png",
         "name": "iTunes",
         "type": "Egift",
-        "value": null,
-        "save": null,
+        "value": 1111,
+        "save": 0.1,
         "price": 1110,
-        "createdAt": "2016-12-25T23:07:30.666Z",
-        "updatedAt": "2016-12-25T23:07:30.666Z",
-        "id": 43
+        "createdAt": "2016-12-28T04:16:36.434Z",
+        "updatedAt": "2016-12-28T04:16:36.434Z",
+        "id": 58
       }
     ],
     "giftcard": [
@@ -448,7 +420,7 @@
     },
     "usergroup": {},
     "cart": {
-      "id": 43
+      "id": 58
     }
   }
 }

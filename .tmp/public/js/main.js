@@ -34,28 +34,54 @@ $(function() {
   $('tr.tr-product a.add-to-cart').each(function(){
     $(this).click(function(){
       $(this).unbind("click");
-      var setID = $(this).closest('tr.tr-product').find('td.td-id').text();
-      var setNAME = $(this).closest('tr.tr-product').find('td.card-name').text();
-      var setIMG = $(this).closest('tr.tr-product').find('img').attr("src");
-      var setTYPE = $(this).closest('tr.tr-product').find('td.card-type').text();
-      var setSAVE = parseFloat($(this).closest('tr.tr-product').find('td.product-save').text().replace('%',''));
-      var setVALUE = parseFloat($(this).closest('tr.tr-product').find('td.product-value').text().replace('$',''));
-      var setPRICE = parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$',''));
+      // var setID = $(this).closest('tr.tr-product').find('td.td-id').text();
+      // var setNAME = $(this).closest('tr.tr-product').find('td.card-name').text();
+      // var setIMG = $(this).closest('tr.tr-product').find('img').attr("src");
+      // var setTYPE = $(this).closest('tr.tr-product').find('td.card-type').text();
+      // var setSAVE = parseFloat($(this).closest('tr.tr-product').find('td.product-save').text().replace('%',''));
+      // var setVALUE = parseFloat($(this).closest('tr.tr-product').find('td.product-value').text().replace('$',''));
+      // var setPRICE = parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$',''));
       let cartData = {
         id :  $(this).closest('tr.tr-product').find('td.td-id').text(),
         name: $(this).closest('tr.tr-product').find('td.card-name').text(),
         img : $(this).closest('tr.tr-product').find('img').attr("src"),
         type : $(this).closest('tr.tr-product').find('td.card-type').text(),
+        value : parseFloat($(this).closest('tr.tr-product').find('td.product-value').text().replace('$','')),
         price : parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$','')),
+        save : parseFloat($(this).closest('tr.tr-product').find('td.product-save').text().replace('%',''))
       };
       console.log(cartData);
       socket.post('/cart/add',cartData);
 
       $(this).closest('tr.tr-product').addClass('cart-added');
       $(this).attr('disabled','disabled');
-
-      $('.popover-content').append('abcdef')
+      window.location.reload();
+      // $('.popover-content').append('abcdef')
     })
+  });
+
+  $('a.close.del-item').each(function(){
+    $(this).click(function(){
+      alert('ok');
+      // let data = $(this).attr('dataname');
+      // socket.get('/cart/remove?'+data);
+    })
+  });
+
+  $('tr.tr-cart a.remove-item').each(function(){
+    $(this).click(function(){
+      $(this).closest('tr.tr-cart').find('a.reloading').removeClass('sr-only');
+      $(this).closest('tr.tr-cart').find('a.remove-item').addClass('sr-only');
+      let data = {
+        id : $(this).closest('tr.tr-cart').find('td.product-id').text(),
+        sessionId : window.location.search.split('?sid=')[1]
+      };
+      socket.get('/cart/remove',data)
+    })
+  });
+
+  socket.on('remove/cart',function(){
+    window.location.reload();
   });
 
   // <div class="media alert alert-dismissable">
@@ -379,3 +405,6 @@ function showMyImage(fileInput) {
   }
 }
 
+function goBack() {
+  window.history.back();
+}
