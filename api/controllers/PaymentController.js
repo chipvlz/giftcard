@@ -68,8 +68,8 @@ module.exports = {
         "payment_method": "paypal"
       },
       "redirect_urls": {
-        "return_url": "localhost:2810/payment/success",
-        "cancel_url": "localhost:2810/cart"
+        "return_url": "http://vnmagic.net:2810/payment/success",
+        "cancel_url": "http://vnmagic.net:2810/cart"
       },
       "transactions": [{
         "item_list": {
@@ -112,6 +112,10 @@ module.exports = {
     Invoice.findOne(params).exec(function(err,foundInvoice){
       return res.view('cart/invoice',foundInvoice);
     })
+  },
+
+  success: (req,res) => {
+    res.view('cart/success')
   }
 
 };
