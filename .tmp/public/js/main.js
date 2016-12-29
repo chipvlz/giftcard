@@ -432,3 +432,7 @@ function showMyImage(fileInput) {
 function goBack() {
   window.history.back();
 }
+
+function printMyPage() {
+  window.print();
+}

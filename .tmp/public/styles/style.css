@@ -193,7 +193,7 @@ thead {
 a.navbar-brand, .navbar-nav > li > a {
   line-height:50px;
 }
-#cart-page {
+#cart-page , #checkout-page {
   margin-top:90px;
   max-width:900px;
   margin-left:auto;

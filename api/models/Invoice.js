@@ -28,7 +28,12 @@ module.exports = {
     },
     link: {
       type: 'string'
+    },
+    status: {
+      type: 'string',
+      defaultsTo: 'Pending'
     }
+
   }
 };
 
