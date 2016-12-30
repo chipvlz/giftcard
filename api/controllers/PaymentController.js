@@ -118,9 +118,22 @@ module.exports = {
   confirm: (req,res) => {
     let params = req.allParams();
     console.log('confirm params',params);
-    Invoice.findOne({invoice:params.paymentId}).exec(function(err,foundInvoice){
-      return res.view('cart/invoice',foundInvoice);
-    })
+
+    var execute_payment_json = {
+      "payer_id": params.PayerID
+    };
+
+    var paymentId = params.PaymentId;
+
+    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+      if (error) {
+        console.log(error.response);
+        throw error;
+      } else {
+        console.log("Get Payment Response");
+        res.json(JSON.stringify(payment));
+      }
+    });
   },
 
   success: (req,res) => {
