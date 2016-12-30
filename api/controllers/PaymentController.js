@@ -130,8 +130,9 @@ module.exports = {
         console.log(error.response);
         throw error;
       } else {
-        console.log("Get Payment Response");
-        res.json(JSON.stringify(payment));
+        console.log("Verified Payment Response");
+        res.json(payment);
+        // res.view('cart/success',payment)
       }
     });
   },
