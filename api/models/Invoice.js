@@ -29,6 +29,9 @@ module.exports = {
     link: {
       type: 'string'
     },
+    pay: {
+      type: 'string'
+    },
     status: {
       type: 'string',
       defaultsTo: 'Pending'

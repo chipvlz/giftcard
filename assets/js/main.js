@@ -125,6 +125,7 @@ $(function() {
 
   $(document).ready(function(){
 
+
     $('#popover-content span.have-cart').each(function(){
       var productID = $(this).text();
       if (productID !== 'null') {
@@ -155,6 +156,10 @@ $(function() {
         $('table.dataTable').removeClass('show-table');
       }
     });
+
+    if (window.location.pathname == '/payment/confirm') {
+      $('a.checkout-button').addClass('sr-only');
+    }
 
     if (window.location.pathname == '/user/sell') {
       var findUrl = window.location.href.split('&type=');
