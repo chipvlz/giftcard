@@ -1,9 +1,80 @@
-Giao dịch thành công , thì paypal sẽ trả về trang này để Admin xử lý<br>
-* Xử lý tại PaymentController - action : Done<br>
-<br>
-+ Thông báo giao dịch thành công <br>
-+ Biên lai của giao dịch để khách xem lại , bao gồm invoice id<br>
-+ Gửi code về email cho khách theo email đăng ký<br>
-+ Gửi code đến tài khoản của khách ở user cp<br>
-....<br>
-....
+<%- partial ('../common/navbar.ejs') %>
+<div id="checkout-page">
+  <div class="panel panel-info">
+    <div class="panel-heading"><strong>Status:</strong> Approved on <%= date %> by paypal.com</div>
+    <div class="panel-body">
+      <div class="col-sm-6">
+        <address>
+          <strong>Your Company, Inc.</strong><br>
+          1234 Address Street, City 999<br>
+          San Francisco, CA 94103<br>
+          <abbr title="Phone">Phone:</abbr> (123) 456-7890
+        </address>
+        <p>
+          <strong>Send code to:</strong><br>
+          customer_email@gmail.com
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <table class="table table-bordered">
+
+          <tbody>
+          <tr>
+            <td>Metchant ID</td>
+            <td></td>
+
+          </tr>
+          <tr>
+            <td>Invoice date</td>
+            <td></td>
+
+          </tr>
+          <tr>
+            <td>Item type</td>
+            <td>Gift Card</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>Verified</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(items, function(item) { %>
+        <tr>
+          <td><%= item.name %> Gift Card</td>
+          <td><%= item.quantity %></td>
+          <td><%= item.price %> USD</td>
+        </tr>
+        <% }) %>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="2">Total</td>
+          <td><%= amount %> USD</td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="panel-footer">
+      <button onclick="printMyPage()" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
+      <a href="<%= link %>" type="button" class="checkout-button btn btn-warning"><i class="fa fa-paypal"></i> Express Checkout with Paypal</a>
+    </div>
+  </div>
+
+
+
+
+
+</div>
