@@ -68,7 +68,7 @@ module.exports = {
         "payment_method": "paypal"
       },
       "redirect_urls": {
-        "return_url": "http://vnmagic.net:2810/payment/success",
+        "return_url": "http://vnmagic.net:2810/payment/confirm",
         "cancel_url": "http://vnmagic.net:2810/cart"
       },
       "transactions": [{
@@ -94,7 +94,8 @@ module.exports = {
           amount: payment.transactions[0].amount.total,
           items: payment.transactions[0].item_list.items,
           date: payment.create_time,
-          link: payment.links[1].href
+          link: payment.links[1].href,
+          pay: payment.links[2].href
         }).exec(function(err,result){
           if (err) return res.negotiate(err);
           else {
@@ -110,6 +111,14 @@ module.exports = {
     let params = req.allParams();
     console.log('invoice params',params);
     Invoice.findOne(params).exec(function(err,foundInvoice){
+      return res.view('cart/invoice',foundInvoice);
+    })
+  },
+
+  confirm: (req,res) => {
+    let params = req.allParams();
+    console.log('confirm params',params);
+    Invoice.findOne({invoice:params.paymentId}).exec(function(err,foundInvoice){
       return res.view('cart/invoice',foundInvoice);
     })
   },

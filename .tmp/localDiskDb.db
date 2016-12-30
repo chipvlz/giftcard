@@ -158,33 +158,7 @@
       }
     ],
     "invoice": [
-      {
-        "invoice": "PAY-1WH510929U8690226LBSKLWA",
-        "intent": "sale",
-        "state": "created",
-        "amount": 1241.3,
-        "items": [
-          {
-            "name": "iTunes",
-            "sku": "Egift",
-            "price": "131.30",
-            "currency": "USD",
-            "quantity": 1
-          },
-          {
-            "name": "iTunes",
-            "sku": "Egift",
-            "price": "1110.00",
-            "currency": "USD",
-            "quantity": 1
-          }
-        ],
-        "date": "2016-12-29T05:57:44Z",
-        "link": "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7U716093B7608830F",
-        "createdAt": "2016-12-29T20:58:48.195Z",
-        "updatedAt": "2016-12-29T20:58:48.195Z",
-        "id": 10
-      }
+
     ],
     "product": [
       {
