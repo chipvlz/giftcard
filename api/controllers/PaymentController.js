@@ -119,27 +119,21 @@ module.exports = {
     let params = req.allParams();
     console.log('confirm params',params);
 
-    var paymentId = params.PaymentId;
-    paypal.payment.get(paymentId, function (error, payment) {
+    var execute_payment_json = {
+      "payer_id": params.PayerID
+    };
+
+    var paymentId = params.paymentId;
+
+    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
       if (error) {
-        console.log(error);
+        console.log(error.response);
         throw error;
       } else {
         console.log("Get Payment Response");
         res.json(JSON.stringify(payment));
       }
-
     });
-
-    // paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
-    //   if (error) {
-    //     console.log(error.response);
-    //     throw error;
-    //   } else {
-    //     console.log("Get Payment Response");
-    //     res.json(JSON.stringify(payment));
-    //   }
-    // });
   },
 
   success: (req,res) => {
