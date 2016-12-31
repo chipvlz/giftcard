@@ -1,6 +1,6 @@
 /**
  * GiftcardController
- *
+ * @Owner       :: Khanh Tran
  * @description :: Server-side logic for managing giftcards
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */

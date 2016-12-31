@@ -1,6 +1,6 @@
 /**
  * AdminController
- *
+ * @Owner       :: Khanh Tran
  * @description :: Server-side logic for managing admins
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
@@ -32,7 +32,6 @@ module.exports = {
       return res.badRequest();
     }
     let params = req.allParams();
-    console.log(params);
     Giftcard.create(params).exec(function(err,result){
       if (err) return res.negotiate(err);
       else {
@@ -91,7 +90,6 @@ module.exports = {
       return res.badRequest();
     }
     let params = req.allParams();
-    console.log(params);
     Type.create(params).exec(function(err,result){
       sails.sockets.blast('add/type',{msg:result})
     })

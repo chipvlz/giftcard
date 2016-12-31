@@ -1,6 +1,6 @@
 /**
  * User.js
- *
+ * @Owner       :: Khanh Tran
  * @description :: Thông tin về User.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */

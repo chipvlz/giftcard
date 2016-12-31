@@ -1,6 +1,6 @@
 /**
  * UserController
- *
+ * @Owner       :: Khanh Tran
  * @description :: Server-side loXử lý mọi thông tin liên quan đến user
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
@@ -77,10 +77,10 @@ module.exports = {
 
   sellgc: (req,res) => {
     let params = req.allParams();
-    console.log('params:',params);
+
     Giftcard.findOne({id:params.cid}).exec(function(err,foundCard){
       Product.create(params).exec(function(err,result){
-        console.log('result:',result);
+
       let socketdata = {
         name: foundCard.name,
         type: foundCard.type,

@@ -1,6 +1,6 @@
 /**
  * CartController
- *
+ * @Owner       :: Khanh Tran
  * @description :: Server-side logic for managing carts
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
@@ -8,7 +8,6 @@
 module.exports = {
 	add: (req,res) => {
     let params = req.allParams();
-    console.log(params);
     let session_id = req.signedCookies['sails.sid'];
 
     sails.sockets.join(req,session_id);
@@ -39,7 +38,7 @@ module.exports = {
   remove: (req,res) => {
     if (!req.isSocket) {return res.badRequest();}
     let params = req.allParams();
-    console.log(params);
+
     sails.sockets.join(req,params.sessionId);
     Cart.destroy({id:params.id}).exec(function(err){
       if (err) return res.negotiate(err);
