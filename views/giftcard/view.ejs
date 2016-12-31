@@ -22,8 +22,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/register"><span class="fa fa-user-plus"></span> SIGN UP</a></li>
         <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> LOG IN</a></li>
-        <a href="#" class="btn btn-primary" rel="popover" data-content='' data-placement="bottom" data-original-title="Shopping cart">
-          <i class="fa fa-shopping-cart"></i><% if(foundCart) { %><span class="badge" style="position:absolute;top:15px;"><%= foundCart.length %></span><% } %>
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">
+          <i class="fa fa-shopping-cart"></i><% if (foundCart) { %><span class="total-cart badge" style="position:absolute;top:15px;"><%= foundCart.length %></span><% } %>
         </a>
       </ul>
       <% } else { %>
@@ -43,8 +43,8 @@
             <li><a href="/logout"><i class="fa fa-unlock"></i> Logout</a></li>
           </ul>
         </div>
-        <a href="#" class="btn btn-primary" rel="popover" data-content='' data-placement="bottom" data-original-title="Shopping cart">
-          <i class="fa fa-shopping-cart"></i><% if (foundCart) { %><span class="badge" style="position:absolute;top:15px;"><%= foundCart.length %></span><% } %>
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">
+          <i class="fa fa-shopping-cart"></i><% if (foundCart) { %><span class="total-cart badge" style="position:absolute;top:15px;"><%= foundCart.length %></span><% } %>
         </a>
       </ul>
       <% } %>
@@ -52,34 +52,6 @@
   </div>
 </nav>
 
-
-<div id="popover-content" style="display:none" >
-
-  <% if(foundCart.length > 0) { %>
-  <% _.each(foundCart, function(cart) { %>
-
-  <div class="media alert alert-dismissable">
-    <!--<a href="#" class="close del-item" dataname="id=<%= cart.id %>&sessionId=<%= foundCart[0].sid %>">&times;</a>-->
-    <span class="sr-only have-cart"><%= cart.pid %></span>
-
-    <div class="media-left">
-      <img src="<%= cart.image %>" class="media-object" style="width:80px">
-    </div>
-    <div class="media-body">
-      <h5 class="media-heading"><%= cart.name %> <span class="badge"><%= cart.type %></span></h5>
-      <p>$<%= cart.price %></p>
-    </div>
-  </div>
-  <% }) %>
-  <div class="total-price"><a href="/cart/view?sid=<%= foundCart[0].sid %>" type="button" class="btn btn-success">View Cart Detail</a></div>
-
-  <% } %>
-
-  <!--<h4>Total: <span>$123456</span></h4>-->
-
-
-
-</div>
 
 <div class="container-fluid" id="giftcard-view">
 
@@ -141,6 +113,51 @@
           <% }) %>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="cartModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-shopping-bag"></i> Shopping Cart</h4>
+      </div>
+      <div class="modal-body">
+        <% if(foundCart.length > 0) { %>
+        <% _.each(foundCart, function(cart) { %>
+        <!-- Left-aligned -->
+        <div class="media">
+          <span class="sr-only have-cart"><%= cart.pid %></span>
+          <div class="media-left">
+            <img src="<%= cart.image %>" class="media-object" style="width:80px">
+          </div>
+          <div class="media-body">
+            <h5 class="media-heading"><%= cart.name %></h5>
+            <p><span class="badge"><%= cart.type %></span></p>
+          </div>
+          <div class="media-right">
+            <h5>$<%= cart.price %></h5>
+          </div>
+        </div>
+        <% }) %>
+        <% } else { %>
+        <p class="no-item">No gift card</p>
+        <% } %>
+
+
+      </div>
+      <div class="modal-footer">
+        <% if(foundCart.length > 0) { %>
+        <a href="/cart/view?sid=<%= foundCart[0].sid %>" type="button" class="view-cart btn btn-success">View Cart Detail</a>
+        <% } %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
       </div>
     </div>
   </div>

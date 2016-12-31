@@ -23,24 +23,52 @@ $(function() {
     }
   });
 
-  $('a[rel=popover]').popover({
-    html: 'true',
-    placement: 'bottom',
-    content : function() {
-      return $('#popover-content').html();
-    }
-  });
 
   $('tr.tr-product a.add-to-cart').each(function(){
     $(this).click(function(){
       $(this).unbind("click");
-      // var setID = $(this).closest('tr.tr-product').find('td.td-id').text();
-      // var setNAME = $(this).closest('tr.tr-product').find('td.card-name').text();
-      // var setIMG = $(this).closest('tr.tr-product').find('img').attr("src");
-      // var setTYPE = $(this).closest('tr.tr-product').find('td.card-type').text();
-      // var setSAVE = parseFloat($(this).closest('tr.tr-product').find('td.product-save').text().replace('%',''));
-      // var setVALUE = parseFloat($(this).closest('tr.tr-product').find('td.product-value').text().replace('$',''));
-      // var setPRICE = parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$',''));
+      var findImg = $(this).closest('tr.tr-product').find('img');
+      var cart = $('.fa-shopping-cart');
+
+      var imgclone = findImg.clone()
+        .offset({
+          top: findImg.offset().top,
+          left: findImg.offset().left
+        })
+        .css({
+          'opacity': '0.5',
+          'position': 'absolute',
+          'height': '100px',
+          'width': '160px',
+          'z-index': '100'
+        })
+        .appendTo($('body'))
+        .animate({
+          'top': cart.offset().top + 10,
+          'left': cart.offset().left + 10,
+          'width': 30,
+          'height': 18
+        }, 1000);
+
+      imgclone.animate({
+        'width': 0,
+        'height': 0
+      }, function () {
+        $(this).detach()
+      });
+
+
+      var setID = $(this).closest('tr.tr-product').find('td.td-id').text();
+      var setNAME = $(this).closest('tr.tr-product').find('td.card-name').text();
+      var setIMG = $(this).closest('tr.tr-product').find('img').attr("src");
+      var setTYPE = $(this).closest('tr.tr-product').find('td.card-type').text();
+      var setPRICE = parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$',''));
+      $('#cartModal div.modal-body').append('<div class="media"><span class="sr-only have-cart">'+setID+'</span>' +
+        '<div class="media-left"><img src="'+setIMG+'" class="media-object" style="width:80px"></div>' +
+        '<div class="media-body"><h5 class="media-heading">'+setNAME+'</h5><p><span class="badge">'+setTYPE+'</span></p></div>' +
+        '<div class="media-right"><h5>$'+setPRICE+'</h5></div></div>');
+      $('p.no-item').addClass('sr-only');
+
       let cartData = {
         id :  $(this).closest('tr.tr-product').find('td.td-id').text(),
         name: $(this).closest('tr.tr-product').find('td.card-name').text(),
@@ -55,9 +83,15 @@ $(function() {
 
       $(this).closest('tr.tr-product').addClass('cart-added');
       $(this).attr('disabled','disabled');
-      window.location.reload();
-      // $('.popover-content').append('abcdef')
     })
+  });
+
+  socket.on('add-to-cart',function(recieve){
+    let findNumber = parseInt($('span.total-cart').text())+1;
+    $('span.total-cart').text(findNumber);
+    if ($('#cartModal .modal-footer a.view-cart').text() !== 'View Cart Detail') {
+      $('#cartModal .modal-footer').append('<a href="/cart/view?sid='+recieve.msg.sid+'" type="button" class="view-cart btn btn-success">View Cart Detail</a>')
+    }
   });
 
   $('a.close.del-item').each(function(){
@@ -108,25 +142,9 @@ $(function() {
     window.location = '../payment/checkout?invoice='+recieve.msg;
   });
 
-  // <div class="media alert alert-dismissable">
-  //   <span class="sr-only have-cart"><%= cart.pid %></span>
-  //   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  // <div class="media-left">
-  //   <img src="<%= cart.image %>" class="media-object" style="width:80px">
-  //   </div>
-  //   <div class="media-body">
-  //   <h4 class="media-heading"><%= cart.name %></h4>
-  // <p><%= cart.type %></p>
-  //   </div>
-  //   <div class="media-right">
-  // <%= cart.price %>
-  //   </div>
-  //   </div>
 
   $(document).ready(function(){
-
-
-    $('#popover-content span.have-cart').each(function(){
+    $('#cartModal span.have-cart').each(function(){
       var productID = $(this).text();
       if (productID !== 'null') {
         $('tr#product-'+productID).addClass('cart-added');
@@ -134,8 +152,6 @@ $(function() {
       }
     });
 
-
-    // $("[data-toggle=popover]").popover();
     $('td.giftcard-detail').each(function(){
       var $this = $(this);
       var t = $this.text();
@@ -211,6 +227,13 @@ $(function() {
 
     var checkPath = window.location.pathname;
     if (checkPath.match(/admin\/giftcard/gi)) {
+
+      $('.filter-price input').click(function(){
+        var filterPrice = $('#filter_price').val();
+        var filterPriceVal = $(this).val();
+        $('#filter_price').val(filterPrice+','+filterPriceVal);
+      });
+
       CKEDITOR.replace('detail');
       CKEDITOR.replace('term');
     }
@@ -441,3 +464,4 @@ function goBack() {
 function printMyPage() {
   window.print();
 }
+

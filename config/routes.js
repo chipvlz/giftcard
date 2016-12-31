@@ -39,7 +39,7 @@ module.exports.routes = {
   '/logout': 'UserController.logout',
   '/admin': 'AdminController.index', //trang chủ admin
   '/admin/giftcard/edit/:id': 'AdminController.cardedit',
-  '/giftcard/:id': 'GiftcardController.view',
+  '/giftcard/view/:id': 'GiftcardController.view',
 
 
 

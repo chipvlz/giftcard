@@ -9,19 +9,21 @@
 <div class="col-sm-2 col-md-2">
   <ul class="list-group">
     <li class="list-group-item list-title"> <strong>Price</strong></li><hr>
-    <a href="#"><li class="list-group-item">$25 and Under</li></a>
-    <a href="#"><li class="list-group-item">$25 - $50</li></a>
-    <a href="#"><li class="list-group-item">$50 - $100</li></a>
-    <a href="#"><li class="list-group-item">$100 - $250</li></a>
-    <a href="#"><li class="list-group-item">$250 - $500</li></a>
-    <a href="#"><li class="list-group-item">$500+</li></a>
+    <a href="/giftcard/filter?by=price&price=d25under"><li class="list-group-item">$25 and Under</li></a>
+    <a href="/giftcard/filter?by=price&price=d25d50"><li class="list-group-item">$25 - $50</li></a>
+    <a href="/giftcard/filter?by=price&price=d50d100"><li class="list-group-item">$50 - $100</li></a>
+    <a href="/giftcard/filter?by=price&price=d100d250"><li class="list-group-item">$100 - $250</li></a>
+    <a href="/giftcard/filter?by=price&price=d250d500"><li class="list-group-item">$250 - $500</li></a>
+    <a href="/giftcard/filter?by=price&price=d500plus"><li class="list-group-item">$500+</li></a>
 
 
   </ul>
   <ul class="list-group">
     <li class="list-group-item list-title"> <strong>Card Type</strong></li><hr>
-    <a href="#"><li class="list-group-item">Physical</li></a>
-    <a href="#"><li class="list-group-item">Electronic</li></a>
+    <% _.each(foundType, function(type) { %>
+    <a href="/giftcard/filter?by=type&type=<%= type.id %>"><li class="list-group-item"><%= type.name %></li></a>
+    <% }) %>
+
 
 
 
@@ -36,9 +38,8 @@
                 Sort by Name <span class="caret"></span></button>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Newest</a></li>
-                <li><a href="#">Most Popular</a></li>
-                <li><a href="#">Highest Discount</a></li>
-                <li><a href="#">Lowest Discount</a></li>
+                <li><a href="#">Latest</a></li>
+
               </ul>
             </div>
 
@@ -46,14 +47,15 @@
         </div><hr>
 
         <div class="col-allbrand">
+          <% if (foundCard.length > 0) { %>
           <% _.each(foundCard, function(card) { %>
-          <a href="/giftcard/<%= card.id %>">
+          <a href="/giftcard/view/<%= card.id %>">
           <div class="col-md-3 col-sm-4 col-xs-6">
             <img src="<%= card.thumbnail %>" class="img-responsive" style="width:100%" alt="Image">
             <p><%= card.name %> Gift Cards</p>
           </div>
           </a>
-          <% }) %>
+          <% }) } %>
 
         </div>
 

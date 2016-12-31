@@ -11,6 +11,11 @@ a {
   color:#5a5a5a;
   text-decoration: none;
 }
+#cartModal .modal-dialog {
+  position: absolute !important;
+  right: 30px;
+  top: 30px;
+}
 .jumbotron {
   margin-top:60px;
   min-height: 300px;
@@ -187,6 +192,7 @@ thead {
   text-decoration: none;
 }
 .navbar {
+  z-index: 1;
   height:80px;
   margin-bottom:0;
 }
@@ -348,6 +354,7 @@ td.card-image img {
 }
 
 @media (max-width: 900px) {
+
   .carousel-caption p {
     margin-bottom: 20px !important;
     font-size: 16px;

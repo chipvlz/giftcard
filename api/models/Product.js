@@ -28,7 +28,8 @@ module.exports = {
       defaultsTo: 1
     },
     status: {
-      type: 'string'
+      type: 'string',
+      defaultsTo: 'Active'
     },
     cid: {
       model: 'giftcard'

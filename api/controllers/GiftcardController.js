@@ -7,12 +7,15 @@
 
 module.exports = {
 	index: (req,res) => {
-	  Giftcard.find().populate('type')
-      .exec(function(err,foundCard){
-        if (err) return res.negotiate(err);
-        else return res.view('giftcard/index',{foundCard})
-      })
+    Type.find().exec(function(err,foundType) {
+      Giftcard.find().populate('type')
+        .exec(function (err, foundCard) {
+          if (err) return res.negotiate(err);
+          else return res.view('giftcard/index', {foundCard,foundType})
+        })
+    })
   },
+
   view: (req,res) => {
     let params = req.allParams();
     let session_id = req.signedCookies['sails.sid'];
@@ -26,7 +29,23 @@ module.exports = {
           })
 
     });
+  },
 
+  filter: (req,res) => {
+    let params = req.allParams();
+    if (params.by == 'price') {
+      Type.find().exec(function(err,foundType) {
+        Giftcard.find({filter_price: {'contains': params.price}}).exec(function (err, foundCard) {
+          return res.view('giftcard/index', {foundCard,foundType})
+        })
+      })
+    } else if (params.by == 'type') {
+      Type.find().exec(function(err,foundType) {
+        Giftcard.find({type:params.type}).exec(function (err, foundCard) {
+          return res.view('giftcard/index',{foundCard,foundType})
+        })
+      })
+    }
   }
 };
 
