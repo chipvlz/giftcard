@@ -272,7 +272,7 @@ td.card-image img {
   padding:15px;
   background:#0b2a41;
 }
-.col-search .input-group {
+.col-search .input-group, .result-live-search {
   max-width:600px;
   margin-left:auto;
   margin-right:auto;
