@@ -144,6 +144,15 @@ $(function() {
 
 
   $(document).ready(function(){
+    $('.col-search input').keyup(function(){
+        var putvalue = $(this).val();
+        if (putvalue.length > 0 ) {
+          socket.post('/giftcard/search',{key:putvalue});
+        } else if (putvalue.length == 0) {
+          $('div.result-live-search').html('<div class="sr-only"></div>')
+        }
+    });
+
     $('#cartModal span.have-cart').each(function(){
       var productID = $(this).text();
       if (productID !== 'null') {
@@ -247,7 +256,20 @@ $(function() {
     });
   });
 
-
+  socket.on('live/search',function(recieve){
+    var inputKeyWidth = $('.col-search div.input-key').width();
+    if (recieve.msg.length == 0) {
+      $('div.result-live-search').html('<div class="sr-only"></div>')
+    } else {
+    for (i=0;i<recieve.msg.length;i++){
+      console.log(recieve.msg[i].name);
+      $('div.result-live-search').html('<a href="/giftcard/view/'+recieve.msg[i].id+'">' +
+        '<div style="width:'+inputKeyWidth+'px" class="result-item">' +
+        '<img src="'+recieve.msg[i].thumbnail+'" width="80"><h4>'+recieve.msg[i].name+'</h4>' +
+        '</div></a>')
+    }
+    }
+  });
 
   //USER MANAGEMENT
   // Khi submit script này sẽ chuyển data sang dạng socket và gửi đến server

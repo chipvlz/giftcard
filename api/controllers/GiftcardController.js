@@ -46,6 +46,14 @@ module.exports = {
         })
       })
     }
+  },
+
+  search: (req,res) => {
+    let params = req.allParams();
+    sails.sockets.join(req,params.key);
+    Giftcard.find({name: {'startsWith':params.key}}).exec(function(err,foundCard){
+      sails.sockets.broadcast(params.key,'live/search',{msg:foundCard})
+    })
   }
 };
 
