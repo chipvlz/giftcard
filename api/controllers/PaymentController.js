@@ -141,7 +141,6 @@ module.exports = {
 
         });
 
-        User.findOne
       }
     });
   },
