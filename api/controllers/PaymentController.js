@@ -126,13 +126,13 @@ module.exports = {
 
     var paymentId = params.paymentId;
 
-    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+    paypal.payment.execute(paymentId, execute_payment_json, function (error,payment) {
       if (error) {
         console.log(error.response);
         throw error;
       } else {
         console.log("Verified Payment Response");
-        Invoice.update({id:payment.id},{
+        Invoice.update({invoice:payment.id},{
           state: payment.state,
           payer: payment.payer.payer_info.payer_id,
           status: 'Complete'
