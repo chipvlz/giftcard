@@ -132,10 +132,11 @@ $(function() {
     $('tr.tr-cart').each(function(){
       var eachData = {
         name : $(this).find('td.card-name').text(),
-        sku : $(this).find('td.card-type').text(),
+        sku : $(this).find('td.product-id').text(),
         price : parseFloat($(this).find('td.product-price').text().replace('$','')),
         currency : 'USD',
         quantity : 1
+        
       };
       jsonData.push(eachData);
     });
