@@ -13,20 +13,25 @@
     <div id="add-new" class="collapse panel panel-default">
       <div class="panel-heading">Add New Group</div>
       <div class="panel-body">
-        <form class="form-horizontal center-block" id="add-new-type">
+        <form class="form-horizontal center-block" id="add-new-group">
           <div class="form-group">
             <label class="control-label col-sm-2" for="name">Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="name" id="name" placeholder="Enter type name">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter group name">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-sm-2" for="description">Description</label>
+            <label class="control-label col-sm-2" for="name">Permission</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
+            <div class="checkbox">
+              <label><input type="checkbox" name="admin" value="1">is Admin</label>
             </div>
-          </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="seller" value="1">is Seller</label>
+            </div>
 
+          </div>
+            </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <button type="submit" class="btn btn-default">Add New</button>
@@ -37,7 +42,7 @@
     </div>
 
     <div class="panel panel-default">
-      <div class="panel-heading">List Type </div>
+      <div class="panel-heading">List Group </div>
       <div class="panel-body table-responsive list-table" id="list-type">
         <table class="table table-hover">
           <thead>
@@ -69,16 +74,16 @@
 
 
 <!--// Modal Del Type-->
-<div class="modal fade" id="delTypeModal" role="dialog">
+<div class="modal fade" id="delGroupModal" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> DELETE TYPE</h4>
+        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> DELETE GROUP</h4>
       </div>
       <div class="modal-body">
-        <p>Are you ready to delete this type ?</p>
-        <form class="form-horizontal" id="del-type-form">
+        <p>Are you ready to delete this group ?</p>
+        <form class="form-horizontal" id="del-group-form">
           <input type="text" class="sr-only" name="id" value="">
           <div class="form-group">
             <div class="col-sm-12 text-right">
@@ -92,15 +97,15 @@
 </div>
 
 <!--// Modal Edit Type-->
-<div class="modal fade" id="editTypeModal" role="dialog">
+<div class="modal fade" id="editGroupModal" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> EDIT TYPE</h4>
+        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> EDIT GROUP</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal center-block" id="edit-type-form">
+        <form class="form-horizontal center-block" id="edit-group-form">
           <div class="form-group">
             <label class="control-label col-sm-2" for="name">Name</label>
             <div class="col-sm-10">
@@ -108,12 +113,7 @@
               <input type="text" class="form-control" name="name" id="name" placeholder="Enter type name">
             </div>
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="description">Desc</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
-            </div>
-          </div>
+
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

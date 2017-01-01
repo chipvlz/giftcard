@@ -4,8 +4,6 @@
  * @description :: Server-side logic for managing admins
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-// import QueryBuilder from 'datatable';
-// var QueryBuilder = require('datatable');
 
 module.exports = {
   index: (req,res) => {
@@ -119,6 +117,13 @@ module.exports = {
     User.find().populate('groupid').exec(function(err,foundUser){
       if (err) return res.negotiate(err);
       else return res.view('admin/user',{foundUser})
+    })
+  },
+
+  userid: (req,res) => {
+    let params = req.allParams();
+    User.findOne({id:params.id}).populate('products').exec(function(err,foundUser){
+      res.view('admin/userview',{foundUser})
     })
   },
 

@@ -38,6 +38,7 @@ module.exports.routes = {
   '/register': 'LoginController.register',
   '/logout': 'UserController.logout',
   '/admin': 'AdminController.index', //trang chủ admin
+  '/admin/user/:id': 'AdminController.userid',
   '/admin/giftcard/edit/:id': 'AdminController.cardedit',
   '/giftcard/view/:id': 'GiftcardController.view',
 

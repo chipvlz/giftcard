@@ -6,7 +6,7 @@
   </div>
   <div class="main-content">
 
-    <h3>User Group
+    <h3>User List
       <a href="#" data-toggle="collapse" data-target="#add-new"><span class="pull-right"><i class="fa fa-plus-circle"></i> Add New</span></a>
     </h3>
 
@@ -53,8 +53,8 @@
           <% _.each(foundUser, function(user) { %>
           <tr>
             <td class="td-id"><%= user.id %></td>
-            <td class="type-name"><%= user.name %></td>
-            <td class="type-name"><%= user.balance %></td>
+            <td class="user-name"><a href="/admin/user/<%= user.id %>"><%= user.name %></a></td>
+            <td class="user-balance"><%= user.balance %></td>
             <td><a href="#" data-toggle="modal" data-target="#editTypeModal"><i class="fa fa-pencil-square-o"></i></a></td>
             <td><a href="#" data-toggle="modal" data-target="#delTypeModal"><i class="fa fa-trash-o"></i></a></td>
 
