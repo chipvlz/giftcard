@@ -138,8 +138,9 @@ module.exports = {
           payer: payment.payer.payer_info.payer_id,
           status: 'Complete'
         }).exec(function(err,updateDone){
-
+          console.log('update done', updateDone);
         });
+        console.log('continue')
 
       }
     });
