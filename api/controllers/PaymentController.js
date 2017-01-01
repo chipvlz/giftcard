@@ -132,15 +132,21 @@ module.exports = {
         throw error;
       } else {
         console.log("Verified Payment Response");
-        // res.json(payment);
-        // Invoice.update({id:payment.id},{
-        //   state: payment.state,
-        //   payer: payment.payer.payer_info.payer_id,
-        //   status: 'Complete'
-        // }).exec(function(err,updateDone){
-        //   console.log('update done', updateDone);
-        // });
-        res.json(payment)
+        res.json(payment);
+        Invoice.update({id:payment.id},{
+          state: payment.state,
+          payer: payment.payer.payer_info.payer_id,
+          status: 'Complete'
+        }).exec(function(err,updateDone){
+          if (err) {
+            res.json(err)
+          } else {
+            res.json(payment);
+            console.log('update done', updateDone);
+          }
+
+        });
+
 
       }
     });
