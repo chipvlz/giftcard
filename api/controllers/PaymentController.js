@@ -140,7 +140,7 @@ module.exports = {
           if (err) {
             res.json(err)
           } else {
-            res.json(updateDone);
+            res.json(payment);
           }
 
         });
