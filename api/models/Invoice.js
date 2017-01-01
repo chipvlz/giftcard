@@ -35,6 +35,9 @@ module.exports = {
     codeto: {
       type: 'string'
     },
+    payer: {
+      type: 'string'
+    },
     status: {
       type: 'string',
       defaultsTo: 'Pending'

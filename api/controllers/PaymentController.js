@@ -33,7 +33,7 @@ module.exports = {
             "items": [
               {
               "name": "iTunes Gift Card",
-              "sku": "JAGDGS",
+              "seller": "JAGDGS",
               "price": "131.11",
               "currency": "USD",
               "quantity": 1
@@ -132,8 +132,16 @@ module.exports = {
         throw error;
       } else {
         console.log("Verified Payment Response");
-        res.json(payment);
-        // res.view('cart/success',payment)
+        // res.json(payment);
+        Invoice.update({id:payment.id},{
+          state: payment.state,
+          payer: payment.payer.payer_info.payer_id,
+          status: 'Complete'
+        }).exec(function(err,updateDone){
+
+        });
+
+        User.findOne
       }
     });
   },
