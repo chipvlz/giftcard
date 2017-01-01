@@ -95,7 +95,8 @@ module.exports = {
           items: payment.transactions[0].item_list.items,
           date: payment.create_time,
           link: payment.links[1].href,
-          pay: payment.links[2].href
+          pay: payment.links[2].href,
+          codeto: params.codeto
         }).exec(function(err,result){
           if (err) return res.negotiate(err);
           else {

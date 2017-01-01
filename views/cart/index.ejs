@@ -1,5 +1,32 @@
 <%- partial ('../common/navbar.ejs') %>
 <div id="cart-page">
+  <% if (req.session.user_id) { %>
+  <div class="find-email alert alert-success">
+    <strong>Notice!</strong> We'll send gift card code to email <span class="set-email"><%= req.session.user.email %></span>.
+  </div>
+  <% } else { %>
+  <div class="find-email alert alert-warning">
+    <strong>Warning!</strong> Please provide and email address for sending code to.<a href="#" data-toggle="modal" data-target="#setEmailModal"> [Click Here]</a><span class="sr-only set-email">no-email</span>.
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="setEmailModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enter Your Email</h4>
+        </div>
+        <div class="modal-body">
+          <input type="email" class="form-control input-lg" id="enter-email">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="enter-email btn btn-primary">Enter Email</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
 <div class="panel panel-success">
   <div class="panel-heading"><i class="fa fa-shopping-cart fa-lg"></i> Your shopping cart</div>
   <div class="panel-body">

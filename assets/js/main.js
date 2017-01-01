@@ -119,11 +119,16 @@ $(function() {
   });
 
   $('a.next-process').click(function(){
+    var codeto = $('div.find-email span.set-email').text();
+    if (codeto == 'no-email') {
+      $('#setEmailModal').modal('show');
+    } else {
     $(this).find('i.fa-spinner').removeClass('sr-only');
     $(this).find('i.fa-share-square-o').addClass('sr-only');
     var jsonData = [];
     var totalData = $('div.total strong').text();
     let sessionId = window.location.search.split('?sid=')[1];
+
     $('tr.tr-cart').each(function(){
       var eachData = {
         name : $(this).find('td.card-name').text(),
@@ -134,8 +139,15 @@ $(function() {
       };
       jsonData.push(eachData);
     });
-    var data = {totalData,jsonData,sessionId};
+    var data = {totalData,jsonData,sessionId,codeto};
     socket.post('/payment/test',data);
+    }
+  });
+
+  $('button.enter-email').click(function(){
+    $("#setEmailModal").modal('hide');
+    var foundEmail = $('#enter-email').val();
+    $('div.find-email').html('<strong>Notice!</strong> We will send gift card code to email <span class="set-email">'+foundEmail+'</span>.');
   });
 
   socket.on('create/invoice',function(recieve){

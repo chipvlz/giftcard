@@ -32,6 +32,9 @@ module.exports = {
     pay: {
       type: 'string'
     },
+    codeto: {
+      type: 'string'
+    },
     status: {
       type: 'string',
       defaultsTo: 'Pending'
