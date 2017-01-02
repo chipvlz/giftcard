@@ -448,3 +448,34 @@ td.card-image img {
 .alert-dismissable .close {
   right:0;
 }
+.col-3-step {
+  background: #fff;
+  padding: 20px;
+}
+
+.col-3-step .img-item {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer .container {
+  padding:10px;
+  background: #0b2a41;
+  color: #d6d6d6;
+}
+
+footer .container p {
+  color:#888;
+}
+
+footer img {
+  width: 40px;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+footer img:hover {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
