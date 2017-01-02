@@ -13,6 +13,22 @@ $(function() {
     location.reload();
   });
 
+  $('table#table-invoice tbody tr a').each(function(){
+    $(this).click(function(){
+      var searchID = $(this).closest('tbody tr').find('td.invoice-invoice').text();
+      $('#delInvoiceModal input[name=invoice]').val(searchID);
+    })
+  });
+  $('#del-invoice-form').submit(function (di) {
+    di.preventDefault();
+    var data = $('#del-invoice-form').serialize();
+    socket.get('/admin/delinvoice?'+data);
+    $('#delInvoiceModal').modal('hide');
+  });
+  socket.on('del/invoice',function(recieve){
+    $('tr.invoice-'+recieve.msg[0].id).hide('slow');
+  });
+
   $('#list-type table tbody tr').each(function(){
     $(this).click(function(){
       var searchID = $(this).find('td.td-id').text();

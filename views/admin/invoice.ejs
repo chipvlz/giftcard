@@ -1,0 +1,70 @@
+<%- partial ('navbar.ejs') %>
+
+<div class="container" id="admin-page">
+  <div class="sidenav">
+    <%- partial ('menu-side.ejs') %>
+  </div>
+  <div class="main-content">
+
+    <h3>Products
+      <!--<a href="#" data-toggle="collapse" data-target="#add-new"><span class="pull-right"><i class="fa fa-plus-circle"></i> Add New</span></a>-->
+    </h3>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">List Invoice </div>
+      <div class="panel-body table-responsive list-table" id="list-invoice">
+        <table class="table table-hover" id="table-invoice">
+          <thead>
+          <tr>
+
+            <th>Invoice ID</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Delete</th>
+
+
+          </tr>
+          </thead>
+          <tbody>
+          <% _.each(foundInvoice, function(invoice) { %>
+          <tr class="invoice-<%= invoice.id %>">
+            <td class="col-sm-6 invoice-invoice"><%= invoice.invoice %></td>
+            <td class="invoice-amount"><%= invoice.amount %></td>
+            <td class="invoice-status"><%= invoice.status %></td>
+            <td class="invoice-date"><%= invoice.createdAt %></td>
+            <td><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#delInvoiceModal"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+          </tr>
+          <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!--// Modal Del Type-->
+<div class="modal fade" id="delInvoiceModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-remove fa-sm"></i> DELETE INVOICE</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you ready to delete this invoice ?</p>
+        <form class="form-horizontal" id="del-invoice-form">
+          <input type="text" class="sr-only" name="invoice" value="">
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-danger"><i class="fa fa-remove fa-sm"></i> Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

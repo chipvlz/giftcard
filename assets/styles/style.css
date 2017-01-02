@@ -120,8 +120,25 @@ a {
   display:table !important;
 }
 
-table.dataTable {
+#list-giftcard table.dataTable {
   display:none;
+}
+#list-invoice input , #list-invoice select {
+  border: 1px solid #7ab55c;
+}
+#table-invoice_paginate a {
+  margin:0 10px;
+  cursor: pointer;
+}
+.dataTables_length, .dataTables_info {
+  min-width:180px;
+  padding:10px;
+  float:left;
+}
+#table-invoice_filter, .dataTables_paginate {
+  min-width:200px;
+  padding:10px;
+  float:right;
 }
 a i.fa.fa-bars {
   padding: 10px;

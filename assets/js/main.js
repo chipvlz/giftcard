@@ -259,6 +259,21 @@ $(function() {
       CKEDITOR.replace('detail');
       CKEDITOR.replace('term');
     }
+
+    if (checkPath.match(/admin\/invoice/gi)) {
+      $('#table-invoice').DataTable({
+        "language": {
+          "search": "Live search"
+        },
+        "lengthMenu": [[25,100,-1], [25,100, "All"]]
+      });
+
+      $('td.invoice-date').each(function(){
+        var mmformat = $(this).text();
+        $(this).text(moment(mmformat).format('YYYY/MM/DD'));
+      })
+    }
+
     if (checkPath.match('/giftcard/edit')){
       var checkCardType = $('input.card-type').val();
       $('input#type-'+checkCardType).attr('checked','checked')

@@ -132,6 +132,23 @@ module.exports = {
       if (err) return res.negotiate(err);
       else return res.view('admin/usergroup',{foundUsergroup})
     })
+  },
+
+  invoice: (req,res) => {
+    Invoice.find().exec(function(err,foundInvoice){
+      if (err) return res.negotiate(err);
+      else {
+        return res.view('admin/invoice',{foundInvoice});
+      }
+    })
+  },
+  delinvoice: (req,res) => {
+    let params = req.allParams();
+    sails.sockets.join(req,'del/'+params.invoice);
+    Invoice.destroy({invoice:params.invoice}).exec(function(err,result){
+      console.log(result);
+      sails.sockets.broadcast('del/'+params.invoice,'del/invoice',{msg:result})
+    })
   }
 
 };
