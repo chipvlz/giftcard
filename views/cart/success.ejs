@@ -4,11 +4,11 @@
     <h1 class="text-success"><i class="fa fa-check-circle" aria-hidden="true"></i> Thank you!</h1>
     <p>Your payment has been processed successfully.</p>
     <hr>
-      <p>Payment ID : <strong><%= id %></strong></p>
-      <p>Amount paid: <strong><%= payer.payment_method %></strong></p>
-      <p>Method : <strong><%= payer.payment_method %></strong></p>
+      <p>Payment ID : <strong><%= invoice %></strong></p>
+      <p>Amount paid: <strong><%= amount %></strong></p>
+
     <hr>
-    <p>You will recieve to email <strong></strong>... with details of your gift cards</p>
+    <p>You will recieve to email <strong><%= codeto %></strong> with details of your gift cards</p>
     <p><a href="/home" type="button" class="btn btn-success">Continue Shopping</a></p>
   </div>
 </div>
