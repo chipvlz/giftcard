@@ -136,7 +136,7 @@ $(function() {
         price : parseFloat($(this).find('td.product-price').text().replace('$','')),
         currency : 'USD',
         quantity : 1
-        
+
       };
       jsonData.push(eachData);
     });

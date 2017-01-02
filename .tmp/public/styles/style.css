@@ -44,7 +44,7 @@ a {
 #giftcard-page {
   max-width: 1200px;
 }
-#giftcard-page .jumbotron {
+#giftcard-page .jumbotron, #payment-success {
   margin-top:90px;
 }
 #giftcard-page .list-group-item {

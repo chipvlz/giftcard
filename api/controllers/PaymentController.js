@@ -16,46 +16,7 @@ paypal.configure({
 
 module.exports = {
   index: (req,res) => {
-    let params = req.allParams();
-
-
-    var create_payment_json = {
-        "intent": "sale",
-        "payer": {
-          "payment_method": "paypal"
-        },
-        "redirect_urls": {
-          "return_url": "http://return.url",
-          "cancel_url": "http://cancel.url"
-        },
-        "transactions": [{
-          "item_list": {
-            "items": [
-              {
-              "name": "iTunes Gift Card",
-              "seller": "JAGDGS",
-              "price": "131.11",
-              "currency": "USD",
-              "quantity": 1
-              }]
-          },
-          "amount": {
-            "currency": "USD",
-            "total": "131.11"
-          },
-          "description": "Thank you for buying iTunes Gift Card."
-        }]
-      };
-
-
-      paypal.payment.create(create_payment_json, function (error, payment) {
-        if (error) {
-          throw error;
-        } else {
-          console.log("Create Payment Response");
-          res.json(payment);
-        }
-      });
+    res.view('cart/success');
     },
   test: (req,res) => {
     let params = req.allParams();
@@ -130,23 +91,44 @@ module.exports = {
       if (error) {
         console.log(error.response);
         throw error;
-      } else {
-        console.log("Verified Payment Response");
+      }
+      else {
+        //update new record
         Invoice.update({invoice:payment.id},{
           state: payment.state,
           payer: payment.payer.payer_info.payer_id,
           status: 'Complete'
         }).exec(function(err,updateDone){
-          if (err) {
-            res.json(err)
-          } else {
-            res.json(payment);
-          }
-
+          if (err) { res.json(err) }
         });
 
+        Payer.findOne({payerid:payment.payer.payer_info.payer_id}).exec(function(err,foundPayer){
+          if (foundPayer) {
+            console.log('found payer, no create new')
+          } else {
+            Payer.create({
+              email: payment.email,
+              payerid: payment.payer.payer_info.payer_id,
+              name: payment.payer.payer_info.shipping_address.recipient_name,
+              address: payment.payer.payer_info.shipping_address.line1,
+              city: payment.payer.payer_info.shipping_address.city,
+              state: payment.payer.payer_info.shipping_address.state,
+              postal_code: payment.payer.payer_info.shipping_address.postal_code,
+              country: payment.payer.payer_info.shipping_address.country_code,
+              method: payment.payer.payment_method,
+              acc_status: payment.payer.status
+            }).exec(function(err){
+              if (err) { res.json(err); }
+            })
+          }
+        });
+
+        // Realtime
+        sails.sockets.blast('product/sold',{data:payment});
+        return res.view('cart/success',payment);
 
       }
+
     });
   },
 
