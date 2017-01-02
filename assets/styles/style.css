@@ -459,6 +459,10 @@ td.card-image img {
   margin-right: auto;
 }
 
+.col-guarantee div {
+  padding:0;
+}
+
 footer .container {
   padding:10px;
   background: #0b2a41;
