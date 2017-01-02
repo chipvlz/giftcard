@@ -459,9 +459,11 @@ td.card-image img {
   margin-right: auto;
 }
 .col-guarantee {
-  max-width:1100px;
   padding:15px;
   background:#fff;
+}
+.col-guarantee .col-item {
+  max-width:1100px;
 }
 
 .col-guarantee div {
