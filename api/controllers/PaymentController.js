@@ -125,7 +125,7 @@ module.exports = {
 
         // Realtime
         sails.sockets.blast('product/sold',{data:payment});
-        return res.view('cart/success',payment);
+        return res.redirect('/payment/success?paymentId='+payment.id);
 
       }
 
@@ -133,7 +133,11 @@ module.exports = {
   },
 
   success: (req,res) => {
-    res.view('cart/success')
+    let params = req.allParams();
+    Invoice.findOne({invoice:params.paymentId}).exec(function(err,foundInvoice){
+      res.view('cart/success',foundInvoice)
+    });
+
   }
 
 };
