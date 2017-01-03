@@ -46,7 +46,7 @@
       <tbody>
       <% _.each(foundCart, function(cart) { %>
       <tr class="tr-cart" id="cart-<%= cart.id %>">
-        <td class="product-id sr-only"><%= cart.id %></td>
+        <td class="product-id sr-only"><%= cart.pid %></td>
         <td class="card-img col-md-1 hidden-xs"><img style="max-width:80px" src="<%= cart.image %>"></td>
         <td class="card-name"><%= cart.name %></td>
 
