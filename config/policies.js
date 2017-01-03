@@ -32,9 +32,11 @@ module.exports.policies = {
     'index': 'notSessionAuth'
   },
   'UserController': {
-    '*': true,
-    'login': true
-    // 'userid': 'isMeAuth'
+    'login': true,
+    'view': 'isMeAuth',
+    'sell': 'isMeAuth',
+    'sellgc': 'isMeAuth',
+    'userid': 'isMeAuth'
   },
   'AdminController': {
     '*': 'isAdminAuth'

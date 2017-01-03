@@ -363,6 +363,10 @@ $(function() {
     socket.get('/user/sellgc?'+data);
   });
 
+  socket.on('sell/new',function(){
+    window.location.reload();
+  });
+
   // Xóa multi ID
   $("#removeid").click(function(event){
     event.preventDefault();
