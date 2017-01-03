@@ -12,7 +12,7 @@ module.exports = {
       type: 'integer'
     },
     bid: {
-      type: 'integer'
+      type: 'string'
     }
   }
 };
