@@ -126,7 +126,7 @@ module.exports = {
 
         var itemsList = payment.transactions[0].item_list.items;
         // Each item -> payment.transactions[0].item_list.items
-        for (i=0;i<itemsList.length;i++) {
+        for (var i=0;i<itemsList.length;i++) {
           let findId = itemsList[i].sku;
           let findPrice = itemsList[i].price;
 
