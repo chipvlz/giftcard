@@ -133,6 +133,8 @@ module.exports = {
           Invoice.findOne({invoice:payment.id}).exec(function(err,foundInvoice){
             console.log('invoice',foundInvoice);
             if (foundInvoice) {
+              console.log('pid:',findId);
+              console.log('bid:',foundInvoice.codeto);
               Belong.create({pid:findId,bid:foundInvoice.codeto}).exec(function(err,createDone){
                 console.log('create new belong product',createDone);
               })
