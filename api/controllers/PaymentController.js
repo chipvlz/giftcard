@@ -131,19 +131,16 @@ module.exports = {
           let findPrice = itemsList[i].price;
 
           Product.update({id:findId},{status:'Sold'}).exec(function(err,updateProduct){
-            console.log('update product status',updateProduct);
             sails.sockets.blast('update/product/sold',{msg:updateProduct.id})
           });
 
           Product.findOne({id:findId}).exec(function(err,foundProduct){
-            console.log('find product',foundProduct);
             if (foundProduct) {
               User.findOne({id:foundProduct.owner}).exec(function(err,foundUser){
-                console.log('find user',foundUser);
                 if (foundUser) {
                   let newbalance = parseFloat(foundUser.balance)+parseFloat(findPrice);
                   User.update({id:foundProduct.owner},{balance:newbalance}).exec(function(err,result){
-                    console.log('update balance: '+result)
+                    sails.socket.blast('update/balance',{msg:result})
                   })
                 }
 

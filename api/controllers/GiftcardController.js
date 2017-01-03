@@ -20,7 +20,7 @@ module.exports = {
     let params = req.allParams();
     let session_id = req.signedCookies['sails.sid'];
     Cart.find({sid:session_id}).exec(function(err,foundCart){
-        Giftcard.findOne({id:params.id}).populate('products').populate('type')
+        Giftcard.findOne({id:params.id}).populate('products',{status:'Active'}).populate('type')
           .exec(function(err,foundCard) {
             if (err) return res.negotiate(err);
             else {
