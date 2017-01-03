@@ -6,21 +6,22 @@
   </div>
   <% } else { %>
   <div class="find-email alert alert-warning">
-    <strong>Warning!</strong> Please provide and email address for sending code to.<a href="#" data-toggle="modal" data-target="#setEmailModal"> [Click Here]</a><span class="sr-only set-email">no-email</span>.
+    <strong>Warning!</strong> Please Log in your account before checkout for sending code to.<a href="/login"> [Log in]</a><span class="sr-only set-email">no-email</span>.
   </div>
   <!-- Modal -->
   <div class="modal fade" id="setEmailModal" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header panel-red">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Enter Your Email</h4>
+          <h4 class="modal-title">WARNING!</h4>
         </div>
         <div class="modal-body">
-          <input type="email" class="form-control input-lg" id="enter-email">
+          <p>Please Log in your account before checkout for sending code to.</p>
+          <!--<input type="email" class="form-control input-lg" id="enter-email">-->
         </div>
         <div class="modal-footer">
-          <button type="button" class="enter-email btn btn-primary">Enter Email</button>
+          <!--<button type="button" class="enter-email btn btn-primary">Enter Email</button>-->
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

@@ -309,8 +309,8 @@ $(function() {
     socket.get('/user/login?' + data);
   });
   // Khi client nhận thông báo login-success từ server sẽ chuyển user sang trang home
-  socket.on('user/login-success', function() {
-    window.location = '/home';
+  socket.on('user/login-success', function(re) {
+    window.location = re.msg;
   });
 
   $('#register').submit(function (r) {

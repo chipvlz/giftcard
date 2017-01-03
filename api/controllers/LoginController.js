@@ -7,7 +7,8 @@
 
 module.exports = {
   index: (req, res) => {
-    res.view("user/login");
+    console.log('headers',req.headers);
+    res.view("user/login",req.headers);
   },
 
   register: (req, res) => {

@@ -11,6 +11,7 @@ module.exports = {
     if (!req.isSocket) {return res.badRequest();}
 
     let params = req.allParams();
+    console.log(params);
     User.login(params.email, params.password).then((result) => {
 
       req.session.user_id = result.id; // Store id vào sess user_id
@@ -21,7 +22,7 @@ module.exports = {
 
       sails.sockets.join(req, 'logged'); // Đưa user vừa đăng nhập vào room Logged
       sails.sockets.join(req, session_id); // Đưa user vừa đăng nhập vào room của chính bản thân user
-      sails.sockets.broadcast(session_id, 'user/login-success', { message: "đăng nhập thành công", all_session_data: req.session});
+      sails.sockets.broadcast(session_id, 'user/login-success', { msg:params.referer, all_session_data: req.session});
 
       delete result.password;
       res.json(200, {result});
