@@ -77,10 +77,10 @@ module.exports = {
 
   sellgc: (req,res) => {
     let params = req.allParams();
-
+    sails.sockets.join(req,params.code);
     Giftcard.findOne({id:params.cid}).exec(function(err,foundCard){
       Product.create(params).exec(function(err,result){
-
+      console.log(result);
       let socketdata = {
         name: foundCard.name,
         type: foundCard.type,
@@ -89,6 +89,7 @@ module.exports = {
         save: result.save,
         date: result.createdAt
       };
+      sails.sockets.broadcast(params.code,'sell/new');
       sails.sockets.blast('new/giftcard',{msg:socketdata})
       })
     })
