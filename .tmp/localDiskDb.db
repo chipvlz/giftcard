@@ -1,5 +1,6 @@
 {
   "data": {
+    "belong": [],
     "cart": [
       {
         "date": "Sun Jan 01 2017 12:59:54 GMT-0800 (PST)",
@@ -398,6 +399,26 @@
     ]
   },
   "schema": {
+    "belong": {
+      "pid": {
+        "type": "integer"
+      },
+      "bid": {
+        "type": "integer"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
     "cart": {
       "date": {
         "type": "string"
@@ -766,6 +787,7 @@
     "invoice": {
       "id": 21
     },
-    "payer": {}
+    "payer": {},
+    "belong": {}
   }
 }
