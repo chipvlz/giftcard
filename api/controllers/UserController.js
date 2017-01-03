@@ -122,7 +122,7 @@ module.exports = {
       if (foundUser) {
         Belong.find({bid:foundUser.email}).exec(function(err,foundBelong){
           console.log('your own gift code',foundBelong);
-          res.json('user/giftcode',foundBelong)
+          res.json(foundBelong)
         })
       }
     });
