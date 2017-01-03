@@ -1,0 +1,63 @@
+<%- partial ('navbar.ejs') %>
+
+<div class="container" id="user-page">
+  <div class="sidenav">
+    <%- partial ('menu-side.ejs') %>
+  </div>
+  <div class="main-content">
+
+    <h3>Balance</h3>
+
+    <!--<div class="well">-->
+    <!--<p>Some text..</p>-->
+    <!--</div>-->
+    <div class="alert alert-success">
+      <strong>Hi <%= req.session.user.name %>!</strong> You have got $<%= foundUser.balance %>.
+    </div>
+
+
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading panel-green">You sold <%= foundUser.products.length %> gift cards
+          <a class="pull-right btn" href="#" data-toggle="collapse" data-target="#list-card">
+            <i class="fa fa-chevron-circle-down"></i>
+          </a>
+        </div>
+        <div class="collapse table-responsive list-table" id="list-card">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th class="sr-only">ID</th>
+
+              <th>Name</th>
+              <th>Code</th>
+              <th>Value</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(foundUser.products, function(product) { %>
+            <tr>
+              <td class="sr-only td-id"><%= product.id %></td>
+              <td class="type-name"><%= product.name %></td>
+              <td class="type-name"><%= product.code %></td>
+              <td class="type-name"><%= product.value %></td>
+              <td class="type-name"><%= product.price %></td>
+              <td class="type-name"><%= product.status %></td>
+              <td></td>
+              <td></td>
+
+
+            </tr>
+            <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

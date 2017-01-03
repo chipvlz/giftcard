@@ -11,13 +11,55 @@
     <!--<div class="well">-->
       <!--<p>Some text..</p>-->
     <!--</div>-->
-    <div class="panel">
-      dsdasdasdasdadasdadsa
-
+    <div class="alert alert-success">
+      <strong>Hi <%= req.session.user.name %>!</strong> how are you today?.
     </div>
 
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading panel-blue">
+          <div class="row">
+            <div class="col-xs-3"><i class="fa fa-bank fa-5x"></i></div>
+            <div class="col-xs-9 text-right">
+              <div style="font-size:40px" class="huge">$<%= foundUser.balance %></div>
+              <div>Balance</div>
+            </div>
+          </div>
+        </div>
+        <a href="/user/balance">
+          <div class="panel-footer">
+            <span class="pull-left">View List</span>
+            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-danger">
+        <div class="panel-heading panel-yellow">
+          <div class="row">
+            <div class="col-xs-3"><i class="fa fa-shopping-bag fa-5x"></i></div>
+            <div class="col-xs-9 text-right">
+              <div style="font-size:40px" class="huge"><%= foundUser.products.length %></div>
+              <div>Items</div>
+            </div>
+          </div>
+        </div>
+        <a href="#" data-toggle="collapse" data-target="#list-card">
+          <div class="panel-footer">
+            <span class="pull-left">View List</span>
+            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-12">
     <div class="panel panel-default">
-      <div class="panel-heading">Product List
+      <div class="panel-heading panel-green">Product List
         <a class="pull-right btn" href="#" data-toggle="collapse" data-target="#list-card">
           <i class="fa fa-chevron-circle-down"></i>
         </a>
@@ -27,30 +69,36 @@
           <thead>
           <tr>
             <th class="sr-only">ID</th>
-            <th>Image</th>
+
             <th>Name</th>
-            <th>Type</th>
-            <th class="sr-only"></th>
-            <th class="sr-only"></th>
-            <th class="sr-only"></th>
+            <th>Code</th>
+            <th>Value</th>
+            <th>Price</th>
+            <th>Status</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
           </thead>
           <tbody>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <% _.each(foundUser.products, function(product) { %>
+          <tr>
+            <td class="sr-only td-id"><%= product.id %></td>
+            <td class="type-name"><%= product.name %></td>
+            <td class="type-name"><%= product.code %></td>
+            <td class="type-name"><%= product.value %></td>
+            <td class="type-name"><%= product.price %></td>
+            <td class="type-name"><%= product.status %></td>
+            <td></td>
+            <td></td>
 
+
+          </tr>
+          <% }) %>
           </tbody>
         </table>
       </div>
     </div>
-
+    </div>
 
   </div>
 </div>

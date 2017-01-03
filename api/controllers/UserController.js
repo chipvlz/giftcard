@@ -63,9 +63,18 @@ module.exports = {
 
   view: (req,res) => {
     let params = req.allParams();
-    User.findOne({id:params.id}).populate('products')
+    User.findOne({id:req.session.user.id}).populate('products')
       .exec(function(err,foundUser){
+        console.log(foundUser);
         return res.view('user/index',{foundUser})
+      })
+  },
+
+  balance: (req,res) => {
+    User.findOne({id:req.session.user.id}).populate('products',{status:'Sold'})
+      .exec(function(err,foundUser){
+        console.log(foundUser);
+        return res.view('user/balance',{foundUser})
       })
   },
 
@@ -103,15 +112,15 @@ module.exports = {
   },
 
   userid: (req,res) => {
-    let params = req.allParams();
+    User.findOne({id:req.session.user.id}).exec(function(err,userdata){
+      res.view('user/info',{userdata});
+    })
+  },
 
-    if (req.session.user.id && req.session.user.id == params.id) {
-      var edit = 'ok'
-    } else {
-      var edit = 'no'
-    }
-    User.findOne({'id':params.id}).exec(function(err,userdata){
-      res.view('user/info',{userdata,edit});
+  giftcode: (req,res) => {
+    Belong.find({bid:req.session.user.email}).exec(function(err,foundBelong){
+      console.log('your own gift code',foundBelong);
+      res.json('user/giftcode',foundBelong)
     })
   }
 };

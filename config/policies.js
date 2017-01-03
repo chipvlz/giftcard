@@ -36,7 +36,8 @@ module.exports.policies = {
     'view': 'isMeAuth',
     'sell': 'isMeAuth',
     'sellgc': 'isMeAuth',
-    'userid': 'isMeAuth'
+    'userid': 'isMeAuth',
+    'balance': 'isMeAuth'
   },
   'AdminController': {
     '*': 'isAdminAuth'

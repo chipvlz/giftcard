@@ -1,42 +1,35 @@
-<%- partial ('../common/navbar.ejs') %>
+<%- partial ('navbar.ejs') %>
 
-<div class="container-fluid text-center user-info">
-  <div class="row content">
-    <div class="col-sm-4 sidenav">
-      <img src="http://www.w3schools.com/bootstrap/newyork.jpg" class="img-circle img-thumbnail" width="204" height="200">
-      <hr>
-      <% if (edit=='ok') { %>
-      <p><h1 userdata="name"><%= userdata.name %></h1></p>
+<div class="container" id="user-page">
+  <div class="sidenav">
+    <%- partial ('menu-side.ejs') %>
+  </div>
+  <div class="main-content">
 
-      <ul class="list-group">
-        <li class="list-group-item"><span class="glyphicon glyphicon-barcode pull-left"></span><span title="id" static-userdata="id"><%= userdata.id %></span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-user pull-left"></span><span title="nhóm thành viên" static-userdata="group"><%= userdata.group %></span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span><span title="email" userdata="email"><%= userdata.email %></span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-heart pull-left"></span><span title="điểm" userdata="point"><%= userdata.point %></span></li>
-      </ul>
-    </div>
-    <div class="col-sm-8 text-left">
-      <h1>Giới Thiệu</h1>
-      <p title="giới thiệu" userdata="about" data-type="textarea">Nói về bản thân của mình.</p>
-      <% } else { %>
-      <p><h1><%= userdata.name %></h1></p>
+    <h3>Information Detail</h3>
 
-      <ul class="list-group">
-        <li class="list-group-item"><span class="glyphicon glyphicon-barcode pull-left"></span><span title="id"><%= userdata.id %></span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-user pull-left"></span><span title="nhóm thành viên"><%= userdata.group %></span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-envelope pull-left"></span><span title="email"><%= userdata.email %></span></li>
-        <li class="list-group-item"><span class="glyphicon glyphicon-heart pull-left"></span><span title="điểm"><%= userdata.point %></span></li>
-      </ul>
+    <!--<div class="well">-->
+    <!--<p>Some text..</p>-->
+    <!--</div>-->
+    <div class="alert alert-success">
+      <strong>Hi <%= req.session.user.name %>!</strong> Do you want to change your info details ?.
     </div>
-    <div class="col-sm-8 text-left">
-      <h1>Giới Thiệu</h1>
-      <p title="giới thiệu">Nói về bản thân của mình.</p>
-      <% } %>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+
+
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li class="list-group-item"><%= userdata.name %> <span class="pull-right"><i class="fa fa-tag"></i></span></li>
+          <li class="list-group-item"><%= userdata.email %> <span class="pull-right"><i class="fa fa-envelope"></i></span></li>
+          <li class="list-group-item"><%= userdata.group %> <span class="pull-right"><i class="fa fa-group"></i></span></li>
+        </ul>
+      </div>
+
+    <div class="col-md-6">
+      <a class="btn btn-warning" href="#">
+        <i class="fa fa-trash-o fa-pencil"></i> Change Password</a>
     </div>
+
+
 
   </div>
 </div>
-<%- partial ('../common/footer.ejs') %>

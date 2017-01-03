@@ -37,6 +37,9 @@ module.exports = {
       type: 'integer',
       defaultsTo:10
     },
+    own: {
+      type: 'array'
+    },
     balance: {
       type: 'float',
       defaultsTo: 0

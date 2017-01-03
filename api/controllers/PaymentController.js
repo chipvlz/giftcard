@@ -130,6 +130,14 @@ module.exports = {
           let findId = itemsList[i].sku;
           let findPrice = itemsList[i].price;
 
+          Invoice.findOne({invoice:payment.id}).exec(function(err,foundInvoice){
+            if (foundInvoice) {
+              Belong.create({pid:findId,bid:foundInvoice.codeto}).exec(function(err,createDone){
+                console.log('create new belong product',createDone);
+              })
+            }
+          });
+
           Product.update({id:findId},{status:'Sold'}).exec(function(err,updateProduct){
             sails.sockets.blast('update/product/sold',{msg:updateProduct.id})
           });
