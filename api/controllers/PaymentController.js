@@ -149,7 +149,7 @@ module.exports = {
                 if (foundUser) {
                   let newbalance = parseFloat(foundUser.balance)+parseFloat(findPrice);
                   User.update({id:foundProduct.owner},{balance:newbalance}).exec(function(err,result){
-                    sails.socket.blast('update/balance',{msg:result})
+                    sails.sockets.blast('update/balance',{msg:result})
                   })
                 }
 

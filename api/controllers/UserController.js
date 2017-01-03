@@ -118,10 +118,15 @@ module.exports = {
   },
 
   giftcode: (req,res) => {
-    Belong.find({bid:req.session.user.email}).exec(function(err,foundBelong){
-      console.log('your own gift code',foundBelong);
-      res.json('user/giftcode',foundBelong)
-    })
+    User.findOne({id:req.session.user.id}).exec(function(err,foundUser){
+      if (foundUser) {
+        Belong.find({bid:foundUser.email}).exec(function(err,foundBelong){
+          console.log('your own gift code',foundBelong);
+          res.json('user/giftcode',foundBelong)
+        })
+      }
+    });
+
   }
 };
 
