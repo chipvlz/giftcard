@@ -117,7 +117,7 @@ module.exports = {
     })
   },
 
-  giftcode: (req,res) => {
+  gift: (req,res) => {
     User.findOne({id:req.session.user.id}).exec(function(err,foundUser){
       if (foundUser) {
         Belong.find({bid:foundUser.email}).exec(function(err,foundBelong){
