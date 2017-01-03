@@ -39,6 +39,9 @@ module.exports = {
     },
     owner: {
       model: 'user'
+    },
+    belong: {
+      model: 'belong'
     }
   }
 };
