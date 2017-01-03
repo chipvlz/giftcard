@@ -124,6 +124,34 @@ module.exports = {
           }
         });
 
+        var itemsList = payment.transactions[0].item_list.items;
+        // Each item -> payment.transactions[0].item_list.items
+        for (i=0;i<itemsList.length;i++) {
+          let findId = itemsList[i].sku;
+          let findPrice = itemsList[i].price;
+
+          Product.update({id:findId},{status:'Sold'}).exec(function(err,updateProduct){
+            console.log('update product status',updateProduct);
+            sails.sockets.blast('update/product/sold',{msg:updateProduct.id})
+          });
+
+          Product.findOne({id:findId}).exec(function(err,foundProduct){
+            console.log('find product',foundProduct);
+            if (foundProduct) {
+              User.findOne({id:foundProduct.owner}).exec(function(err,foundUser){
+                console.log('find user',foundUser);
+                if (foundUser) {
+                  let newbalance = parseFloat(foundUser.balance)+parseFloat(findPrice);
+                  User.update({id:foundProduct.owner},{balance:newbalance}).exec(function(err,result){
+                    console.log('update balance: '+result)
+                  })
+                }
+
+              })
+            }
+          })
+        }
+
         // Realtime
         sails.sockets.blast('product/sold',{data:payment});
         return res.redirect('/payment/success?paymentId='+payment.id);
