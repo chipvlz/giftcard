@@ -30,11 +30,11 @@
           <tbody>
           <% _.each(foundInvoice, function(invoice) { %>
           <tr class="invoice-<%= invoice.id %>">
-            <td class="col-sm-6 invoice-invoice"><%= invoice.invoice %></td>
+            <td class="col-sm-6 invoice-invoice"><a href="/admin/invoice?invoice=<%= invoice.invoice %>"><%= invoice.invoice %></a></td>
             <td class="invoice-amount"><%= invoice.amount %></td>
             <td class="invoice-status"><%= invoice.status %></td>
             <td class="invoice-date"><%= invoice.createdAt %></td>
-            <td><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#delInvoiceModal"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            <td><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#delInvoiceModal"><i class="fa fa-trash-o"></i></a></td>
           </tr>
           <% }) %>
           </tbody>

@@ -63,6 +63,7 @@ module.exports = {
           else {
             console.log(result);
             sails.sockets.broadcast(params.sessionId,'create/invoice',{msg:result.invoice});
+            sails.sockets.blast('create/invoice',{msg:result.invoice});
           }
         })
       }
@@ -138,7 +139,7 @@ module.exports = {
       res.view('cart/success',foundInvoice)
     });
 
-  }
+  },
 
 };
 

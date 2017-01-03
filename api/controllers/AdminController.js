@@ -135,12 +135,21 @@ module.exports = {
   },
 
   invoice: (req,res) => {
-    Invoice.find().exec(function(err,foundInvoice){
-      if (err) return res.negotiate(err);
-      else {
-        return res.view('admin/invoice',{foundInvoice});
-      }
-    })
+    let params = req.allParams();
+    if (params.invoice) {
+      Invoice.findOne({invoice:params.invoice}).exec(function(err,foundInvoice){
+        return res.view('admin/invoice_detail',{foundInvoice});
+        console.log(foundInvoice)
+      })
+    } else {
+      Invoice.find().exec(function(err,foundInvoice){
+        if (err) return res.negotiate(err);
+        else {
+          return res.view('admin/invoice',{foundInvoice});
+        }
+      })
+    }
+
   },
   delinvoice: (req,res) => {
     let params = req.allParams();

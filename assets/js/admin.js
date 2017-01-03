@@ -120,8 +120,20 @@ $(function() {
     location.reload();
   });
 
+  socket.on('create/invoice',function(recieve){
+    $('table#table-invoice tbody').append('<tr style="background:#f9f9f9;" class="invoice-'+recieve.msg.id+'">' +
+      '<td class="col-sm-6 invoice-invoice">'+recieve.msg.invoice+'</td>' +
+      '<td class="invoice-amount">'+recieve.msg.amount+'</td>' +
+      '<td class="invoice-status">'+recieve.msg.status+'</td>' +
+      '<td class="invoice-date">'+recieve.msg.createdAt+'</td>' +
+      '<td><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#delInvoiceModal"><i class="fa fa-trash-o"></i></a>' +
+      '</td></tr>')
+  });
+
   //Realtime gift card sold
   socket.on('product/sold',function(get){
     console.log(get.data)
-  })
+  });
+
+
 });

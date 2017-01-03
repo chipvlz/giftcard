@@ -422,6 +422,7 @@ td.card-image img {
 }
 
 .main-content {
+  margin-top:10px;
   padding-right:20px;
   margin-left:260px;
 }
