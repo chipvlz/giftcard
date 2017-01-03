@@ -118,7 +118,7 @@ module.exports = {
   },
 
   gift: (req,res) => {
-    User.findOne({id:req.session.user.email}).exec(function(err,foundUser){
+    User.findOne({id:req.session.user.id}).exec(function(err,foundUser){
       if (foundUser) {
         Belong.find().exec(function(err,foundBelong){
           console.log('your own gift code',foundBelong);
