@@ -107,7 +107,7 @@ $(function() {
       $(this).closest('tr.tr-cart').find('a.reloading').removeClass('sr-only');
       $(this).closest('tr.tr-cart').find('a.remove-item').addClass('sr-only');
       let data = {
-        id : $(this).closest('tr.tr-cart').find('td.product-id').text(),
+        id : $(this).closest('tr.tr-cart').find('td.cart-id').text(),
         sessionId : window.location.search.split('?sid=')[1]
       };
       socket.get('/cart/remove',data)
