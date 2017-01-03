@@ -7,11 +7,50 @@
 
 module.exports = {
   index: (req,res) => {
-    let data = {
-      userName: 'Khanh Admin',
-      testVariable: 'this is test value'
-    };
-    return res.view('admin/index', data)
+
+    let CountUser = new Promise((resolve,reject) => {
+      User.count().exec((err,countUser) => {
+        if (err) {reject(err)}
+        resolve(countUser);
+      })
+    });
+
+    let CountGiftcard = new Promise((resolve,reject) => {
+      Giftcard.count().exec((err,countGiftcard) => {
+        if (err) {reject(err)}
+        resolve(countGiftcard);
+      })
+    });
+
+    let CountInvoice = new Promise((resolve,reject) => {
+      Invoice.count().exec((err,countInvoice) => {
+        if (err) {reject(err)}
+        resolve(countInvoice);
+      })
+    });
+
+    let CountProduct = new Promise((resolve,reject) => {
+      Product.count().exec((err,countProduct) => {
+        if (err) {reject(err)}
+        resolve(countProduct);
+      })
+    });
+
+    let FindProduct = new Promise((resolve,reject) => {
+      Product.find().populate('cid').populate('owner').exec((err,foundProduct) => {
+        if (err) {reject(err)}
+        resolve(foundProduct);
+      })
+    });
+
+    // using Async/Await
+    (async () => {
+      var [countUser,countGiftcard,countInvoice,countProduct,foundProduct] = await Promise.all([
+        CountUser,CountGiftcard,CountInvoice,CountProduct,FindProduct
+      ]);
+      return res.view('admin/index',{countUser,countGiftcard,countInvoice,countProduct,foundProduct})
+    })
+    ()
   },
 
   giftcard: (req,res) => {

@@ -5,15 +5,123 @@
     <%- partial ('menu-side.ejs') %>
   </div>
   <div class="main-content">
+    <h3>Dashboard</h3>
+    <div class="col-lg-3 col-md-6">
+      <div class="panel panel-success">
+        <div class="panel-heading panel-green">
+          <div class="row">
+            <div class="col-xs-3"><i class="fa fa-users fa-5x"></i></div>
+            <div class="col-xs-9 text-right">
+              <div style="font-size:40px" class="huge"><%= countUser %></div>
+              <div>Users</div>
+            </div>
+          </div>
+        </div>
+        <a href="/admin/user">
+          <div class="panel-footer">
+            <span class="pull-left">View List</span>
+            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+    </div>
 
-            <h3>Dashboard</h3>
-            Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere con
-            sectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Intege
-            r posuere erat a ante venenatis dapibus posuere velit aliquet. Etiam porta sem malesuada magn
-            a mollis euismod. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero
-            a pharetra augue.
+    <div class="col-lg-3 col-md-6">
+      <div class="panel panel-danger">
+        <div class="panel-heading panel-red">
+          <div class="row">
+            <div class="col-xs-3"><i class="fa fa-file-text-o fa-5x"></i></div>
+            <div class="col-xs-9 text-right">
+              <div style="font-size:40px" class="huge"><%= countInvoice %></div>
+              <div>Invoices</div>
+            </div>
+          </div>
+        </div>
+        <a href="/admin/invoice">
+          <div class="panel-footer">
+            <span class="pull-left">View List</span>
+            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+    </div>
 
+    <div class="col-lg-3 col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading panel-blue">
+          <div class="row">
+            <div class="col-xs-3"><i class="fa fa-credit-card fa-5x"></i></div>
+            <div class="col-xs-9 text-right">
+              <div style="font-size:40px" class="huge"><%= countGiftcard %></div>
+              <div>Card Type</div>
+            </div>
+          </div>
+        </div>
+        <a href="/admin/giftcard">
+          <div class="panel-footer">
+            <span class="pull-left">View List</span>
+            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+    </div>
 
+    <div class="col-lg-3 col-md-6">
+      <div class="panel panel-danger">
+        <div class="panel-heading panel-yellow">
+          <div class="row">
+            <div class="col-xs-3"><i class="fa fa-shopping-bag fa-5x"></i></div>
+            <div class="col-xs-9 text-right">
+              <div style="font-size:40px" class="huge"><%= countProduct %></div>
+              <div>Gift Cards</div>
+            </div>
+          </div>
+        </div>
+        <a href="/admin/product">
+          <div class="panel-footer">
+            <span class="pull-left">View List</span>
+            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <div class="clearfix"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="panel panel-success">
+        <div class="panel-heading panel-green">List Product </div>
+        <div class="panel-body table-responsive list-table" id="list-type">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th class="sr-only">ID</th>
+              <th>Gift Card</th>
+              <th>Value</th>
+              <th>Price</th>
+              <th>Seller</th>
+              <th>Status</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(foundProduct, function(product) { %>
+            <tr>
+              <td class="sr-only td-id"><%= product.id %></td>
+              <td class="type-name"><%= product.cid.name %></td>
+              <td class="type-name"><%= product.value %></td>
+              <td class="type-name"><%= product.price %></td>
+              <td class="type-name"><%= product.owner.name %></td>
+              <td class="type-name"><%= product.status %></td>
+            </tr>
+            <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

@@ -38,9 +38,6 @@ a {
   background: #fff;
 }
 
-.pull-right {
-  margin-top: -5px;
-}
 #giftcard-page {
   max-width: 1200px;
 }
@@ -189,10 +186,23 @@ thead {
 .panel-heading {
   font-size:16px;
   color:#fff !important;
-  background:#7ab55c !important;
-  height:50px;
+  /*background:#7ab55c !important;*/
+  min-height:50px;
   padding:14px 15px;
 }
+.panel-green {
+  background:#5cb85c !important;
+}
+.panel-red {
+  background:#d9534f !important;
+}
+.panel-blue {
+  background:#337ab7!important;
+}
+.panel-yellow {
+  background:#f0ad4e!important;
+}
+
 .table tr th, .table tr td {
   vertical-align: middle !important;
 }
