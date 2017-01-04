@@ -122,7 +122,7 @@ module.exports = {
       if (foundUser) {
         Belong.find({bid:foundUser.email}).populate('pid').exec(function(err,foundBelong){
 
-          res.view('user/giftcode',foundBelong);
+          res.view('user/giftcode',{foundBelong});
         })
       }
     });
