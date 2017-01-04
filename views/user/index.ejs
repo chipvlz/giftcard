@@ -12,6 +12,7 @@
       <!--<p>Some text..</p>-->
     <!--</div>-->
     <div class="alert alert-success">
+      <span class="sr-only find-user-id"><%= req.session.user.id %></span>
       <strong>Hi <%= req.session.user.name %>!</strong> how are you today?.
     </div>
 
