@@ -157,6 +157,7 @@ $(function() {
 
   socket.on('update/balance',function(recieve){
     alert('ok im fine');
+    $('#user-page div#user-balance-id-'+recieve.msg.id).html('$9999')
   });
 
   $(document).ready(function(){
