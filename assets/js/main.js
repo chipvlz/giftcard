@@ -155,6 +155,14 @@ $(function() {
     window.location = '../payment/checkout?invoice='+recieve.msg;
   });
 
+  socket.on('update/balance',function(recieve){
+    if (window.location.pathname == '/user/view') {
+      let findUserID = $('#user-page .find-user-id').text();
+      if (findUserID == recieve.msg.id) {
+        alert('tìm đúng người rồi');
+      }
+    }
+  });
 
   $(document).ready(function(){
     $('.col-search input').keyup(function(){
@@ -198,15 +206,6 @@ $(function() {
     if (window.location.pathname == '/payment/confirm') {
       $('a.checkout-button').addClass('sr-only');
     }
-
-    socket.on('update/balance',function(recieve){
-      if (window.location.pathname == '/user/view') {
-        let findUserID = $('#user-page .find-user-id').text();
-        if (findUserID == recieve.msg.id) {
-          alert('tìm đúng người rồi');
-        }
-      }
-    });
 
     if (window.location.pathname == '/user/sell') {
       var findUrl = window.location.href.split('&type=');
