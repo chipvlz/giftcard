@@ -120,7 +120,7 @@ module.exports = {
   gift: (req,res) => {
     User.findOne({id:req.session.user.id}).exec(function(err,foundUser){
       if (foundUser) {
-        Belong.find({bid:foundUser.email}).populate('product').exec(function(err,foundBelong){
+        Belong.find({bid:foundUser.email}).populate('pid').exec(function(err,foundBelong){
           console.log('your own gift code',foundBelong);
           res.json(foundBelong)
         })
