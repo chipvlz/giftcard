@@ -156,9 +156,9 @@ $(function() {
   });
 
   socket.on('update/balance',function(recieve){
-    alert('ok im fine '+recieve.msg[0].id);
-    console.log(recieve.msg[0]);
-
+    $('#user-page div#user-balance-id-'+recieve.msg[0].id).hide('fast');
+    $('#user-page div#user-balance-id-'+recieve.msg[0].id).html('$'+recieve.msg[0].balance);
+    $('#user-page div#user-balance-id-'+recieve.msg[0].id).show('fast');
 
   });
 
