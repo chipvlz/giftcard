@@ -1,6 +1,19 @@
 {
   "data": {
-    "belong": [],
+    "belong": [
+      {
+        "bid": "kingasawa@gmail.com",
+        "createdAt": "2017-01-04T06:02:40.486Z",
+        "updatedAt": "2017-01-04T06:02:40.511Z",
+        "id": 1
+      },
+      {
+        "bid": "kingasawa@gmail.com",
+        "createdAt": "2017-01-04T06:02:40.491Z",
+        "updatedAt": "2017-01-04T06:02:40.517Z",
+        "id": 2
+      }
+    ],
     "cart": [
       {
         "date": "Sun Jan 01 2017 12:59:54 GMT-0800 (PST)",
@@ -400,12 +413,6 @@
   },
   "schema": {
     "belong": {
-      "pid": {
-        "type": "integer",
-        "model": "product",
-        "foreignKey": true,
-        "alias": "pid"
-      },
       "bid": {
         "type": "string"
       },
@@ -649,7 +656,8 @@
         "type": "integer",
         "model": "belong",
         "foreignKey": true,
-        "alias": "belong"
+        "alias": "belong",
+        "unique": true
       },
       "id": {
         "type": "integer",
@@ -797,6 +805,8 @@
       "id": 21
     },
     "payer": {},
-    "belong": {}
+    "belong": {
+      "id": 2
+    }
   }
 }
