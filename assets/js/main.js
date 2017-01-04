@@ -156,12 +156,7 @@ $(function() {
   });
 
   socket.on('update/balance',function(recieve){
-    if (window.location.pathname == '/user/view') {
-      let findUserID = $('#user-page .find-user-id').text();
-      if (findUserID == recieve.msg.id) {
-        alert('tìm đúng người rồi');
-      }
-    }
+    alert('ok im fine');
   });
 
   $(document).ready(function(){
