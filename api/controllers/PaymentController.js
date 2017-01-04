@@ -130,6 +130,10 @@ module.exports = {
           let findId = itemsList[i].sku;
           let findPrice = itemsList[i].price;
 
+          Cart.destroy({pid:findId}).exec(function(err){
+            if (err) { return res.negotiate(err); }
+          });
+
           Invoice.findOne({invoice:payment.id}).exec(function(err,foundInvoice){
             console.log('invoice',foundInvoice);
             if (foundInvoice) {
