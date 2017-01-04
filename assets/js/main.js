@@ -156,8 +156,8 @@ $(function() {
   });
 
   socket.on('update/balance',function(recieve){
-    alert('ok im fine '+recieve.msg.id);
-    console.log(recieve.msg);
+    alert('ok im fine '+recieve.msg[0].id);
+    console.log(recieve.msg[0]);
 
 
   });
