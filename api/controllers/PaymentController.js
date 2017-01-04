@@ -182,5 +182,12 @@ module.exports = {
 
   },
 
+  invoice: (req,res) => {
+    let params = req.allParams();
+    Invoice.findOne({invoice:params.id}).exec(function(err,foundInvoice){
+      res.view('user/invoice',foundInvoice)
+    });
+  }
+
 };
 
