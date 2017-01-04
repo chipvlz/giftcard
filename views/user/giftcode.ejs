@@ -1,0 +1,41 @@
+<%- partial ('navbar.ejs') %>
+
+<div class="container" id="user-page">
+  <div class="sidenav">
+    <%- partial ('menu-side.ejs') %>
+  </div>
+  <div class="main-content">
+
+    <h3>Your own gift cards</h3>
+
+    <div class="alert alert-success">
+      <strong>Hi <%= req.session.user.name %>!</strong> How are you today ?.
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th class="sr-only">ID</th>
+
+        <th>Name</th>
+        <th>Code</th>
+        <th>Value</th>
+        <th>Price</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% _.each(foundBelong, function(belong) { %>
+      <tr>
+        <td class="sr-only td-id"><%= belong.pid[0].id %></td>
+        <td class="type-name"><%= belong.pid[0].name %></td>
+        <td class="type-name"><%= belong.pid[0].code %></td>
+        <td class="type-name"><%= belong.pid[0].value %></td>
+        <td class="type-name"><%= belong.pid[0].price %></td>
+      </tr>
+      <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

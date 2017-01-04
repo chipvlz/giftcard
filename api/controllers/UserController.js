@@ -121,8 +121,8 @@ module.exports = {
     User.findOne({id:req.session.user.id}).exec(function(err,foundUser){
       if (foundUser) {
         Belong.find({bid:foundUser.email}).populate('pid').exec(function(err,foundBelong){
-          console.log('your own gift code',foundBelong);
-          res.json(foundBelong)
+
+          res.view('user/giftcode',foundBelong);
         })
       }
     });
