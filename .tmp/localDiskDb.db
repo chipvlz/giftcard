@@ -358,7 +358,6 @@
         "createdAt": "2016-12-20T17:13:45.667Z",
         "updatedAt": "2016-12-20T17:15:23.788Z",
         "id": 4
-
       },
       {
         "name": "Physical",
@@ -402,10 +401,13 @@
   "schema": {
     "belong": {
       "pid": {
-        "type": "integer"
+        "type": "integer",
+        "model": "product",
+        "foreignKey": true,
+        "alias": "pid"
       },
       "bid": {
-        "type": "integer"
+        "type": "string"
       },
       "id": {
         "type": "integer",
@@ -642,6 +644,12 @@
         "model": "user",
         "foreignKey": true,
         "alias": "owner"
+      },
+      "belong": {
+        "type": "integer",
+        "model": "belong",
+        "foreignKey": true,
+        "alias": "belong"
       },
       "id": {
         "type": "integer",

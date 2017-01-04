@@ -41,7 +41,8 @@ module.exports = {
       model: 'user'
     },
     belong: {
-      model: 'belong'
+      model: 'belong',
+      unique: true
     }
   }
 };

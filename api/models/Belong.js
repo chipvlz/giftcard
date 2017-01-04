@@ -9,7 +9,8 @@ module.exports = {
 
   attributes: {
     pid: {
-      model: 'product'
+      collection: 'product',
+      via: 'belong'
     },
     bid: {
       type: 'string'
