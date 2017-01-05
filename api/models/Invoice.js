@@ -17,6 +17,9 @@ module.exports = {
     state: {
       type: 'string'
     },
+    fee: {
+      type: 'float'
+    },
     items: {
       type: 'array'
     },

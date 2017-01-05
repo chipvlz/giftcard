@@ -96,6 +96,7 @@ module.exports = {
       else {
         //update new record
         Invoice.update({invoice:payment.id},{
+          fee: payment.transactions[0].related_resources[0].transaction_fee.value,
           state: payment.state,
           payer: payment.payer.payer_info.payer_id,
           status: 'Complete'
@@ -137,8 +138,7 @@ module.exports = {
           Invoice.findOne({invoice:payment.id}).exec(function(err,foundInvoice){
             console.log('invoice',foundInvoice);
             if (foundInvoice) {
-              console.log('pid:',findId);
-              console.log('bid:',foundInvoice.codeto);
+
               Belong.create({pid:findId,bid:foundInvoice.codeto}).exec(function(err,createDone){
                 console.log('create new belong product',createDone);
               })

@@ -17,7 +17,7 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="name">Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="name" id="name" placeholder="Enter gift card name">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter brand name">
             </div>
           </div>
           <div class="form-group">
@@ -88,7 +88,7 @@
     </div>
 
     <div class="panel panel-default">
-      <div class="panel-heading panel-blue">Gift Card List</div>
+      <div class="panel-heading panel-blue">Brand List</div>
       <div class="panel-body table-responsive list-table" id="list-card">
         <table class="table table-hover">
           <thead>
@@ -106,9 +106,10 @@
           </thead>
           <tbody>
           <% _.each(foundGiftcard, function(card) { %>
+
           <tr>
             <td class="sr-only td-id"><%= card.id %></td>
-            <td class="card-image"><img src="<%= card.thumbnail %>"></td>
+            <td class="card-image"><a href="/admin/product?brand=<%= card.id %>"><img src="<%= card.thumbnail %>"></a></td>
             <td class="card-name"><%= card.name %></td>
             <td class="card-type"><%= card.type.name %></td>
             <td class="sr-only card-desc"><%= card.description %></td>

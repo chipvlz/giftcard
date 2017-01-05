@@ -53,7 +53,7 @@ module.exports = {
     ()
   },
 
-  giftcard: (req,res) => {
+  brands: (req,res) => {
     Type.find().exec(function(err,foundType) {
       Giftcard.find().populate('type').exec(function (err, foundGiftcard) {
         if (err) return res.negotiate(err);
@@ -63,6 +63,7 @@ module.exports = {
       })
     })
   },
+
 
   agift: (req,res) => {
     if (!req.isSocket) {
@@ -109,10 +110,19 @@ module.exports = {
   },
 
   product: (req,res) => {
-    Product.find().populate('cid').populate('owner').exec(function(err,foundProduct){
-      if (err) return res.negotiate(err);
-      else return res.view('admin/product',{foundProduct})
-    })
+    let params = req.allParams();
+    if (params.brand) {
+      Product.find({cid:params.brand}).populate('cid').populate('owner').exec(function(err,foundProduct){
+        if (err) return res.negotiate(err);
+        else return res.view('admin/product',{foundProduct})
+      })
+    } else {
+      Product.find().populate('cid').populate('owner').exec(function(err,foundProduct){
+        if (err) return res.negotiate(err);
+        else return res.view('admin/product',{foundProduct})
+      })
+    }
+
   },
 
   type: (req,res) => {
