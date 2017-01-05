@@ -1,18 +1,7 @@
 {
   "data": {
     "belong": [
-      {
-        "bid": "kingasawa@gmail.com",
-        "createdAt": "2017-01-04T06:02:40.486Z",
-        "updatedAt": "2017-01-04T06:02:40.511Z",
-        "id": 1
-      },
-      {
-        "bid": "kingasawa@gmail.com",
-        "createdAt": "2017-01-04T06:02:40.491Z",
-        "updatedAt": "2017-01-04T06:02:40.517Z",
-        "id": 2
-      }
+
     ],
     "cart": [
       {
@@ -71,7 +60,6 @@
         "updatedAt": "2017-01-03T05:14:08.958Z",
         "id": 113
       },
-
       {
         "date": "Tue Jan 03 2017 08:30:25 GMT-0800 (PST)",
         "pid": 1,

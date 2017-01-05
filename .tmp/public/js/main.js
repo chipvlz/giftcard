@@ -155,6 +155,12 @@ $(function() {
     window.location = '../payment/checkout?invoice='+recieve.msg;
   });
 
+  socket.on('update/balance',function(recieve){
+    $('#user-page div#user-balance-id-'+recieve.msg[0].id).hide('fast');
+    $('#user-page div#user-balance-id-'+recieve.msg[0].id).html('$'+recieve.msg[0].balance);
+    $('#user-page div#user-balance-id-'+recieve.msg[0].id).show('fast');
+
+  });
 
   $(document).ready(function(){
     $('.col-search input').keyup(function(){

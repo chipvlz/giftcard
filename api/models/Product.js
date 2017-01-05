@@ -42,7 +42,6 @@ module.exports = {
     },
     belong: {
       model: 'belong',
-      unique: true
     }
   }
 };
