@@ -188,7 +188,7 @@ $(function() {
 
     $('#list-giftcard').DataTable({
       "language": {
-        "search": "Live search gift card (Autocomplete) "
+        "search": "Live search brand (Autocomplete) "
       },
       "lengthMenu": [[5, -1], [5, "All"]]
     });
