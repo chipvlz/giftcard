@@ -41,6 +41,7 @@ a {
 /*bac*/
 
 #giftcard-page {
+  margin-top:90px;
   max-width: 1200px;
 }
 #giftcard-page .jumbotron, #payment-success {

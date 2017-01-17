@@ -87,8 +87,14 @@ module.exports = {
 
   sellgc: (req,res) => {
     let params = req.allParams();
+    console.log('params',params);
     sails.sockets.join(req,params.code);
     Giftcard.findOne({id:params.cid}).exec(function(err,foundCard){
+      if(foundCard && params.save > foundCard.save) {
+        Giftcard.update({id:params.cid},{save:params.save}).exec(function(err,addok){
+          console.log('update save',addok)
+        })
+      }
       Product.create(params).exec(function(err,result){
       console.log(result);
       let socketdata = {
