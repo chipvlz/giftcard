@@ -188,7 +188,7 @@ $(function() {
 
     $('#list-giftcard').DataTable({
       "language": {
-        "search": "Live search gift card (Autocomplete) "
+        "search": "Live search brand (Autocomplete) "
       },
       "lengthMenu": [[5, -1], [5, "All"]]
     });
@@ -254,7 +254,7 @@ $(function() {
 
 
     var checkPath = window.location.pathname;
-    if (checkPath.match(/admin\/giftcard/gi)) {
+    if (checkPath.match(/admin\/brands/gi)) {
 
       $('.filter-price input').click(function(){
         var filterPrice = $('#filter_price').val();
@@ -280,7 +280,7 @@ $(function() {
       })
     }
 
-    if (checkPath.match('/giftcard/edit')){
+    if (checkPath.match('/brand/edit')){
       var checkCardType = $('input.card-type').val();
       $('input#type-'+checkCardType).attr('checked','checked')
     }
