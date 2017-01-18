@@ -19,8 +19,7 @@ module.exports = {
       type: 'longtext'
     },
     detail: {
-      type: 'longtext',
-      required: true
+      type: 'longtext'
     },
     terms: {
       type: 'longtext'
@@ -38,7 +37,8 @@ module.exports = {
       type: 'string'
     },
     save: {
-      type: 'float'
+      type: 'float',
+      defaultsTo: 0
     },
     products: {
       collection: 'product',

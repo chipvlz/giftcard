@@ -119,11 +119,10 @@
 
 </div>
 
-<div class="container text-center col-brand"><a href="/giftcard"><h3> View All Brands</h3></a><hr>
+<div class="container col-brand"><a href="/giftcard"><h3 class="text-center"> All Gift Card Brands</h3></a><hr>
 
-  <div class="carousel slide multi-slide" data-interval="false" id="myCarousel1">
+  <div class="carousel slide multi-slide visible-xs" data-interval="false" id="myCarousel1">
     <div class="carousel-inner">
-
       <% _.each(foundCard, function(card) { %>
       <div class="item">
         <div class="col-xs-4 col-sm-2 col-md-2">
@@ -138,7 +137,19 @@
     <a class="left carousel-control" href="#myCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
     <a class="right carousel-control" href="#myCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
   </div>
+
+  <div class="container visible-sm visible-md visible-lg">
+    <% _.each(foundCard, function(card) { %>
+    <div class="col-md-2 col-sm-3">
+      <a href="/giftcard/view/<%= card.id %>"><img src="<%= card.thumbnail %>" class="img-responsive"></a>
+      <div class="caption">
+        <p>Save up to <span class="pull-right"><%= card.save %>%</span></p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
 </div>
+
 
 
 <div class="col-3-step container text-center">
