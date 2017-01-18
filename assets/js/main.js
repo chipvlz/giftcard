@@ -304,6 +304,7 @@ $(function() {
       $('div.result-live-search').html('<a href="/giftcard/view/'+recieve.msg[i].id+'">' +
         '<div style="width:'+inputKeyWidth+'px" class="result-item">' +
         '<img src="'+recieve.msg[i].thumbnail+'" width="80"><h4>'+recieve.msg[i].name+'</h4>' +
+        '<span class="pull-right">Save up to '+recieve.msg[i].save+'%</span>' +
         '</div></a>')
     }
     }

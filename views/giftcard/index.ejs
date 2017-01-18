@@ -6,11 +6,11 @@
     <!--&lt;!&ndash;<h1>My Portfolio</h1>&ndash;&gt;-->
     <!--&lt;!&ndash;<p>Some text that represents "Me"...</p>&ndash;&gt;-->
   <!--</div>-->
-<!--</div>-->
+  <!--</div>-->
 <div class="col-sm-3 col-md-3">
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
-      <div class="panel-heading panel-green">
+      <div class="panel-heading">
         <h4 class="panel-title">Filter by price
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
             <i class="fa fa-chevron-circle-down pull-right"></i></a>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading panel-green">
+      <div class="panel-heading">
         <h4 class="panel-title">Card type
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
             <i class="fa fa-chevron-circle-down pull-right"></i></a>
@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading panel-green">
+      <div class="panel-heading">
         <h4 class="panel-title">Category
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
             <i class="fa fa-chevron-circle-down pull-right"></i></a>
@@ -64,7 +64,7 @@
 
 
 </div>
-  <div class="col-sm-9 col-md-9" style="background:#fff">
+  <div class="col-sm-9 col-md-9" style="background:#fff;padding:20px 0;">
         <div class="row col-title">
           <h3>Buy Gift Cards <a href=""><i class="fa fa-info-circle"></i></a>
             <div class="btn-group pull-right">
@@ -84,9 +84,10 @@
           <% if (foundCard.length > 0) { %>
           <% _.each(foundCard, function(card) { %>
           <a href="/giftcard/view/<%= card.id %>">
-          <div class="col-md-3 col-sm-4 col-xs-6">
-            <img src="<%= card.thumbnail %>" class="img-responsive" style="width:100%" alt="Image">
-            <p><%= card.name %> Gift Cards</p>
+          <div class="col-onebrand col-md-3 col-sm-4 col-xs-6">
+            <img src="<%= card.thumbnail %>" class="img-responsive" style="width:100%">
+            <p class="namegc"><%= card.name %> Gift Cards</p>
+            <p class="savemoney">Save up to <%= card.save %>%</p>
           </div>
           </a>
           <% }) } %>
