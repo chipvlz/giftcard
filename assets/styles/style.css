@@ -15,6 +15,12 @@ a {
 .navbar-default {
   background:rgba(255, 255, 255, 0.90);
 }
+.navbar-default .navbar-nav > li > a {
+  color: #505050;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 30px;
+}
 #cartModal .modal-dialog {
   position: absolute !important;
   right: 30px;
@@ -463,10 +469,7 @@ p.savemoney {
     margin-left: auto;
     margin-right:auto;
   }
-  #myNavbar , .navbar-default{
-    background: #455a9d;
-    border:none;
-  }
+
 
   /*.col-md-2 {*/
     /*display:none;*/
@@ -490,6 +493,18 @@ p.savemoney {
   margin-left:260px;
 }
 @media (max-width: 768px) {
+  #myNavbar , .navbar-default{
+    background: #455a9d;
+    border:none;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color:#d8d8d8;
+    font-size:12px;
+    font-weight:200;
+    padding:10px;
+  }
+
   a.navbar-brand, .navbar-nav > li > a {
     /*line-height: 30px;*/
     border-bottom: 1px solid #4b5f9c;
@@ -540,12 +555,7 @@ p.savemoney {
   padding: 0 0 10px 0;
   margin-bottom: 0;
 }
-.navbar-default .navbar-nav > li > a {
-  color:#d8d8d8;
-  font-size:12px;
-  font-weight:200;
-  line-height: 50px;
-}
+
 .alert-dismissable .close {
   right:0;
 }
