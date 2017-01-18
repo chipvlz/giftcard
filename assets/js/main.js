@@ -285,6 +285,10 @@ $(function() {
       $('input#type-'+checkCardType).attr('checked','checked')
     }
 
+    if (checkPath.match(/user\/sell/gi)) {
+      $('#giftcard').val($('#giftcard').val().replace('%20',' '));
+    }
+
     $('a.user-list').click(function(){
       $(this).find('i.fa-chevron-right').toggleClass('rotated');
     });

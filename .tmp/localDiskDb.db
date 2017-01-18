@@ -6,31 +6,90 @@
       {
         "name": "Best Buy",
         "type": 4,
+        "save": 7.7,
         "filter_price": ",d25under,d25d50",
         "description": "Buy Best Buy gift cards online at a discount from Raise to get a great deal on electronics at your nearest Best Buy location or online at Bestbuy.com. Best Buy gift cards do not expire, and you can save big on your favorite gadgets when you purchase a Best Buy gift card for less than face value. When you buy discount Best Buy gift cards from Raise, you get free shipping and a 100% member satisfaction guarantee. Use Raise to buy Best Buy gift cards online at a discount so you can spend less and save more on electronics, computers and cameras.\r\n\r\nFounded in 1966, Best Buy is now one of the world’s leading electronics retailers with more than 1,400 locations and 170,000 employees. It is the 11th largest retail website offering the latest up-to-date technology. Along with employee expertise and innovative services like the Geek Squad, Best Buy has carved out a permanent place for itself within the highly competitive electronics industry. You’ll find a large selection of consumer electronics like PC’s, cameras, MP3’s, mobile devices, tablets and more. Fulfill all your needs for back-to-school or holiday gifts, and upgrade your home or workplace when you shop at this electronics retailer.",
         "detail": "<h3><strong>Delivery &amp; Redemption</strong></h3>\r\n\r\n<ul>\r\n<li>This eGift card can be redeemed online only.</li>\r\n<li>Most eGift cards are delivered to your Raise account instantly, but please allow up to 24 hours.</li>\r\n<li>Only 10 gift cards can be redeemed per transaction.</li>\r\n</ul>\r\n\r\n<h3><strong>Card Details</strong></h3>\r\n\r\n<ul>\r\n<li>Free delivery</li>\r\n<li>Gift cards cannot be used to purchase other gift cards</li>\r\n</ul>\r\n",
         "term": "<p><strong>Example.com</strong></p>\r\n\r\n<p>For questions about redeeming gift cards, please visit our&nbsp;<a href=\"https://example.com\">Help Center</a>.</p>\r\n\r\n<p>All trademarks not owned by Raise that appear on this site are the property of their respective owners. Raise is not the issuer of any of the gift cards or other closed-loop products on Raise and is not related to any merchant whose trademark and gift cards appear on Raise for sale. All gift cards sold on our marketplace are backed by our 1 Year Money-Back Guarantee.&nbsp;<a href=\"https://example.com\" target=\"_blank\">View full Raise Terms of Use.</a></p>\r\n\r\n<p><strong>Best Buy</strong></p>\r\n\r\n<p>Redeemable in U.S. or Puerto Rice online at BestBuy.com where available for merchandise or services including Magnolia Home Theater and Geek Squad, excluding prepaid open loop cards and items on Marketplace. No expiration date, no fees. Not redeemable for cash. Lost, stolen or damaged cards replaced only if provide proof of purchase to extent of remaining card balance. Not credit or debit card. Not valid as payment on Best Buy credit card. Check gift card balance at U.S. Best Buy location, online at BestBuy.com or call 1-888-716-7994. Must have card number available.</p>\r\n",
         "thumbnail": "/images/thumbnail/58a881ea-aa87-4739-b83c-b74a039845bd.png",
         "createdAt": "2017-01-18T01:01:39.487Z",
-        "updatedAt": "2017-01-18T01:01:39.487Z",
+        "updatedAt": "2017-01-18T02:42:42.518Z",
         "id": 13
       },
       {
         "name": "iTunes",
         "type": 4,
+        "save": 6.7,
         "filter_price": ",d25under,d25d50",
         "description": "The Apple iTunes Store offers music, movies, audiobooks, music videos, games, iPhone apps, iTunes U and free podcasts. The iTunes store also offers free iTunes software for playing and organizing digital music and video files on Apple and PC computers, iPods, iPhones and iPads. Buy iTunes gift cards to save on the latest music and movie trends. iTunes gift cards are great gifts for anyone who loves music, movies or books. DANS",
         "detail": "<h3><strong>Delivery &amp; Redemption</strong></h3>\r\n\r\n<ul>\r\n<li>This eGift card can be redeemed online only.</li>\r\n<li>Most eGift cards are delivered to your Raise account instantly, but please allow up to 24 hours.</li>\r\n</ul>\r\n\r\n<h3><strong>Card Details</strong></h3>\r\n\r\n<ul>\r\n<li>Free delivery</li>\r\n<li>Gift cards cannot be used to purchase other gift cards</li>\r\n</ul>\r\n",
         "term": "<p><strong>Example.com</strong></p>\r\n\r\n<p>For questions about redeeming gift cards, please visit our&nbsp;<a href=\"https://example.com\">Help Center</a>.</p>\r\n\r\n<p>All trademarks not owned by Example.com that appear on this site are the property of their respective owners. Example.com is not the issuer of any of the gift cards or other closed-loop products on Example.com and is not related to any merchant whose trademark and gift cards appear on Example.com for sale. All gift cards sold on our marketplace are backed by our 1 Year Money-Back Guarantee.&nbsp;<a href=\"https://example.com\" target=\"_blank\">View full Raise Terms of Use.</a></p>\r\n\r\n<p><strong>iTunes</strong></p>\r\n\r\n<p>Valid only on iTunes Store for U.S. Requires iTunes account and prior acceptance of license and usage terms. To open an account you must be 13+ and in the U.S. Compatible software, hardware, and Internet access required. Not redeemable for cash, no refunds or exchanges (except as required by law). Card may not be used to purchase any other merchandise, allowances or iTunes gifting. Data collection and use subject to Apple Customer Privacy Policy, see www.apple.com/privacy, unless stated otherwise. Risk of loss and title for card passes to purchaser on transfer. Cards are issued and managed by Apple Value Services, LLC (Issuer). Neither Apple nor Issuer is responsible for any loss or damage resulting from lost or stolen cards or use without permission. Apple and its licensees, affiliates, and licensors make no warranties, express or implied, with respect to card or the iTunes Store and disclaim any warranty to the fullest extent available. These limitations may not apply to you. Void where prohibited. Not for resale. Subject to full terms and conditions, see www.apple.com/legal/itunes/us/gifts.html. Content and pricing subject to availability at the time of actual download. Content purchased from the iTunes Store is for personal lawful use only. Don&rsquo;t steal music. &copy;2014 Apple Inc. All rights reserved.</p>\r\n",
         "thumbnail": "/images/thumbnail/89deb62a-1a77-4150-ad92-af9466291e05.png",
         "createdAt": "2017-01-18T01:03:29.998Z",
-        "updatedAt": "2017-01-18T01:03:29.998Z",
+        "updatedAt": "2017-01-18T02:48:12.375Z",
         "id": 14
       }
     ],
     "invoice": [],
     "payer": [],
-    "product": [],
+    "product": [
+      {
+        "owner": 26,
+        "cid": 14,
+        "name": "iTunes",
+        "code": "0987654321",
+        "value": 12,
+        "price": 11.2,
+        "save": 6.7,
+        "quantity": 1,
+        "status": "Active",
+        "createdAt": "2017-01-18T02:04:05.846Z",
+        "updatedAt": "2017-01-18T02:04:05.846Z",
+        "id": 5
+      },
+      {
+        "owner": 26,
+        "cid": 13,
+        "name": "Best Buy",
+        "code": "1234567890",
+        "value": 13,
+        "price": 12,
+        "save": 7.7,
+        "quantity": 1,
+        "status": "Active",
+        "createdAt": "2017-01-18T02:42:42.575Z",
+        "updatedAt": "2017-01-18T02:42:42.575Z",
+        "id": 6
+      },
+      {
+        "owner": 26,
+        "cid": 14,
+        "name": "iTunes",
+        "code": "111222333444555",
+        "value": 15,
+        "price": 14,
+        "save": 6.7,
+        "quantity": 1,
+        "status": "Active",
+        "createdAt": "2017-01-18T02:48:12.377Z",
+        "updatedAt": "2017-01-18T02:48:12.377Z",
+        "id": 7
+      },
+      {
+        "owner": 26,
+        "cid": 13,
+        "name": "Best Buy",
+        "code": "555999888555",
+        "value": 22,
+        "price": 21.8,
+        "save": 0.9,
+        "quantity": 1,
+        "status": "Active",
+        "createdAt": "2017-01-18T02:50:40.458Z",
+        "updatedAt": "2017-01-18T02:50:40.458Z",
+        "id": 8
+      }
+    ],
     "type": [
       {
         "name": "Egift",
@@ -459,7 +518,7 @@
       "id": 14
     },
     "product": {
-      "id": 4
+      "id": 8
     },
     "type": {
       "id": 6

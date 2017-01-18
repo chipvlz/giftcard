@@ -1,36 +1,70 @@
 <%- partial ('../common/navbar.ejs') %>
 <div class="container-fluid" id="giftcard-page">
-<div class="jumbotron">
-  <div class="container text-center">
-    <!--<h1>My Portfolio</h1>-->
-    <!--<p>Some text that represents "Me"...</p>-->
+
+<!--<div class="jumbotron">-->
+  <!--<div class="container text-center">-->
+    <!--&lt;!&ndash;<h1>My Portfolio</h1>&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>Some text that represents "Me"...</p>&ndash;&gt;-->
+  <!--</div>-->
+<!--</div>-->
+<div class="col-sm-3 col-md-3">
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading panel-green">
+        <h4 class="panel-title">Filter by price
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+            <i class="fa fa-chevron-circle-down pull-right"></i></a>
+
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <ul class="list-group">
+            <a href="/giftcard/filter?by=price&price=d25under"><li class="list-group-item">$25 and Under</li></a>
+            <a href="/giftcard/filter?by=price&price=d25d50"><li class="list-group-item">$25 - $50</li></a>
+            <a href="/giftcard/filter?by=price&price=d50d100"><li class="list-group-item">$50 - $100</li></a>
+            <a href="/giftcard/filter?by=price&price=d100d250"><li class="list-group-item">$100 - $250</li></a>
+            <a href="/giftcard/filter?by=price&price=d250d500"><li class="list-group-item">$250 - $500</li></a>
+            <a href="/giftcard/filter?by=price&price=d500plus"><li class="list-group-item">$500+</li></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading panel-green">
+        <h4 class="panel-title">Card type
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+            <i class="fa fa-chevron-circle-down pull-right"></i></a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ul class="list-group">
+            <% _.each(foundType, function(type) { %>
+            <a href="/giftcard/filter?by=type&type=<%= type.id %>"><li class="list-group-item"><%= type.name %></li></a>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading panel-green">
+        <h4 class="panel-title">Category
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+            <i class="fa fa-chevron-circle-down pull-right"></i></a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"></div>
+      </div>
+    </div>
   </div>
-</div>
-<div class="col-sm-2 col-md-2">
-  <ul class="list-group">
-    <li class="list-group-item list-title"> <strong>Price</strong></li><hr>
-    <a href="/giftcard/filter?by=price&price=d25under"><li class="list-group-item">$25 and Under</li></a>
-    <a href="/giftcard/filter?by=price&price=d25d50"><li class="list-group-item">$25 - $50</li></a>
-    <a href="/giftcard/filter?by=price&price=d50d100"><li class="list-group-item">$50 - $100</li></a>
-    <a href="/giftcard/filter?by=price&price=d100d250"><li class="list-group-item">$100 - $250</li></a>
-    <a href="/giftcard/filter?by=price&price=d250d500"><li class="list-group-item">$250 - $500</li></a>
-    <a href="/giftcard/filter?by=price&price=d500plus"><li class="list-group-item">$500+</li></a>
-
-
-  </ul>
-  <ul class="list-group">
-    <li class="list-group-item list-title"> <strong>Card Type</strong></li><hr>
-    <% _.each(foundType, function(type) { %>
-    <a href="/giftcard/filter?by=type&type=<%= type.id %>"><li class="list-group-item"><%= type.name %></li></a>
-    <% }) %>
 
 
 
-
-  </ul>
 
 </div>
-  <div class="col-sm-10 col-md-10">
+  <div class="col-sm-9 col-md-9" style="background:#fff">
         <div class="row col-title">
           <h3>Buy Gift Cards <a href=""><i class="fa fa-info-circle"></i></a>
             <div class="btn-group pull-right">
