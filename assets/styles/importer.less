@@ -1,24 +1,7 @@
-/**
- * importer.less
- *
- * By default, new Sails projects are configured to compile this file
- * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and
- * included automatically unless they are imported below.
- *
- * The LESS files imported below are compiled and included in the order
- * they are listed.  Mixins, variables, etc. should be imported first
- * so that they can be accessed by subsequent LESS stylesheets.
- *
- * (Just like the rest of the asset pipeline bundled in Sails, you can
- * always omit, customize, or replace this behavior with SASS, SCSS,
- * or any other Grunt tasks you like.)
- */
+
 @import '../bootstrap/less/bootstrap';
 // Set font path
 @icon-font-path:          "../bootstrap/fonts/";
-
-
-
 // For example:
 //
 // @import 'variables/colors.less';
@@ -31,3 +14,224 @@
 // @import 'pages/signup.less';
 //
 // etc.
+@base-color:#e54f5b;
+@margin-navbar-height:80px;
+@fadeEffect:all 0.6s;
+
+//Homepage
+.col-banner {
+  margin-top: @margin-navbar-height;
+  min-height:400px;
+  background-image: url('../images/ecom-bg.png');
+  background-size:cover;
+  .banner-detail {
+    padding:90px;
+  }
+}
+
+.col-search {
+  padding:15px;
+  background:#f5f5f5;
+  .input-key {
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  input {
+    height:50px;
+  }
+  span {
+    color: #909090;
+    font-weight: 300;
+    padding: 10px;
+    .fa {
+      padding: 0 10px;
+    }
+  }
+}
+
+.col-brand {
+  background: #fff;
+  padding:0px 0px 30px;
+  .img-rounded {
+    border-radius:10px;
+  }
+  h3 {
+    padding:15px;
+  }
+  .caption {
+    font-size: 12px;
+    line-height:20px;
+    margin-top:10px;
+  }
+  a.btn span {
+    font-size:12px;
+    font-weight: 200;
+  }
+  .one-card {
+    padding:0 18px;
+    font-weight: 200;
+    color: #6f6f6f;
+    margin-bottom: 30px;
+    opacity: 1;
+    -webkit-transition: @fadeEffect;
+    transition: @fadeEffect;
+    &:hover {
+      opacity: 0.9;
+      color:@base-color;
+    }
+    span {
+      font-size: 17px;
+      color: @base-color;
+      font-weight: 500;
+    }
+  }
+}
+
+//Gift card Page
+
+#giftcard-page {
+  margin-top:90px;
+  max-width: 1200px;
+  .jumbotron {
+    margin-top:60px;
+    min-height: 300px;
+    background-image:url('https://d3hu3x7rvgjffo.cloudfront.net/marketing/buy-banner/buy-page_hero.jpg');
+  }
+  #payment-success {
+    margin-top:90px;
+  }
+  .list-group hr {
+    margin:7px 0 0px 0;
+  }
+  .col-md-10 {
+    border-left:1px solid #f1f1f1;
+  }
+}
+
+
+//Footer
+
+footer {
+  .container {
+    padding: 10px;
+    background: #e4e4e4;
+    color: #636363;
+    p {
+      color: #848484;
+      font-weight: 200;
+    }
+  }
+  img {
+    width: 40px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    &:hover {
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+    }
+  }
+}
+.f-copy {
+  border-top: 1px solid #d6d6d6;
+  padding-top: 10px;
+}
+
+
+.aright {
+  display:none !important;
+}
+
+
+.main-content {
+  margin-top:10px;
+  padding-right:20px;
+  margin-left:260px;
+}
+//@Media min/max-width
+
+@media (min-width: 1200px) {
+  .container {
+    width:100%;
+  }
+  .col-brand {
+    padding:0px 80px 30px;
+  }
+}
+@media (max-width: 1065px) {
+  #giftcard-page li.list-group-item {
+    font-size:14px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .carousel-caption p {
+    margin-bottom: 20px !important;
+    font-size: 16px;
+  }
+  .input-group-addon:last-child {
+    display:none;
+  }
+  .col-search .input-group {
+    width:90%;
+  }
+  .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    min-height:300px;
+    width:auto;
+  }
+  .search-input {
+    width: 200px;
+    margin-left: auto;
+    margin-right:auto;
+  }
+  #giftcard-page .jumbotron {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #myNavbar , .navbar-default{
+    background: #455a9d;
+    border:none;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color:#d8d8d8;
+    font-size:12px;
+    font-weight:200;
+    padding:10px;
+  }
+
+  a.navbar-brand, .navbar-nav > li > a {
+    /*line-height: 30px;*/
+    border-bottom: 1px solid #4b5f9c;
+  }
+  .btn-warning {
+    margin: 0 10px;
+  }
+  .btn .badge {
+    position: relative!important;
+    margin-left: 5px;
+    top:-1px!important;
+  }
+
+  .sidenav {
+    margin-left:-240px;
+  }
+  .main-content {
+    margin-left:20px;
+  }
+  .menu-active {
+    margin-left: 0px !important;
+  }
+  .aright {
+    display:inline-block !important;
+  }
+  #giftcard-view , .col-sm-12{
+    padding:0;
+  }
+  .img-item .col-sm-4 {
+    padding:20px;
+  }
+}

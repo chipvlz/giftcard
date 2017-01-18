@@ -166,8 +166,10 @@ $(function() {
     $('.col-search input').keyup(function(){
         var putvalue = $(this).val();
         if (putvalue.length > 0 ) {
+
           socket.post('/giftcard/search',{key:putvalue});
         } else if (putvalue.length == 0) {
+          
           $('div.result-live-search').html('<div class="sr-only"></div>')
         }
     });
@@ -297,11 +299,14 @@ $(function() {
   socket.on('live/search',function(recieve){
     var inputKeyWidth = $('.col-search div.input-key').width();
     if (recieve.msg.length == 0) {
-      $('div.result-live-search').html('<div class="sr-only"></div>')
+
+      // $('div.result-live-search').html('<div class="sr-only"></div>')
     } else {
+
+      $('div.result-live-search').html('<div class="show-result-search" style="position:absolute"></div>');
     for (i=0;i<recieve.msg.length;i++){
-      console.log(recieve.msg[i].name);
-      $('div.result-live-search').html('<a href="/giftcard/view/'+recieve.msg[i].id+'">' +
+
+      $('div.result-live-search .show-result-search').append('<a href="/giftcard/view/'+recieve.msg[i].id+'">' +
         '<div style="width:'+inputKeyWidth+'px" class="result-item">' +
         '<img src="'+recieve.msg[i].thumbnail+'" width="80"><h4>'+recieve.msg[i].name+'</h4>' +
         '<span class="pull-right">Save up to '+recieve.msg[i].save+'%</span>' +

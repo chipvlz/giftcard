@@ -45,10 +45,10 @@
 
 
 <div class="container col-banner">
-  <div class="banner-detail col-md-6 col-sm-10">
+  <div class="banner-detail col-md-8 col-lg-6">
     <h2>Browse our unbeatable selection of discounted gift cards.</h2>
     <h4>Free delivery on all gift cards.</h4>
-    <a href="/giftcard" type="button" class="btn btn-info"><i class="fa fa-shopping-cart"></i> BUY NOW</a>
+    <a href="/giftcard" type="button" class="btn btn-default"><i class="fa fa-shopping-cart"></i> BUY NOW</a>
   </div>
 </div>
 <!--<div id="myCarousel" class="carousel slide" data-ride="carousel">-->
@@ -119,34 +119,37 @@
 
 </div>
 
-<div class="container col-brand"><a href="/giftcard"><h3 class="text-center"> All Gift Card Brands</h3></a><hr>
+<div class="container-fluid col-brand"><h3 class="text-center"> Most Popular Gift Card Brands</h3><hr>
 
-  <div class="carousel slide multi-slide visible-xs" data-interval="false" id="myCarousel1">
-    <div class="carousel-inner">
-      <% _.each(foundCard, function(card) { %>
-      <div class="item">
-        <div class="col-xs-4 col-sm-2 col-md-2">
-          <a href="/giftcard/view/<%= card.id %>"><img src="<%= card.thumbnail %>" class="img-responsive"></a>
-          <div class="caption">
-            <p><%= card.name%></p>
-          </div>
-        </div>
-      </div>
-      <% }) %>
-    </div>
-    <a class="left carousel-control" href="#myCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-    <a class="right carousel-control" href="#myCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-  </div>
+  <!--<div class="carousel slide multi-slide visible-xs" data-interval="false" id="myCarousel1">-->
+    <!--<div class="carousel-inner">-->
+      <!--each function-->
+      <!--<div class="item">-->
+        <!--<div class="one-card col-xs-4 col-sm-2 col-md-2">-->
+          <!--<a href="/giftcard/view/card id"><img src="card thumbnail" class="img-rounded img-responsive"></a>-->
+          <!--<div class="caption">-->
+            <!--<p>card name</p>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--close each functiono-->
+    <!--</div>-->
+    <!--<a class="left carousel-control" href="#myCarousel1" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>-->
+    <!--<a class="right carousel-control" href="#myCarousel1" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>-->
+  <!--</div>-->
 
-  <div class="container visible-sm visible-md visible-lg">
+  <div class="container">
     <% _.each(foundCard, function(card) { %>
-    <div class="col-md-2 col-sm-3">
-      <a href="/giftcard/view/<%= card.id %>"><img src="<%= card.thumbnail %>" class="img-responsive"></a>
+    <div class="one-card col-md-2 col-sm-3 col-xs-4">
+      <a href="/giftcard/view/<%= card.id %>"><img src="<%= card.thumbnail %>" class="img-rounded img-responsive"></a>
       <div class="caption">
         <p>Save up to <span class="pull-right"><%= card.save %>%</span></p>
       </div>
     </div>
     <% }) %>
+  </div>
+  <div class="text-center">
+  <a href="/giftcard" type="button" class="btn btn-lg btn-default"><span>BROWSE ALL BRANDS</span></a>
   </div>
 </div>
 
