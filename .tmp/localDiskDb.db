@@ -2,20 +2,7 @@
   "data": {
     "belong": [],
     "cart": [
-      {
-        "date": "Wed Jan 18 2017 09:11:46 GMT-0800 (PST)",
-        "pid": 8,
-        "sid": "37SrixQDIhcJNgRsLKwMVWiTYJJkBI0N",
-        "image": "/images/thumbnail/58a881ea-aa87-4739-b83c-b74a039845bd.png",
-        "name": "Best Buy",
-        "type": "Egift",
-        "value": 22,
-        "save": 0.9,
-        "price": 21.8,
-        "createdAt": "2017-01-18T17:11:46.840Z",
-        "updatedAt": "2017-01-18T17:11:46.840Z",
-        "id": 124
-      }
+
     ],
     "giftcard": [
       {
@@ -45,7 +32,9 @@
         "id": 14
       }
     ],
-    "invoice": [],
+    "invoice": [
+
+    ],
     "payer": [],
     "product": [
       {
@@ -105,6 +94,7 @@
         "id": 8
       }
     ],
+    "promote": [],
     "type": [
       {
         "name": "Egift",
@@ -415,6 +405,41 @@
         "type": "datetime"
       }
     },
+    "promote": {
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "content": {
+        "type": "string"
+      },
+      "txt_button": {
+        "type": "string"
+      },
+      "linkto": {
+        "type": "string"
+      },
+      "bg_color": {
+        "type": "string"
+      },
+      "bg_img": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
     "type": {
       "name": {
         "type": "string"
@@ -542,14 +567,15 @@
       "id": 2
     },
     "cart": {
-      "id": 124
+      "id": 125
     },
     "invoice": {
-      "id": 22
+      "id": 23
     },
     "payer": {},
     "belong": {
       "id": 2
-    }
+    },
+    "promote": {}
   }
 }
