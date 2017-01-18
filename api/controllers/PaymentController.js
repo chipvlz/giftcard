@@ -94,10 +94,10 @@ module.exports = {
         throw error;
       }
       else {
-        console.log('finding payment value',payment.transactions[0].related_resources[0].sale.transaction_fee.value)
+        // console.log('finding payment value',payment.transactions[0].related_resources[0].sale.transaction_fee.value)
         //update new record
         Invoice.update({invoice:payment.id},{
-          // fee: payment.transactions[0].related_resources[0].transaction_fee.value,
+          fee: payment.transactions[0].related_resources[0].sale.transaction_fee.value,
           state: payment.state,
           payer: payment.payer.payer_info.payer_id,
           status: 'Complete'
@@ -130,6 +130,7 @@ module.exports = {
         // Each item -> payment.transactions[0].item_list.items
         for (var i=0;i<itemsList.length;i++) {
           let findId = itemsList[i].sku;
+          let transactionFee = parseFloat(payment.transactions[0].related_resources[0].sale.transaction_fee.value)/3;
           let findPrice = itemsList[i].price;
 
           Cart.destroy({pid:findId}).exec(function(err){
@@ -154,7 +155,7 @@ module.exports = {
             if (foundProduct) {
               User.findOne({id:foundProduct.owner}).exec(function(err,foundUser){
                 if (foundUser) {
-                  let newbalance = parseFloat(foundUser.balance)+parseFloat(findPrice);
+                  let newbalance = parseFloat(foundUser.balance)+parseFloat(findPrice)-transactionFee;
                   User.update({id:foundProduct.owner},{balance:newbalance}).exec(function(err,result){
                     console.log(result);
                     sails.sockets.blast('update/balance',{msg:result})
