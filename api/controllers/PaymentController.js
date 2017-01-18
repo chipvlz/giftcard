@@ -94,9 +94,10 @@ module.exports = {
         throw error;
       }
       else {
+        console.log('finding payment value',payment.transactions[0].related_resources[0])
         //update new record
         Invoice.update({invoice:payment.id},{
-          fee: payment.transactions[0].related_resources[0].transaction_fee.value,
+          // fee: payment.transactions[0].related_resources[0].transaction_fee.value,
           state: payment.state,
           payer: payment.payer.payer_info.payer_id,
           status: 'Complete'
