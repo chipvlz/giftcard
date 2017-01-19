@@ -14,10 +14,42 @@
 // @import 'pages/signup.less';
 //
 // etc.
+@margin-navbar-height:80px;
+@fadeEffect:all 0.6s;
+@base-color:#e54f5b;
+@greenColor:#5cb85c;
+@blueColor:#337ab7;
+@yellowColor:#f0ad4e;
+@jadeColor:#4CCBD2;
+@base-border:1px solid #e8e8e8;
+
+/* Mixin */
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.marginAuto {
+  margin-left:auto;
+  margin-right:auto;
+}
+.button-color (@color:#e54f5b) {
+  color: @color;
+  background-color: #fff;
+  border-color: @color;
+  -webkit-transition: @fadeEffect;
+  transition: @fadeEffect;
+  &:hover {
+    color:#fff ;
+    background-color: @color;
+  }
+}
+
 html {
   min-height:100%;
 }
 body {
+  font-family:'Roboto', sans-serif;
   background:#fff !important;
   letter-spacing: 0.8px;
 }
@@ -34,122 +66,126 @@ div.se-pre-con {
   height: 100%;
   background: url(http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_3.gif) center no-repeat rgba(255, 255, 255, 0.85);
 }
-@margin-navbar-height:80px;
-@fadeEffect:all 0.6s;
-@base-color:#e54f5b;
-@greenColor:#5cb85c;
-@blueColor:#337ab7;
-@yellowColor:#f0ad4e;
-@jadeColor:#4CCBD2;
-@base-border:1px solid #e8e8e8;
 
 a.add-to-cart , a.view-cart {
-  color: @yellowColor;
-  background-color: #fff;
-  border-color: @yellowColor;
-  -webkit-transition: @fadeEffect;
-  transition: @fadeEffect;
-  &:hover {
-    color:#fff ;
-    background-color: @yellowColor;
-  }
+  .button-color(@yellowColor);
 }
 a.btn-user {
-    color: @jadeColor;
-    background-color: #fff;
-    border-color: @jadeColor;
-    -webkit-transition: @fadeEffect;
-    transition: @fadeEffect;
-    &:hover {
-      color:#fff ;
-      background-color: @jadeColor;
-    }
-  &:focus {
-    color:#fff ;
-    background-color: @jadeColor;
-  }
+  .button-color(@jadeColor);
 }
 a.btn-checkout {
   width:100%;
-  color: @jadeColor;
-  background-color: #fff;
-  border-color: @jadeColor;
-  -webkit-transition: @fadeEffect;
-  transition: @fadeEffect;
   margin-bottom: 25px;
-  &:hover {
-    color:#fff ;
-    background-color: @jadeColor;
-  }
+  .button-color(@jadeColor);
 }
 
   //Homepage
-.col-banner {
-  margin-top: @margin-navbar-height;
-  min-height:400px;
-  background-image: url('../images/ecom-bg.png');
-  background-size:cover;
-  .banner-detail {
-    padding:90px;
+#homepage {
+  hr {
+    padding:20px;
+    max-width:400px;
   }
-}
-.col-search {
-  padding:15px;
-  background:#f5f5f5;
-  .input-key {
-    max-width:600px;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  input {
-    height:50px;
-  }
-  span {
-    color: #909090;
-    font-weight: 300;
-    padding: 10px;
-    .fa {
-      padding: 0 10px;
+  .col-banner {
+    margin-top: @margin-navbar-height;
+    min-height:400px;
+    background-image: url('../images/ecom-bg.png');
+    background-size:cover;
+    .banner-detail {
+      padding:90px;
     }
   }
-}
-.col-brand {
-  background: #fff;
-  padding:0px 0px 30px;
-  .img-rounded {
-    border-radius:10px;
-  }
-  h3 {
+  .col-search {
     padding:15px;
-  }
-  .caption {
-    font-size: 12px;
-    line-height:20px;
-    margin-top:10px;
-  }
-  a.btn span {
-    font-size:12px;
-    font-weight: 200;
-  }
-  .one-card {
-    padding:0 18px;
-    font-weight: 200;
-    color: #6f6f6f;
-    margin-bottom: 30px;
-    opacity: 1;
-    -webkit-transition: @fadeEffect;
-    transition: @fadeEffect;
-    &:hover {
-      opacity: 0.9;
-      color:@base-color;
+    background:#f5f5f5;
+    .input-key {
+      max-width:600px;
+      .marginAuto
+    }
+    input {
+      height:50px;
     }
     span {
-      font-size: 17px;
-      color: @base-color;
-      font-weight: 500;
+      color: #909090;
+      font-weight: 300;
+      padding: 10px;
+      .fa {
+        padding: 0 10px;
+      }
+    }
+  }
+  .col-brand {
+    background: #fff;
+    padding:0 0 30px;
+    a.btn {
+      .button-color(@base-color);
+      span {
+        font-size:12px;
+        font-weight: 200;
+      }
+    }
+    .img-rounded {
+      border-radius:10px;
+    }
+    .caption {
+      font-size: 12px;
+      line-height:20px;
+      margin-top:10px;
+    }
+    .one-card {
+      padding:0 18px;
+      font-weight: 200;
+      color: #6f6f6f;
+      margin-bottom: 30px;
+      opacity: 1;
+      -webkit-transition: @fadeEffect;
+      transition: @fadeEffect;
+      &:hover {
+        opacity: 0.9;
+        color:@base-color;
+      }
+      span {
+        font-size: 17px;
+        color: @base-color;
+        font-weight: 500;
+      }
+    }
+  }
+  .col-3-step {
+    color:@jadeColor;
+    background: #fff;
+    padding: 20px;
+    .img-item {
+      margin-top:-40px;
+      max-width: 900px;
+      .marginAuto
+    }
+  }
+  .col-guarantee {
+    padding:15px;
+    background:#f5f5f5;
+    .marginAuto;
+    .col-item {
+      max-width:1100px;
+      .marginAuto
+    }
+    div {
+      padding:0;
+    }
+    p {
+      font-size: 21px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      margin-top: -30px;
+    }
+    img {
+      margin-bottom:30px;
+    }
+    a {
+      color:@jadeColor;
     }
   }
 }
+
 
 //Gift card Page
 #giftcard-page {
@@ -168,6 +204,24 @@ a.btn-checkout {
   }
   .col-md-10 {
     border-left:@base-border;
+  }
+  .panel-default {
+    border:none;
+    .panel-heading {
+      color: @jadeColor !important;
+      background: none;
+    }
+  }
+  li.list-group-item {
+    border:1px solid #fff;
+    font-weight: 300;
+    height: 40px;
+    line-height: 20px;
+    margin-bottom: -1px !important;
+    border-radius: 0 !important;
+    &:hover {
+      border-left: 3px solid @base-color;
+    }
   }
 }
 
@@ -229,15 +283,7 @@ a.btn-checkout {
       font-weight: 200;
       margin-top:10px;
       a.remove-item {
-        color: @base-color;
-        background-color: #fff;
-        border-color: @base-color;
-        -webkit-transition: @fadeEffect;
-        transition: @fadeEffect;
-        &:hover {
-          color:#fff ;
-          background-color: @base-color;
-        }
+        .button-color(@base-color);
       }
     }
   }
@@ -347,8 +393,7 @@ footer {
   }
   .search-input {
     width: 200px;
-    margin-left: auto;
-    margin-right:auto;
+    .marginAuto
   }
   #giftcard-page .jumbotron {
     min-height: 0;

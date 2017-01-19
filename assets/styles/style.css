@@ -239,15 +239,7 @@ thead {
   line-height:40px;
 }
 
-li.list-group-item {
-  border-left:none;
-  border-right:none;
-  font-weight: 300;
-  height: 60px;
-  line-height: 40px;
-  margin-bottom: -1px !important;
-  border-radius: 0 !important;
-}
+
 .list-table {
   padding:0;
 }
@@ -272,7 +264,11 @@ td.card-image img {
   /*padding: 20px;*/
   /*background: #566cb3;*/
 /*}*/
-.col-brand a.btn , .banner-detail a.btn {
+.banner-detail a.btn:hover {
+  background: #fff;
+  color:#e54f5b;
+}
+.banner-detail a.btn {
   background: #e54f5b;
   border-color: #d43340;
   border-radius: 3px;
@@ -280,15 +276,6 @@ td.card-image img {
   -webkit-transition: all 0.5s; /* Safari */
   transition: all 0.5s;
 }
-.col-brand a.btn:hover , .banner-detail a.btn:hover {
-  background: #fff;
-  color:#e54f5b;
-}
-.col-brand hr {
-  max-width:400px;
-  /*border:1px solid #455a9d;*/
-}
-
 .img-item p {
   margin-top:20px;
 }
@@ -377,9 +364,6 @@ p.savemoney {
   padding:0 20px;
 }
 
-#accordion .panel-heading {
-  background:#455a9d;
-}
 #accordion .panel-body {
   padding:0;
 }
@@ -400,30 +384,7 @@ p.savemoney {
 .alert-dismissable .close {
   right:0;
 }
-.col-3-step {
-  color:#455a9d;
-  background: #fff;
-  padding: 20px;
-}
 
-.col-3-step .img-item {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.col-guarantee {
-  padding:15px;
-  background:#fff;
-}
-.col-guarantee .col-item {
-  max-width:1100px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.col-guarantee div {
-  padding:0;
-}
 
 #user-page .list-group-item,.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position:inherit;
