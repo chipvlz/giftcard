@@ -103,7 +103,7 @@
               <span style="float:left;width:100%" class="product-detail"><a data-toggle="collapse" data-target="#detail-<%= product.id %>" href="#">+Detail</a></span>
             </td>
             <td class="col-md-1">
-              <a class="add-to-cart btn btn-success" href="#">
+              <a class="add-to-cart btn" href="#">
                 <i class="fa fa-shopping-cart fa-lg"></i> Buy Now</a>
             </td>
           </tr>
@@ -135,14 +135,14 @@
         <div class="media">
           <span class="sr-only have-cart"><%= cart.pid %></span>
           <div class="media-left">
-            <img src="<%= cart.image %>" class="media-object" style="width:80px">
+            <img src="<%= cart.image %>" class="media-object img-rounded" style="width:65px">
           </div>
           <div class="media-body">
             <h5 class="media-heading"><%= cart.name %></h5>
-            <p><span class="badge"><%= cart.type %></span></p>
+            <p>$<%= cart.value %> - <%= cart.value %> off</p>
           </div>
           <div class="media-right">
-            <h5>$<%= cart.price %></h5>
+            <h4>$<%= cart.price %></h4>
           </div>
         </div>
         <% }) %>
@@ -154,9 +154,11 @@
       </div>
       <div class="modal-footer">
         <% if(foundCart.length > 0) { %>
-        <a href="/cart/view?sid=<%= foundCart[0].sid %>" type="button" class="view-cart btn btn-success">View Cart Detail</a>
-        <% } %>
+        <a href="/cart/view?sid=<%= foundCart[0].sid %>" type="button" class="view-cart btn">Checkout</a>
+        <span class="pull-right total-value">TOTAL <strong style="font-size:16px;"></strong></span>
+        <% } else { %>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <% } %>
 
       </div>
     </div>

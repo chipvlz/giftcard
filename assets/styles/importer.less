@@ -14,11 +14,28 @@
 // @import 'pages/signup.less';
 //
 // etc.
-@base-color:#e54f5b;
+
 @margin-navbar-height:80px;
 @fadeEffect:all 0.6s;
+@base-color:#e54f5b;
+@greenColor:#5cb85c;
+@blueColor:#337ab7;
+@yellowColor:#f0ad4e;
 
-//Homepage
+a.add-to-cart , a.view-cart {
+  color: @yellowColor;
+  background-color: #fff;
+  border-color: @yellowColor;
+  -webkit-transition: @fadeEffect;
+  transition: @fadeEffect;
+  &:hover {
+    color:#fff ;
+    background-color: @yellowColor;
+  }
+
+}
+
+  //Homepage
 .col-banner {
   margin-top: @margin-navbar-height;
   min-height:400px;
@@ -28,7 +45,6 @@
     padding:90px;
   }
 }
-
 .col-search {
   padding:15px;
   background:#f5f5f5;
@@ -49,7 +65,6 @@
     }
   }
 }
-
 .col-brand {
   background: #fff;
   padding:0px 0px 30px;
@@ -89,7 +104,6 @@
 }
 
 //Gift card Page
-
 #giftcard-page {
   margin-top:90px;
   max-width: 1200px;
@@ -109,9 +123,41 @@
   }
 }
 
-
+//gift card view page
+#giftcard-view {
+  table {
+    td , th {
+      text-align: center;
+    }
+    td.product-save {
+      color:@base-color;
+      font-weight: bold;
+    }
+  }
+}
+#cartModal {
+  .modal-body {
+    padding:0;
+    .media {
+      line-height: 10px;
+      margin: 0;
+      padding: 10px;
+      border-bottom: 1px solid #ececec;
+      p {
+        font-size: 12px;
+        font-weight: 200;
+        color:#585858;
+      }
+    }
+  }
+  .modal-footer {
+    line-height:32px;
+    padding: 10px;
+    text-align: left;
+    border-top: none;
+  }
+}
 //Footer
-
 footer {
   .container {
     padding: 10px;
@@ -137,11 +183,9 @@ footer {
   padding-top: 10px;
 }
 
-
 .aright {
   display:none !important;
 }
-
 
 .main-content {
   margin-top:10px;

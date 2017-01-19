@@ -169,7 +169,7 @@ $(function() {
 
           socket.post('/giftcard/search',{key:putvalue});
         } else if (putvalue.length == 0) {
-          
+
           $('div.result-live-search').html('<div class="sr-only"></div>')
         }
     });
@@ -181,6 +181,21 @@ $(function() {
         $('tr#product-'+productID+' a').unbind("click");
       }
     });
+
+    // var total_price = [];
+    // $('td.product-price').each(function(){
+    //   var oneprice = parseFloat($(this).text().replace('$',''));
+    //   total_price.push(oneprice);
+    // });
+    // var total = total_price.reduce((a,b) => a+b,0);
+    // $('div.total strong').text(total);
+    let totalItem = [];
+    $('#cartModal .media .media-right h4').each(function(){
+      let priceItem = parseFloat($(this).text().replace('$',''));
+      totalItem.push(priceItem);
+    })
+    var calTotal = totalItem.reduce((a,b) => a+b,0);
+    $('#cartModal .modal-footer span.total-value strong').html('$'+calTotal)
 
     $('td.giftcard-detail').each(function(){
       var $this = $(this);

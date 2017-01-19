@@ -28,45 +28,74 @@
     </div>
   </div>
   <% } %>
+
+  <div class="container">
+    <div class="col-sm-8">
+      <h2>Your Cart (2 Items)</h2>
+      <table class="table table-responsive table-hover">
+
+        <tbody>
+        <% _.each(foundCart, function(cart) { %>
+        <tr class="tr-cart" id="cart-<%= cart.id %>">
+          <td class="cart-id sr-only"><%= cart.id %></td>
+          <td class="product-id sr-only"><%= cart.pid %></td>
+          <td class="card-img col-md-1 hidden-xs"><img style="max-width:80px" src="<%= cart.image %>"></td>
+          <td class="card-name"><%= cart.name %></td>
+
+          <td class="card-type"><%= cart.type %></td>
+          <td class="product-value">$<%= cart.value %></td>
+          <td class="product-save col-md-3"><%= cart.save %>%</td>
+          <td class="product-price">$<%= cart.price %></td>
+          <td class="col-md-1">
+            <a class="remove-item btn btn-danger" href="#">
+              <i class="fa fa-trash-o fa-lg"></i> Remove</a>
+            <a class="sr-only reloading btn btn-warning" href="#">
+              <i class="fa fa-spinner fa-pulse"></i> Removing...</a>
+
+          </td>
+        </tr>
+        <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4" style="border:1px solid #ccc">
+      <h3>Summary</h3>
+      <table>
+        <tbody>
+        <tr>
+          <td>Subtotal</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Shipping</td>
+          <td></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td>Total</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Your savings</td>
+          <td></td>
+        </tr>
+        </tfoot>
+      </table>
+      <div class="text-center">
+        <button class="btn btn-default proceed-btn" ui-sref="checkOut" href="/checkout"><span class="icon-lock"></span> Proceed to checkout</button>
+      </div>
+    </div>
+  </div>
+
 <div class="panel panel-success">
   <div class="panel-heading panel-green"><i class="fa fa-shopping-cart fa-lg"></i> Your shopping cart</div>
   <div class="panel-body">
-    <table class="table table-responsive table-hover">
-      <thead>
-      <tr>
-        <th class="sr-only">ID</th>
-        <th class="hidden-xs">Image</th>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Value</th>
-        <th>% Off</th>
-        <th>Price</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% _.each(foundCart, function(cart) { %>
-      <tr class="tr-cart" id="cart-<%= cart.id %>">
-        <td class="cart-id sr-only"><%= cart.id %></td>
-        <td class="product-id sr-only"><%= cart.pid %></td>
-        <td class="card-img col-md-1 hidden-xs"><img style="max-width:80px" src="<%= cart.image %>"></td>
-        <td class="card-name"><%= cart.name %></td>
-
-        <td class="card-type"><%= cart.type %></td>
-        <td class="product-value">$<%= cart.value %></td>
-        <td class="product-save col-md-3"><%= cart.save %>%</td>
-        <td class="product-price">$<%= cart.price %></td>
-        <td class="col-md-1">
-          <a class="remove-item btn btn-danger" href="#">
-            <i class="fa fa-trash-o fa-lg"></i> Remove</a>
-          <a class="sr-only reloading btn btn-warning" href="#">
-          <i class="fa fa-spinner fa-pulse"></i> Removing...</a>
-
-        </td>
-      </tr>
-      <% }) %>
-      </tbody>
-    </table><hr>
+    <hr>
     <div class="total panel-body">TOTAL: $<strong></strong></div>
   </div>
 
