@@ -118,11 +118,12 @@ $(function() {
   });
 
   $('a.next-process').click(function(){
-    $('div.se-pre-con').removeClass('sr-only');
+
     var codeto = $('div.find-email span.set-email').text();
     if (codeto == 'no-email') {
       $('#setEmailModal').modal('show');
     } else {
+      $('div.se-pre-con').removeClass('sr-only');
     var jsonData = [];
     var totalData = parseFloat($('td.td-total').text().replace('$',''));
     let sessionId = window.location.search.split('?sid=')[1];
