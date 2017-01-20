@@ -15,8 +15,8 @@
         <!--</div>-->
       <!--</form>-->
       <ul class="nav navbar-nav">
-        <li><a href="#">I'M BUYER</a></li>
-        <li><a href="#">I'M SELLER</a></li>
+        <li><a href="/giftcard">BUY GIFT CARDS</a></li>
+        <li><a href="#">SELL GIFT CARDS</a></li>
       </ul>
       <% if(!req.session.user_id){ %>
       <ul class="nav navbar-nav navbar-right">
@@ -26,16 +26,12 @@
       <% } else { %>
       <ul class="nav navbar-nav navbar-right" style="margin-right:20px;">
       <div class="btn-group">
-        <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <%= req.session.user.name %></a>
-        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+        <a class="btn-user btn" href="#"><i class="fa fa-user fa-fw"></i> <%= req.session.user.name %></a>
+        <a class="btn-user btn dropdown-toggle" data-toggle="dropdown" href="#">
           <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
         </a>
         <ul class="dropdown-menu">
-          <% if(req.session.user.group == 'Admin'){ %>
-          <li><a href="/admin"><i class="fa fa-pencil fa-fw"></i> Admin Panel</a></li>
-          <% } %>
-          <li><a href="/user/view"><i class="fa fa-trash-o fa-fw"></i> Member Panel</a></li>
-
+          <li><a href="/user/view"><i class="fa fa-user"></i> My Account</a></li>
           <li class="divider"></li>
           <li><a href="/logout"><i class="fa fa-unlock"></i> Logout</a></li>
         </ul>

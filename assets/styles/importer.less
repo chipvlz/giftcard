@@ -47,7 +47,21 @@ a.add-to-cart , a.view-cart {
     background-color: @yellowColor;
   }
 }
-
+a.btn-user {
+    color: @jadeColor;
+    background-color: #fff;
+    border-color: @jadeColor;
+    -webkit-transition: @fadeEffect;
+    transition: @fadeEffect;
+    &:hover {
+      color:#fff ;
+      background-color: @jadeColor;
+    }
+  &:focus {
+    color:#fff ;
+    background-color: @jadeColor;
+  }
+}
 a.btn-checkout {
   width:100%;
   color: @jadeColor;

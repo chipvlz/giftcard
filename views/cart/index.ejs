@@ -36,15 +36,15 @@
 
   <div class="container">
     <div class="col-sm-8 cart-detail-side">
-      <h2>Your Cart <span style="font-weight:100;">(2 Items)</span></h2>
+      <h2>Your Cart <span style="font-weight:100;"></span></h2>
       <% _.each(foundCart, function(cart) { %>
       <div class="row view-cart-item" id="cart-item-<%= cart.id %>">
         <div class="col-sm-2"><img style="max-width:100px" src="<%= cart.image %>"></div>
         <div class="col-sm-7">
           <span class="sr-only cart-pid"><%= cart.pid %></span>
-          <h4 class="cart-name"><%= cart.name %></h4>
+          <h4><span class="cart-name"></span><%= cart.name %><span class="cart-type"> (<%= cart.type %>)</span></h4>
           <h5>Delivery</h5>
-          <p>Delivered directly to your eSaving account and email within 12 hour.
+          <p>Delivered directly to your account and email within 12 hour.
             In many instances, you can also print out e-gift cards and redeem them in-store.
             (Please contact your local retailer for more information).</p>
         </div>

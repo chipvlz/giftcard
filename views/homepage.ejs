@@ -15,8 +15,8 @@
         <!--</div>-->
       <!--</form>-->
       <ul class="nav navbar-nav">
-        <li><a href="#">I'M BUYER</a></li>
-        <li><a href="#">I'M SELLER</a></li>
+        <li><a href="/giftcard">BUY GIFT CARDS</a></li>
+        <li><a href="#">SELL GIFT CARDS</a></li>
       </ul>
       <% if(!req.session.user_id){ %>
       <ul class="nav navbar-nav navbar-right">
@@ -28,12 +28,7 @@
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span>
             <%= req.session.user.name %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <% if(req.session.user.group == 'Admin'){ %>
-            <li><a href="/admin">Admin Area</a></li>
-            <li><a href="/user/view/<%= req.session.user.id %>">Member Area</a></li>
-            <% } else { %>
-            <li><a href="/user/view/<%= req.session.user.id %>">Member Area</a></li>
-            <% } %>
+            <li><a href="/user/view"><i class="fa fa-user"></i> My Account</a></li>
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Đăng Xuất</a></li>
           </ul>
         </li>

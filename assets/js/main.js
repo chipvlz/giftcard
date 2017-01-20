@@ -128,7 +128,7 @@ $(function() {
 
     $('div.view-cart-item').each(function(){
       var eachData = {
-        name : $(this).find('h4.cart-name').text(),
+        name : $(this).find('span.cart-name').text(),
         sku : $(this).find('span.cart-pid').text(),
         price : parseFloat($(this).find('h3.cart-item-price').text().replace('$','')),
         currency : 'USD',
