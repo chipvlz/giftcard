@@ -1,11 +1,16 @@
 <%- partial ('../common/navbar.ejs') %>
 <div id="cart-page">
+  <ol class="breadcrumb">
+    <li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="#" onclick="goBack()"><i class="fa fa-shopping-cart"></i> Continue Shopping</a></li>
+
+  </ol>
   <% if (req.session.user_id) { %>
-  <div class="find-email alert alert-success">
+  <div class="find-email alert alert-success sr-only">
     <strong>Notice!</strong> We'll send gift card code to email <span class="set-email"><%= req.session.user.email %></span>.
   </div>
   <% } else { %>
-  <div class="find-email alert alert-warning">
+  <div class="find-email alert alert-warning" style="margin:15px">
     <strong>Warning!</strong> Please Log in your account before checkout for sending code to.<a href="/login"> [Log in]</a><span class="sr-only set-email">no-email</span>.
   </div>
   <!-- Modal -->
@@ -30,79 +35,60 @@
   <% } %>
 
   <div class="container">
-    <div class="col-sm-8">
-      <h2>Your Cart (2 Items)</h2>
-      <table class="table table-responsive table-hover">
-
-        <tbody>
-        <% _.each(foundCart, function(cart) { %>
-        <tr class="tr-cart" id="cart-<%= cart.id %>">
-          <td class="cart-id sr-only"><%= cart.id %></td>
-          <td class="product-id sr-only"><%= cart.pid %></td>
-          <td class="card-img col-md-1 hidden-xs"><img style="max-width:80px" src="<%= cart.image %>"></td>
-          <td class="card-name"><%= cart.name %></td>
-
-          <td class="card-type"><%= cart.type %></td>
-          <td class="product-value">$<%= cart.value %></td>
-          <td class="product-save col-md-3"><%= cart.save %>%</td>
-          <td class="product-price">$<%= cart.price %></td>
-          <td class="col-md-1">
-            <a class="remove-item btn btn-danger" href="#">
-              <i class="fa fa-trash-o fa-lg"></i> Remove</a>
-            <a class="sr-only reloading btn btn-warning" href="#">
-              <i class="fa fa-spinner fa-pulse"></i> Removing...</a>
-
-          </td>
-        </tr>
-        <% }) %>
-        </tbody>
-      </table>
+    <div class="col-sm-8 cart-detail-side">
+      <h2>Your Cart <span style="font-weight:100;">(2 Items)</span></h2>
+      <% _.each(foundCart, function(cart) { %>
+      <div class="row view-cart-item" id="cart-item-<%= cart.id %>">
+        <div class="col-sm-2"><img style="max-width:100px" src="<%= cart.image %>"></div>
+        <div class="col-sm-7">
+          <span class="sr-only cart-pid"><%= cart.pid %></span>
+          <h4 class="cart-name"><%= cart.name %></h4>
+          <h5>Delivery</h5>
+          <p>Delivered directly to your eSaving account and email within 12 hour.
+            In many instances, you can also print out e-gift cards and redeem them in-store.
+            (Please contact your local retailer for more information).</p>
+        </div>
+        <div class="col-sm-3 text-right">
+          <h3 class="cart-item-price">$<%= cart.price %></h3>
+          <span>Value at <strong>$<%= cart.value %></strong></span>
+          <p><a class="remove-item btn btn-danger" href="#">Remove <span class="sr-only remove-item-id"><%= cart.id %></span></a></p>
+        </div>
+      </div>
+      <% }) %>
     </div>
-    <div class="col-sm-4" style="border:1px solid #ccc">
+
+    <div class="col-sm-3 summary-side pull-right" style="border:1px solid #ccc">
       <h3>Summary</h3>
-      <table>
+      <table class="table table-responsive">
         <tbody>
         <tr>
           <td>Subtotal</td>
-          <td></td>
+          <td class="calsum td-total text-right"></td>
         </tr>
         <tr>
           <td>Tax</td>
-          <td></td>
+          <td class="calsum text-right">$0.00</td>
         </tr>
         <tr>
           <td>Shipping</td>
-          <td></td>
+          <td class="calsum text-right">$0.00</td>
         </tr>
         </tbody>
         <tfoot>
-        <tr>
+        <tr class="tr-total">
           <td>Total</td>
-          <td></td>
+          <td class="td-total text-right"></td>
         </tr>
-        <tr>
+        <tr class="tr-saving">
           <td>Your savings</td>
-          <td></td>
+          <td class="td-saving text-right"></td>
         </tr>
         </tfoot>
       </table>
-      <div class="text-center">
-        <button class="btn btn-default proceed-btn" href="/checkout"><span class="icon-lock"></span> Proceed to checkout</button>
-      </div>
+      <a href="#" type="button" class="next-process btn-checkout btn btn-lg">Creating payment</a>
+
     </div>
   </div>
 
-<div class="panel panel-success">
-  <div class="panel-heading panel-green"><i class="fa fa-shopping-cart fa-lg"></i> Your shopping cart</div>
-  <div class="panel-body">
-    <hr>
-    <div class="total panel-body">TOTAL: $<strong></strong></div>
-  </div>
 
-  <div class="panel-footer">
-    <button onclick="goBack()" type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Continue Shopping</button>
-    <a href="#" type="button" class="next-process btn btn-success"><i class="fa fa-share-square-o"></i><i class="sr-only fa fa-spinner fa-pulse"></i> Next Process</a>
-
-  </div>
-</div>
 </div>

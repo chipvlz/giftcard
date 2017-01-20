@@ -89,8 +89,9 @@ $(function() {
   socket.on('add-to-cart',function(recieve){
     let findNumber = parseInt($('span.total-cart').text())+1;
     $('span.total-cart').text(findNumber);
-    if ($('#cartModal .modal-footer a.view-cart').text() !== 'View Cart Detail') {
-      $('#cartModal .modal-footer').append('<a href="/cart/view?sid='+recieve.msg.sid+'" type="button" class="view-cart btn btn-success">View Cart Detail</a>')
+    if ($('#cartModal .modal-footer a.view-cart').text() !== 'Checkout') {
+      $('#cartModal .modal-footer').append('<a href="/cart/view?sid='+recieve.msg.sid+'" type="button" class="view-cart btn">Checkout</a>');
+      $('#cartModal .modal-footer').find('button.btn').addClass('sr-only');
     }
   });
 
@@ -102,12 +103,10 @@ $(function() {
     })
   });
 
-  $('tr.tr-cart a.remove-item').each(function(){
+  $('.view-cart-item a.remove-item').each(function(){
     $(this).click(function(){
-      $(this).closest('tr.tr-cart').find('a.reloading').removeClass('sr-only');
-      $(this).closest('tr.tr-cart').find('a.remove-item').addClass('sr-only');
       let data = {
-        id : $(this).closest('tr.tr-cart').find('td.cart-id').text(),
+        id : $(this).find('span.remove-item-id').text(),
         sessionId : window.location.search.split('?sid=')[1]
       };
       socket.get('/cart/remove',data)
@@ -123,17 +122,15 @@ $(function() {
     if (codeto == 'no-email') {
       $('#setEmailModal').modal('show');
     } else {
-    $(this).find('i.fa-spinner').removeClass('sr-only');
-    $(this).find('i.fa-share-square-o').addClass('sr-only');
     var jsonData = [];
-    var totalData = $('div.total strong').text();
+    var totalData = parseFloat($('td.td-total').text().replace('$',''));
     let sessionId = window.location.search.split('?sid=')[1];
 
-    $('tr.tr-cart').each(function(){
+    $('div.view-cart-item').each(function(){
       var eachData = {
-        name : $(this).find('td.card-name').text(),
-        sku : $(this).find('td.product-id').text(),
-        price : parseFloat($(this).find('td.product-price').text().replace('$','')),
+        name : $(this).find('h4.cart-name').text(),
+        sku : $(this).find('span.cart-pid').text(),
+        price : parseFloat($(this).find('h3.cart-item-price').text().replace('$','')),
         currency : 'USD',
         quantity : 1
 
@@ -195,7 +192,7 @@ $(function() {
       totalItem.push(priceItem);
     })
     var calTotal = totalItem.reduce((a,b) => a+b,0);
-    $('#cartModal .modal-footer span.total-value strong').html('$'+calTotal)
+    $('#cartModal .modal-footer span.total-value strong').html('$'+calTotal);
 
     $('td.giftcard-detail').each(function(){
       var $this = $(this);
@@ -242,13 +239,34 @@ $(function() {
         $('#save').val(persensave.toFixed(1));
       })
     } else if (window.location.pathname == '/cart/view') {
-      var total_price = [];
-      $('td.product-price').each(function(){
+      let total_price = [];
+      let total_numItem = [];
+      $('h3.cart-item-price').each(function(){
         var oneprice = parseFloat($(this).text().replace('$',''));
         total_price.push(oneprice);
+        total_numItem.push(1);
       });
-      var total = total_price.reduce((a,b) => a+b,0);
-      $('div.total strong').text(total);
+      let total = total_price.reduce((a,b) => a+b,0);
+      let numItem = total_numItem.reduce((a,b) => a+b,0);
+      $('div.cart-detail-side h2 span').text('('+numItem+' item)');
+      $('td.td-total').text('$'+total);
+
+      let total_summary = [];
+      $('div.summary-side td.calsum').each(function(){
+        var onecalsum = parseFloat($(this).text().replace('$',''));
+        total_summary.push(onecalsum);
+      });
+      let summary = total_summary.reduce((a,b) => a+b,0);
+      $('.summary-side .td-total').text('$'+summary);
+
+      let total_value = [];
+      $('div.view-cart-item span strong').each(function(){
+        var onevalue = parseFloat($(this).text().replace('$',''));
+        total_value.push(onevalue);
+      });
+      let value = total_value.reduce((a,b) => a+b,0);
+      let saving = value - total;
+      $('.summary-side .td-saving').text('$'+parseFloat(saving).toFixed(2));
     }
 
 
