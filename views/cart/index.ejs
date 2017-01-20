@@ -36,12 +36,12 @@
   <% } %>
 
   <div class="container">
-    <div class="col-sm-8 cart-detail-side">
+    <div class="col-sm-8 col-xs-12 cart-detail-side">
       <h2>Your Cart <span style="font-weight:100;"></span></h2>
       <% _.each(foundCart, function(cart) { %>
       <div class="row view-cart-item" id="cart-item-<%= cart.id %>">
-        <div class="col-sm-2"><img style="max-width:100px" src="<%= cart.image %>"></div>
-        <div class="col-sm-7">
+        <div class="col-xs-3 "><img style="max-width:100px" src="<%= cart.image %>"></div>
+        <div class="col-xs-6">
           <span class="sr-only cart-pid"><%= cart.pid %></span>
           <h4><span class="cart-name"></span><%= cart.name %><span class="cart-type"> (<%= cart.type %>)</span></h4>
           <h5>Delivery</h5>
@@ -49,7 +49,7 @@
             In many instances, you can also print out e-gift cards and redeem them in-store.
             (Please contact your local retailer for more information).</p>
         </div>
-        <div class="col-sm-3 text-right">
+        <div class="col-xs-3 text-right">
           <h3 class="cart-item-price">$<%= cart.price %></h3>
           <span>Value at <strong>$<%= cart.value %></strong></span>
           <p><a class="remove-item btn btn-danger" href="#">Remove <span class="sr-only remove-item-id"><%= cart.id %></span></a></p>
@@ -58,7 +58,7 @@
       <% }) %>
     </div>
 
-    <div class="col-sm-3 summary-side pull-right" style="border:1px solid #ccc">
+    <div class="col-sm-3 col-xs-12 summary-side pull-right" style="border:1px solid #ccc">
       <h3>Summary</h3>
       <table class="table table-responsive">
         <tbody>

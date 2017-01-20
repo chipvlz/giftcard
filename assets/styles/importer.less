@@ -354,10 +354,23 @@ footer {
     min-height: 0;
   }
 }
-
+@media (max-width: 480px) {
+  .col-brand .one-card span {
+    font-size:10px!important;
+  }
+}
 @media (max-width: 768px) {
+  #cart-page .cart-detail-side {
+    padding:0;
+  }
+  .summary-side {
+    margin-top:30px;
+  }
+  .banner-detail {
+    padding: 30px!important;
+  }
   #myNavbar , .navbar-default{
-    background: #455a9d;
+    background: #252525;
     border:none;
   }
 
@@ -370,7 +383,8 @@ footer {
 
   a.navbar-brand, .navbar-nav > li > a {
     /*line-height: 30px;*/
-    border-bottom: 1px solid #4b5f9c;
+    color:#cacaca;
+    border-bottom: 1px solid #3a3a3a;
   }
   .btn-warning {
     margin: 0 10px;
