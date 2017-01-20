@@ -149,7 +149,7 @@ $(function() {
   });
 
   socket.on('create/invoice',function(recieve){
-    window.location = '../payment/checkout?invoice='+recieve.msg;
+    window.location = recieve.msg;
   });
 
   socket.on('update/balance',function(recieve){

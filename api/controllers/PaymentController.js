@@ -62,7 +62,7 @@ module.exports = {
           if (err) return res.negotiate(err);
           else {
             console.log(result);
-            sails.sockets.broadcast(params.sessionId,'create/invoice',{msg:result.invoice});
+            sails.sockets.broadcast(params.sessionId,'create/invoice',{msg:result.link});
             // sails.sockets.blast('create/invoice',{msg:result.invoice});
           }
         })
