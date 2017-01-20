@@ -47,8 +47,7 @@ module.exports = {
   },
 
   checkout: (req,res) => {
-    let params = req.allParams();
-    let session_id = req.signedCookies['sails.sid'];
+    let params = req.allParams();x
     Cart.find({sid:params.sid}).exec(function(err,foundCart){
       res.view('cart/checkout',{foundCart})
     });
