@@ -144,6 +144,52 @@ $(function() {
     }
   });
 
+  let subTotal = [];
+  $('#checkout-page .media .media-right h4').each(function(){
+    let priceItem = parseFloat($(this).text().replace('$',''));
+    subTotal.push(priceItem);
+  });
+  let subtotal = subTotal.reduce((a,b) => a+b,0);
+  let taxFee = parseFloat($('#checkout-page td.td-tax').text().replace('$',''));
+  let shippingFee = parseFloat($('#checkout-page td.td-shipping').text().replace('$',''));
+  let amount = subtotal - taxFee - shippingFee;
+  $('#checkout-page tbody td.td-subtotal').text('$'+subtotal);
+  $('#checkout-page tfoot td.td-total').text('$'+amount);
+
+  $('a.btn-checkout-page').click(function(){
+    let sessionId = window.location.search.split('?sid=')[1];
+    let itemData = [];
+    $('#checkout-page .media').each(function(){
+      var eachData = {
+        "name": $(this).find('h4.co-cart-name').text(),
+        "quantity": 1,
+        "unit_price": {
+          "currency": "USD",
+          "value": parseFloat($(this).find('h4.co-cart-price').text().replace('$','')).toFixed(2)
+        }
+      };
+      itemData.push(eachData);
+    });
+    let customerEmail = $('#checkout-page input#email').val();
+    let customerData = {
+      "first_name": $('#checkout-page input#firstname').val(),
+      "last_name": $('#checkout-page input#lastname').val(),
+      "address": {
+        "line1": $('#checkout-page input#address').val(),
+        "city": $('#checkout-page input#city').val(),
+        "state": $('#checkout-page input#state').val(),
+        "postal_code": $('#checkout-page input#postal').val(),
+        "country_code": $('#checkout-page input#country').val(),
+      }
+    };
+    let totalAmount = {
+      "currency": "USD",
+      "value": $('#checkout-page tfoot td.td-total').text()
+    };
+    let data = {sessionId,itemData,customerEmail,customerData,totalAmount};
+    socket.post('/invoice/create',data);
+  });
+
   $('button.enter-email').click(function(){
     $("#setEmailModal").modal('hide');
     var foundEmail = $('#enter-email').val();
@@ -192,7 +238,7 @@ $(function() {
     $('#cartModal .media .media-right h4').each(function(){
       let priceItem = parseFloat($(this).text().replace('$',''));
       totalItem.push(priceItem);
-    })
+    });
     var calTotal = totalItem.reduce((a,b) => a+b,0);
     $('#cartModal .modal-footer span.total-value strong').html('$'+calTotal);
 

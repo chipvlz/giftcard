@@ -7,7 +7,7 @@
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
         <li><a href="#"><i class="fa fa-shopping-basket"></i> View cart</a></li>
-        <li><i class="fa fa-shopping-cart"></i> Shipping method</li>
+        <li>Customer information</li>
       </ol>
 
 
@@ -42,31 +42,31 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="col-sm-7 input-left">
-              <fieldset class="click">
+            <div class="col-sm-12">
+              <fieldset>
               <input type="text" class="input-lg form-control" id="address">
                 <label for="address">Address</label>
               </fieldset>
             </div>
-            <div class="col-sm-5 input-right" style="padding-left: 4px;">
-              <fieldset>
-              <input type="text" class="input-lg form-control" id="apt">
-              <label for="apt">Apt, suite, etc.</label>
-              </fieldset>
-            </div>
           </div>
           <div class="form-group">
-            <div class="col-sm-12">
+            <div class="col-sm-7 input-left">
               <fieldset>
               <input type="text" class="input-lg form-control" id="city">
               <label for="city">City</label>
+              </fieldset>
+            </div>
+            <div class="col-sm-5 input-right" style="padding-left: 4px;">
+              <fieldset>
+                <input type="text" class="input-lg form-control" id="state">
+                <label for="state">State</label>
               </fieldset>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-6 input-left">
               <fieldset>
-              <input type="text" class="input-lg form-control" id="county">
+              <input type="text" class="input-lg form-control" id="country">
               <label for="country">Country</label>
               </fieldset>
             </div>
@@ -98,16 +98,16 @@
       <% _.each(foundCart, function(cart) { %>
       <!-- Left-aligned -->
       <div class="media">
-        <span class="sr-only have-cart"><%= cart.pid %></span>
+        <span class="sr-only have-cart co-cart-pid"><%= cart.pid %></span>
         <div class="media-left">
           <img src="<%= cart.image %>" class="media-object img-rounded" style="width:80px">
         </div>
         <div class="media-body">
-          <h4 class="media-heading"><%= cart.name %></h4>
+          <h4 class="media-heading co-cart-name"><%= cart.name %></h4>
           <p>$<%= cart.value %> - <%= cart.value %>% off</p>
         </div>
         <div class="media-right">
-          <h4>$<%= cart.price %></h4>
+          <h4 class="co-cart-price">$<%= cart.price %></h4>
         </div>
       </div>
       <% }) %>
@@ -115,15 +115,15 @@
         <tbody>
         <tr>
           <td>Subtotal</td>
-          <td class="calsum td-total text-right"></td>
+          <td class="calsum td-subtotal text-right"></td>
         </tr>
         <tr>
           <td>Tax</td>
-          <td class="calsum text-right">$0.00</td>
+          <td class="calsum td-tax text-right">$0.00</td>
         </tr>
         <tr>
           <td>Shipping</td>
-          <td class="calsum text-right">$0.00</td>
+          <td class="calsum td-shipping text-right">$0.00</td>
         </tr>
         </tbody>
         <tfoot>

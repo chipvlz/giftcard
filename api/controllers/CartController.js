@@ -47,7 +47,7 @@ module.exports = {
   },
 
   checkout: (req,res) => {
-    let params = req.allParams();x
+    let params = req.allParams();
     Cart.find({sid:params.sid}).exec(function(err,foundCart){
       res.view('cart/checkout',{foundCart})
     });
