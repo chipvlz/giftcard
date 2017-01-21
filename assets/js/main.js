@@ -329,6 +329,22 @@ $(function() {
     $('a.user-list').click(function(){
       $(this).find('i.fa-chevron-right').toggleClass('rotated');
     });
+
+    $('fieldset').each(function(){
+      $(this).click(function(){
+        $(this).find('input').focus();
+        $(this).find('label').css('margin-top','-42px');
+        $(this).find('label').css('font-size','12px');
+      });
+
+      $(this).focusout(function(){
+        if ($(this).find('input').val() == '' ) {
+          $(this).find('label').css('margin-top','-30px');
+          $(this).find('label').css('font-size','13px');
+        }
+
+      })
+    })
   });
 
   socket.on('live/search',function(recieve){

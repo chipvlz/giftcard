@@ -67,7 +67,7 @@ div.se-pre-con {
   background: url(http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_3.gif) center no-repeat rgba(255, 255, 255, 0.85);
 }
 
-a.add-to-cart , a.view-cart {
+a.add-to-cart , a.view-cart , a.btn-checkout-page{
   .button-color(@yellowColor);
 }
 a.btn-user {
@@ -331,6 +331,102 @@ a.btn-checkout {
   div.view-cart-item {
     padding: 15px;
     border-bottom: @base-border;
+  }
+}
+
+//Checkout page
+#checkout-page {
+  background:#fff;
+  position: absolute;
+  width:100%;
+  height:100%;
+  .breadcrumb {
+
+  }
+  .container {
+    max-width:970px;
+    .marginAuto;
+    height:100%;
+  }
+  .marginAuto;
+  .detail-content {
+
+  }
+  .checkout-left {
+    padding-top:60px;
+    padding-right:60px;
+  }
+  .checkout-right {
+    padding-top:60px;
+    border-color:#d8d8d8;
+    border-style:solid;
+    border-width:0 1px;
+    height: 100%;
+    background: #fafafa;
+    //&:after {
+    //  content:'/';
+    //}
+
+  }
+  table.table {
+    margin-top:20px;
+    tbody {
+      border-top:1px solid #d6d6d6;
+      border-bottom:1px solid #d6d6d6;
+      tr {
+        height:30px;
+        td {
+          border:none;
+        }
+      }
+    }
+    tfoot tr {
+      td {
+        border:none;
+      }
+    }
+  }
+  .media-body {
+    p {
+      color: #7d7d7d;
+      font-size: 12px;
+    }
+  }
+  form {
+    .form-section {
+      margin-bottom:40px;
+    }
+    .form-group {
+      margin-bottom:10px;
+    }
+    .input-left {
+      padding-right: 5px;
+    }
+    .input-right {
+      padding-left: 4px;
+    }
+    .form-control {
+      box-shadow: none;
+      -webkit-box-shadow:none;
+      border:1px solid #e4e4e4;
+    }
+    fieldset label {
+      position: absolute;
+      margin-top: -30px;
+      margin-left: 15px;
+      color: #ababab;
+      font-weight: 200;
+      font-size: 13px;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      &:hover {
+        cursor:text;
+      }
+    }
+    .input-lg {
+      font-size:16px;
+      padding:15px 0 0 13px;
+    }
   }
 }
 //Footer

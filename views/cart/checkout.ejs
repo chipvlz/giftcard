@@ -1,0 +1,140 @@
+<div class="sr-only se-pre-con"></div>
+<div class="test-test"></div>
+<div id="checkout-page">
+
+  <div class="container">
+    <div class="checkout-left col-sm-7">
+      <ol class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-shopping-basket"></i> View cart</a></li>
+        <li><i class="fa fa-shopping-cart"></i> Payment method</li>
+      </ol>
+
+
+      <form class="form-label form-css-label form-horizontal center-block" style="max-width:550px;">
+        <div class="form-section customer-information">
+          <div class="form-group">
+            <label class="col-sm-12"><h4>Customer information <span class="pull-right" style="font-size:14px;">Already have an account? <a href="#">Log in</a></span></h4> </label>
+            <div class="col-sm-12">
+              <fieldset>
+              <input type="email" class="input-lg form-control" id="email">
+                <label for="email">Email</label>
+              </fieldset>
+            </div>
+            <div class="col-sm-12 checkbox">
+              <label><input type="checkbox"> Subscribe to our newsletter</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section customer-address">
+          <div class="form-group">
+            <label class="col-sm-12"><h4>Shipping address</h4></label>
+            <div class="col-sm-8 input-left"><fieldset>
+              <input type="text" class="input-lg form-control" id="firstname">
+                <label for="firstName">First Name</label>
+            </fieldset></div>
+            <div class="col-sm-4 input-right">
+              <fieldset>
+                <input type="text" class="input-lg form-control" id="lastname">
+                <label for="lastname">Last name</label>
+              </fieldset>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-7 input-left">
+              <fieldset class="click">
+              <input type="text" class="input-lg form-control" id="address">
+                <label for="address">Address</label>
+              </fieldset>
+            </div>
+            <div class="col-sm-5 input-right" style="padding-left: 4px;">
+              <fieldset>
+              <input type="text" class="input-lg form-control" id="apt">
+              <label for="apt">Apt, suite, etc.</label>
+              </fieldset>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <fieldset>
+              <input type="text" class="input-lg form-control" id="city">
+              <label for="city">City</label>
+              </fieldset>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-6 input-left">
+              <fieldset>
+              <input type="text" class="input-lg form-control" id="county">
+              <label for="country">Country</label>
+              </fieldset>
+            </div>
+            <div class="col-sm-6 input-right">
+              <fieldset>
+              <input type="text" class="input-lg form-control" id="postal">
+              <label for="postalcode">Postal code</label>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+
+
+      <div class="checkout-button">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <a onclick="goBack()" type="button" class="btn-lg btn btn-link"><i class="fa fa-angle-left"></i> Return to cart</a>
+            <a type="submit" class="btn btn-lg btn-checkout-page">Continue to shipping method</a>
+          </div>
+        </div>
+      </div>
+      </form>
+
+
+
+    </div>
+    <div class="checkout-right col-sm-5">
+      <div class="detail-content">
+      <% _.each(foundCart, function(cart) { %>
+      <!-- Left-aligned -->
+      <div class="media">
+        <span class="sr-only have-cart"><%= cart.pid %></span>
+        <div class="media-left">
+          <img src="<%= cart.image %>" class="media-object img-rounded" style="width:80px">
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= cart.name %></h4>
+          <p>$<%= cart.value %> - <%= cart.value %>% off</p>
+        </div>
+        <div class="media-right">
+          <h4>$<%= cart.price %></h4>
+        </div>
+      </div>
+      <% }) %>
+      <table class="table table-responsive">
+        <tbody>
+        <tr>
+          <td>Subtotal</td>
+          <td class="calsum td-total text-right"></td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td class="calsum text-right">$0.00</td>
+        </tr>
+        <tr>
+          <td>Shipping</td>
+          <td class="calsum text-right">$0.00</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr class="tr-total">
+          <td>Total</td>
+          <td class="td-total text-right"></td>
+        </tr>
+
+        </tfoot>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>

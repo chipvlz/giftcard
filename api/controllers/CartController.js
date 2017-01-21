@@ -44,6 +44,15 @@ module.exports = {
       if (err) return res.negotiate(err);
       else sails.sockets.broadcast(params.sessionId,'remove/cart');
     })
+  },
+
+  checkout: (req,res) => {
+    let params = req.allParams();
+    let session_id = req.signedCookies['sails.sid'];
+    Cart.find({sid:params.sid}).exec(function(err,foundCart){
+      res.view('cart/checkout',{foundCart})
+    });
   }
+
 };
 
