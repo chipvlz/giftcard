@@ -179,12 +179,12 @@ $(function() {
         "city": $('#checkout-page input#city').val(),
         "state": $('#checkout-page input#state').val(),
         "postal_code": $('#checkout-page input#postal').val(),
-        "country_code": $('#checkout-page input#country').val(),
+        "country_code": 'VN'
       }
     };
     let totalAmount = {
       "currency": "USD",
-      "value": $('#checkout-page tfoot td.td-total').text()
+      "value": $('#checkout-page tfoot td.td-total').text().replace('$','')
     };
     let data = {sessionId,itemData,customerEmail,customerData,totalAmount};
     socket.post('/invoice/create',data);
