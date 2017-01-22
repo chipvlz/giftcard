@@ -179,12 +179,12 @@ $(function() {
         "city": $('#checkout-page input#city').val(),
         "state": $('#checkout-page input#state').val(),
         "postal_code": $('#checkout-page input#postal').val(),
-        "country_code": $('#checkout-page input#country').val(),
+        "country_code": 'VN'
       }
     };
     let totalAmount = {
       "currency": "USD",
-      "value": $('#checkout-page tfoot td.td-total').text()
+      "value": $('#checkout-page tfoot td.td-total').text().replace('$','')
     };
     let data = {sessionId,itemData,customerEmail,customerData,totalAmount};
     socket.post('/invoice/create',data);
@@ -198,6 +198,10 @@ $(function() {
 
   socket.on('create/invoice',function(recieve){
     window.location = recieve.msg;
+  });
+
+  socket.on('checkout/step2',function(recieve){
+    window.location = '/checkout?sid='+recieve.sid+'&invoice='+recieve.invoice+'step=payment_method';
   });
 
   socket.on('update/balance',function(recieve){

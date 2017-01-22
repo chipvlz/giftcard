@@ -72,10 +72,16 @@ module.exports = {
 
   checkout: (req,res) => {
     let params = req.allParams();
-    console.log('invoice params',params);
-    Invoice.findOne(params).exec(function(err,foundInvoice){
-      return res.view('cart/invoice',foundInvoice);
-    })
+    if (params.step == 'payment_method') {
+
+    } else {
+      console.log('invoice params',params);
+      Invoice.findOne(params).exec(function(err,foundInvoice){
+        return res.view('cart/invoice',foundInvoice);
+      })
+    }
+
+
   },
 
   confirm: (req,res) => {
@@ -189,7 +195,7 @@ module.exports = {
     Invoice.findOne({invoice:params.id}).exec(function(err,foundInvoice){
       res.view('user/invoice',foundInvoice)
     });
-  }
+  },
 
 };
 

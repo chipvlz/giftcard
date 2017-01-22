@@ -19,20 +19,20 @@ module.exports = {
     sails.sockets.join(req,params.sessionId);
     var create_invoice_json = {
       "merchant_info": {
-        "email": "PPX.DevNet-facilitator@gmail.com",
-        "first_name": "Dennis",
-        "last_name": "Doctor",
-        "business_name": "Medical Professionals, LLC",
-        "phone": {
-          "country_code": "001",
-          "national_number": "5032141716"
-        },
+        "email": "trancatkhanh-facilitator@gmail.com",
+        "first_name": "Khanh",
+        "last_name": "Tran",
+        "business_name": "VNMAGIC Team",
+        // "phone": {
+        //   "country_code": "001",
+        //   "national_number": "5032141716"
+        // },
         "address": {
-          "line1": "1234 Main St.",
-          "city": "Portland",
-          "state": "OR",
-          "postal_code": "97217",
-          "country_code": "US"
+          "line1": "378 Le Loi",
+          "city": "Vung Tau",
+          "state": "BRVT",
+          "postal_code": "790000",
+          "country_code": "VN"
         }
       },
       "billing_info": [{
@@ -49,8 +49,8 @@ module.exports = {
       if (error) {
         throw error;
       } else {
-        console.log("Create Invoice Response");
         console.log(invoice);
+        sails.sockets.broadcast(params.sessionId,'checkout/step2',{invoice:invoice.id,sid:params.sessionId});
       }
     });
   }

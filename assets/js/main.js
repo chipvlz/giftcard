@@ -200,6 +200,10 @@ $(function() {
     window.location = recieve.msg;
   });
 
+  socket.on('checkout/step2',function(recieve){
+    window.location = '/checkout?sid='+recieve.sid+'&invoice='+recieve.invoice+'step=payment_method';
+  });
+
   socket.on('update/balance',function(recieve){
     $('#user-page div#user-balance-id-'+recieve.msg[0].id).hide('fast');
     $('#user-page div#user-balance-id-'+recieve.msg[0].id).html('$'+recieve.msg[0].balance);
