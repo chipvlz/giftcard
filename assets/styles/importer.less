@@ -67,7 +67,7 @@ div.se-pre-con {
   background: url(http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_3.gif) center no-repeat rgba(255, 255, 255, 0.85);
 }
 
-a.add-to-cart , a.view-cart , a.btn-checkout-page{
+a.add-to-cart , a.view-cart , a.btn-checkout-page , a.btn-checkout-paypal {
   .button-color(@yellowColor);
 }
 a.btn-user {
@@ -75,8 +75,13 @@ a.btn-user {
 }
 a.btn-checkout {
   width:100%;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   .button-color(@jadeColor);
+}
+a.btn-checkout-paypal {
+  width:100%;
+  margin-bottom: 25px;
+  .button-color(@yellowColor);
 }
 
   //Homepage
@@ -401,6 +406,25 @@ a.btn-checkout {
     }
   }
   form {
+    .payment-information {
+      width:100%;
+      float:left;
+      padding:10px!important;
+      background:#efefef;
+      margin-bottom: 25px;
+      h4 {
+        color:@yellowColor;
+      }
+    }
+    .card-security {
+      padding:0;
+      .input-lg {
+        padding:0 0 0 13px;
+      }
+      label {
+        line-height: 30px;
+      }
+    }
     .form-section {
       margin-bottom:40px;
     }
@@ -417,11 +441,14 @@ a.btn-checkout {
       box-shadow: none;
       -webkit-box-shadow:none;
       border:1px solid #e4e4e4;
+      &:focus {
+        border:2px solid @yellowColor;
+      }
     }
     fieldset label {
       position: absolute;
       margin-top: -30px;
-      margin-left: 15px;
+      margin-left: 18px;
       color: #ababab;
       font-weight: 200;
       font-size: 13px;
@@ -433,7 +460,9 @@ a.btn-checkout {
     }
     .input-lg {
       font-size:16px;
-      padding:15px 0 0 13px;
+      padding-left:16px;
+      padding-top:10px;
+      transition: all 0.5s;
     }
   }
 }
@@ -565,7 +594,7 @@ footer {
   .aright {
     display:inline-block !important;
   }
-  #giftcard-view , .col-sm-12{
+  #giftcard-view {
     padding:0;
   }
   .img-item .col-sm-4 {

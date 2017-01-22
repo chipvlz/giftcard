@@ -27,14 +27,38 @@
           </div>
         </div>
 
-        <div class="form-section customer-address">
+        <div class="payment-information">
+          <h4>Payment Information</h4>
+          <p>This is a secure 128-bit SSL Encrypted payment. You're safe</p>
           <div class="form-group">
-            <label class="col-sm-12"><h4>Shipping address</h4></label>
-            <div class="col-sm-8 input-left"><fieldset>
+            <div class="col-sm-12"><fieldset>
+                <input type="text" class="input-lg form-control" id="cardnumber">
+                <label for="cardnumber">Card Number</label>
+              </fieldset></div>
+
+          </div>
+          <div class="card-security col-sm-12">
+            <div class="form-group">
+              <label for="expiry" class="col-sm-4 control-label">Expiration date:</label>
+              <div class="col-sm-8"><input type="month" class="input-lg form-control" id="expiry"></div>
+            </div>
+            <div class="form-group">
+              <label for="cvv" class="col-sm-4 control-label">Security Code:</label>
+              <div class="col-sm-8"><input type="number" class="input-lg form-control" id="cvv"></div>
+            </div>
+          </div>
+        </div><hr>
+
+        <div class="form-section billing-address">
+          <div class="form-group">
+            <label class="col-xs-12"><h4>Billing address</h4></label>
+            <div class="col-xs-6 input-left">
+            <fieldset>
               <input type="text" class="input-lg form-control" id="firstname">
-                <label for="firstName">First Name</label>
-            </fieldset></div>
-            <div class="col-sm-4 input-right">
+              <label for="firstname">First Name</label>
+            </fieldset>
+            </div>
+            <div class="col-xs-6 input-right">
               <fieldset>
                 <input type="text" class="input-lg form-control" id="lastname">
                 <label for="lastname">Last name</label>
@@ -50,13 +74,13 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="col-sm-7 input-left">
+            <div class="col-sm-7 col-xs-6 input-left">
               <fieldset>
               <input type="text" class="input-lg form-control" id="city">
               <label for="city">City</label>
               </fieldset>
             </div>
-            <div class="col-sm-5 input-right" style="padding-left: 4px;">
+            <div class="col-sm-5 col-xs-6 input-right" style="padding-left: 4px;">
               <fieldset>
                 <input type="text" class="input-lg form-control" id="state">
                 <label for="state">State</label>
@@ -64,15 +88,15 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="col-sm-6 input-left">
+            <div class="col-xs-6 input-left">
               <fieldset>
               <input type="text" class="input-lg form-control" id="country">
               <label for="country">Country</label>
               </fieldset>
             </div>
-            <div class="col-sm-6 input-right">
+            <div class="col-xs-6 input-right">
               <fieldset>
-              <input type="text" class="input-lg form-control" id="postal">
+              <input type="text" class="input-lg form-control" id="postalcode">
               <label for="postalcode">Postal code</label>
               </fieldset>
             </div>
