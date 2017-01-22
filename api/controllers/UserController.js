@@ -11,7 +11,6 @@ module.exports = {
     if (!req.isSocket) {return res.badRequest();}
 
     let params = req.allParams();
-    console.log(params);
     User.login(params.email, params.password).then((result) => {
 
       req.session.user_id = result.id; // Store id vào sess user_id
@@ -133,6 +132,22 @@ module.exports = {
       }
     });
 
+  },
+  smartlogin: (req,res) => {
+    if (!req.isSocket) {return res.badRequest();}
+    let params = req.allParams();
+    sails.sockets.join(req, params.data.sid);
+      User.login(params.data.email, params.data.password).then((result) => {
+        req.session.user_id = result.id; // Store id vào sess user_id
+        req.session.user = result; // store hết user data vào object user trong session
+        sails.sockets.broadcast(params.data.sid, 'smart/login', {back_data:params.data});
+
+        delete result.password;
+        res.json(200, {result});
+
+      }).catch((err) => {
+        res.json(500, {"báo lỗi": err})
+      });
   }
 };
 

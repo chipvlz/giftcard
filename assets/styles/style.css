@@ -144,10 +144,7 @@ a i.fa.fa-bars {
 .container {
   width:100% !important;
 }
-#admin-page,#user-page {
-  padding:0;
-  margin:0;
-}
+
 #edit-card , ul.breadcrumb{
   margin-top:15px;
 }
