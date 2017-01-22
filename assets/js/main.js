@@ -444,7 +444,7 @@ $(function() {
       }
 
       if ($(this).val().length > 16) {
-        $(this).css('border','2px solid #e54f5b')
+        $(this).css('border','1px solid #e54f5b')
       } else {
         $(this).css('border','1px solid #e4e4e4')
       }
