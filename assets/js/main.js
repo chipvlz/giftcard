@@ -412,6 +412,38 @@ $(function() {
       $(this).find('i.fa-chevron-right').toggleClass('rotated');
     });
 
+    $('input#cardnumber').keyup(function(){
+      if ($(this).val().length == 1) {
+        let firstNumber = $(this).val()[0];
+        if (firstNumber == 3) {
+          $('.fa-cc-amex').show('fast');
+          $('.fa-cc-visa').hide('slow');
+          $('.fa-cc-mastercard').hide('slow');
+          $('.fa-cc-discover').hide('slow');
+        } else if (firstNumber == 4) {
+          $('.fa-cc-amex').hide('slow');
+          $('.fa-cc-visa').show('fast');
+          $('.fa-cc-mastercard').hide('slow');
+          $('.fa-cc-discover').hide('slow');
+        } else if (firstNumber == 5) {
+          $('.fa-cc-amex').hide('slow');
+          $('.fa-cc-visa').hide('slow');
+          $('.fa-cc-mastercard').show('fast');
+          $('.fa-cc-discover').hide('slow');
+        } else if (firstNumber == 6) {
+          $('.fa-cc-amex').hide('slow');
+          $('.fa-cc-visa').hide('slow');
+          $('.fa-cc-mastercard').hide('slow');
+          $('.fa-cc-discover').show('fast');
+        }
+      }
+
+      if ($(this).val().length > 16) {
+        $(this).css('border','2px solid #e54f5b')
+      } else {
+        $(this).css('border','1px solid #e4e4e4')
+      }
+    })
 
     $('fieldset .form-control').each(function(){
       $(this).focus(function(){
@@ -424,7 +456,6 @@ $(function() {
         //   $(this).closest('fieldset').find('label').css('margin-top','-42px');
         //   $(this).closest('fieldset').find('label').css('font-size','12px');
         // }
-
       });
 
       $(this).focusout(function(){
@@ -433,7 +464,6 @@ $(function() {
           $(this).closest('fieldset').find('label').css('font-size','13px');
           $(this).css('padding-top','10px');
         }
-
       })
     })
   });
