@@ -22,7 +22,18 @@
 @yellowColor:#f0ad4e;
 @jadeColor:#4CCBD2;
 @base-border:1px solid #e8e8e8;
-
+.panel-green {
+  background:@greenColor!important;
+}
+.panel-red {
+  background:@base-color!important;;
+}
+.panel-blue {
+  background:@blueColor!important;;
+}
+.panel-yellow {
+  background:@yellowColor!important;;
+}
 /* Mixin */
 .border-radius (@radius: 5px) {
   -webkit-border-radius: @radius;
@@ -89,7 +100,23 @@ a.btn-checkout-complete {
   margin-bottom: 25px;
   .button-color(@jadeColor);
 }
+//Admin Page
+#admin-page {
+  .sidenav {
+    padding:0;
+    border-right:1px solid #e2e2e2;
+    background: #efefef;
+    .fa.pull-right {
+      line-height:40px;
+    }
+    ul li {
+      background:#efefef;
+      border:none;
+      line-height: 40px;
+    }
+  }
 
+}
   //Homepage
 #homepage {
   hr {
