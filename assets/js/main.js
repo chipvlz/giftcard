@@ -162,33 +162,52 @@ $(function() {
     $('#checkout-page .media').each(function(){
       var eachData = {
         "name": $(this).find('h4.co-cart-name').text(),
+        "sku": $(this).find('span.co-cart-pid').text(),
+        "price": parseFloat($(this).find('h4.co-cart-price').text().replace('$','')).toFixed(2),
+        "currency": "USD",
         "quantity": 1,
-        "unit_price": {
-          "currency": "USD",
-          "value": parseFloat($(this).find('h4.co-cart-price').text().replace('$','')).toFixed(2)
-        }
+
       };
       itemData.push(eachData);
     });
     let customerEmail = $('#checkout-page input#email').val();
     let customerData = {
-      "first_name": $('#checkout-page input#firstname').val(),
-      "last_name": $('#checkout-page input#lastname').val(),
-      "address": {
-        "line1": $('#checkout-page input#address').val(),
-        "city": $('#checkout-page input#city').val(),
-        "state": $('#checkout-page input#state').val(),
-        "postal_code": $('#checkout-page input#postal').val(),
-        "country_code": 'VN'
-      }
+      "payment_method": "credit_card",
+      "funding_instruments": [{
+        "credit_card": {
+          "type": "visa",
+          "number": "4417119669820331",
+          "expire_month": "11",
+          "expire_year": "2018",
+          "cvv2": "874",
+          "first_name": $('#checkout-page input#firstname').val(),
+          "last_name": $('#checkout-page input#lastname').val(),
+          "billing_address": {
+            "line1": $('#checkout-page input#address').val(),
+            "city": $('#checkout-page input#city').val(),
+            "state": $('#checkout-page input#state').val(),
+            "postal_code": $('#checkout-page input#postal').val(),
+            "country_code": 'US'
+          }
+        }
+      }],
     };
-    let totalAmount = {
-      "currency": "USD",
-      "value": $('#checkout-page tfoot td.td-total').text().replace('$','')
-    };
-    let data = {sessionId,itemData,customerEmail,customerData,totalAmount};
-    socket.post('/invoice/create',data);
+    let totalAmount = $('#checkout-page tfoot td.td-total').text().replace('$','');
+    let step = "payment_method";
+    let data = {sessionId,itemData,customerEmail,customerData,totalAmount,step};
+
+    socket.post('/cart/checkout',data);
   });
+
+  socket.on('create/checkout',function(recieve){
+    window.location = '/cart/checkout?sid='+recieve.msg.sid+'&step=payment_confirm'
+  });
+
+  $('a.btn-checkout-complete').click(function(){
+    let sessionId = window.location.search.split('?sid=')[1];
+    socket.post('cart/complete?sid='+sessionId);
+  });
+
 
   $('button.enter-email').click(function(){
     $("#setEmailModal").modal('hide');
@@ -380,7 +399,7 @@ $(function() {
       $(this).find('i.fa-chevron-right').toggleClass('rotated');
     });
 
-    
+
     $('fieldset .form-control').each(function(){
       $(this).focus(function(){
         $(this).keyup(function(){

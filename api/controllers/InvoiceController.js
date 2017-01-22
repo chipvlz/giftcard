@@ -44,13 +44,70 @@ module.exports = {
 
       "total_amount": params.totalAmount
     };
+    Checkout.create({
+      sid: params.sessionId,
+      payer: params.customerData,
+      email: params.customerEmail,
+      items: params.itemData,
+      amount: params.totalAmount
+    }).exec(function(){
 
-    paypal.invoice.create(create_invoice_json, function (error, invoice) {
+    })
+
+  },
+
+  checkout: (req,res) => {
+    var create_payment_json = {
+      "intent": "sale",
+      "payer": {
+        "payment_method": "credit_card",
+        "funding_instruments": [{
+          "credit_card": {
+            "type": "visa",
+            "number": "4417119669820331",
+            "expire_month": "11",
+            "expire_year": "2018",
+            "cvv2": "874",
+            "first_name": "Joe",
+            "last_name": "Shopper",
+            "billing_address": {
+              "line1": "52 N Main ST",
+              "city": "Johnstown",
+              "state": "OH",
+              "postal_code": "43210",
+              "country_code": "US"
+            }
+          }
+        }]
+      },
+      "redirect_urls": {
+        "return_url": "http://return.url",
+        "cancel_url": "http://cancel.url"
+      },
+      "transactions": [{
+        "item_list": {
+          "items": [{
+            "name": "item",
+            "sku": "item",
+            "price": "1.00",
+            "currency": "USD",
+            "quantity": 1
+          }]
+        },
+        "amount": {
+          "currency": "USD",
+          "total": "1.00"
+        },
+        "description": "This is the payment description."
+      }]
+    };
+
+    paypal.payment.create(create_payment_json, function (error, payment) {
       if (error) {
         throw error;
       } else {
-        console.log(invoice);
-        sails.sockets.broadcast(params.sessionId,'checkout/step2',{invoice:invoice.id,sid:params.sessionId});
+        console.log("Create Payment Response");
+        console.log(payment);
       }
     });
   }

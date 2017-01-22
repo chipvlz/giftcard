@@ -83,6 +83,11 @@ a.btn-checkout-paypal {
   margin-bottom: 25px;
   .button-color(@yellowColor);
 }
+a.btn-checkout-complete {
+  width:100%;
+  margin-bottom: 25px;
+  .button-color(@jadeColor);
+}
 
   //Homepage
 #homepage {
@@ -345,8 +350,15 @@ a.btn-checkout-paypal {
   position: absolute;
   width:100%;
   height:100%;
-  .breadcrumb {
-
+  .panel-heading {
+    background:#f7f7f7;
+    color:#525252 !important;
+  }
+  .panel-body {
+    padding:35px 15px;
+    img {
+      margin-bottom:25px;
+    }
   }
   .container {
     max-width:970px;

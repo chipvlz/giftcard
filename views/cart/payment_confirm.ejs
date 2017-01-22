@@ -1,0 +1,69 @@
+<div class="sr-only se-pre-con"></div>
+<div class="test-test"></div>
+<div id="checkout-page">
+
+  <div class="container">
+    <div class="checkout-left col-sm-7">
+      <ol class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="/cart/view?sid=<%= foundCheckout.sid %>"><i class="fa fa-shopping-basket"></i> View cart</a></li>
+        <li><a href="/cart/checkout?sid=<%= foundCheckout.sid %>">Information</a></li>
+        <li>Confirm</li>
+      </ol>
+    <h4>Payment Method</h4>
+      <p>All transactions are secure and encrypted.</p>
+      <div class="panel panel-default">
+        <div class="panel-heading">Secured payments by <img style="max-width:80px;" class="pull-right" src="../images/paypal_icon.png"></div>
+        <div class="panel-body text-center"><img src="../images/offsite.png">
+        <p>You will be redirected to PayPal to complete your purchase securely.</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <a type="submit" class="btn btn-lg btn-checkout-complete">Complete order</a>
+      </div>
+    </div>
+    <div class="checkout-right col-sm-5">
+      <div class="detail-content">
+        <% _.each(foundCart, function(cart) { %>
+        <!-- Left-aligned -->
+        <div class="media">
+          <span class="sr-only have-cart co-cart-pid"><%= cart.pid %></span>
+          <div class="media-left">
+            <img src="<%= cart.image %>" class="media-object img-rounded" style="width:80px">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading co-cart-name"><%= cart.name %></h4>
+            <p>$<%= cart.value %> - <%= cart.value %>% off</p>
+          </div>
+          <div class="media-right">
+            <h4 class="co-cart-price">$<%= cart.price %></h4>
+          </div>
+        </div>
+        <% }) %>
+        <table class="table table-responsive">
+          <tbody>
+          <tr>
+            <td>Subtotal</td>
+            <td class="calsum td-subtotal text-right"></td>
+          </tr>
+          <tr>
+            <td>Tax</td>
+            <td class="calsum td-tax text-right">$0.00</td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td class="calsum td-shipping text-right">$0.00</td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr class="tr-total">
+            <td>Total</td>
+            <td class="td-total text-right"></td>
+          </tr>
+
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
