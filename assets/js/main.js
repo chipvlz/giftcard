@@ -436,6 +436,11 @@ $(function() {
           $('.fa-cc-mastercard').hide('slow');
           $('.fa-cc-discover').show('fast');
         }
+      } else if ($(this).val().length == 0) {
+        $('.fa-cc-visa').show('fast');
+        $('.fa-cc-mastercard').show('fast');
+        $('.fa-cc-discover').show('fast');
+        $('.fa-cc-amex').show('fast');
       }
 
       if ($(this).val().length > 16) {
