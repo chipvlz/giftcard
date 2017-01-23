@@ -4,7 +4,13 @@
  * @description :: Server-side logic for managing carts
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var paypal = require('paypal-rest-sdk');
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': 'ATyTjOEXX-Hagf9aE1wpeHgTZI92xIRIpUtj1wazEkM24hrkv3XGTxJ3hXkcGo4cDz7aPl26imF7IBXl',
+  'client_secret': 'ECEHhrXk8nukf2vp1x_oRPQYskT0fxCryzJ4Uqw1rsWbLFMw2OcMOTzMbyTOQOTjh08pJzgScW4f21iN',
 
+});
 module.exports = {
 	add: (req,res) => {
     let params = req.allParams();
@@ -49,18 +55,17 @@ module.exports = {
   checkout: (req,res) => {
     let params = req.allParams();
     console.log(params);
-    sails.sockets.join(req,params.sessionId);
     if (!params.step) {
       Cart.find({sid:params.sid}).exec(function(err,foundCart){
         res.view('cart/checkout',{foundCart})
       });
     } else if (params.step == 'payment_method') {
+      sails.sockets.join(req,params.sessionId);
       Checkout.create({
         sid: params.sessionId,
         payer: params.customerData,
         email: params.customerEmail,
-        items: params.itemData,
-        amount: params.totalAmount
+        transactions: params.jsonData
       }).exec(function(err,createCheckout) {
         sails.sockets.broadcast(params.sessionId,'create/checkout',{msg:createCheckout})
       })
@@ -85,14 +90,7 @@ module.exports = {
             "return_url": "http://vnmagic.net:2810/payment/confirm",
             "cancel_url": "http://vnmagic.net:2810/cart"
           },
-          "transactions": [{
-            "item_list": foundCheckout.items,
-            "amount": {
-              "currency": "USD",
-              "total": foundCheckout.amount
-            },
-            "description": "Thank you for your complete order."
-          }]
+          "transactions": foundCheckout.transactions
         };
 
         paypal.payment.create(create_payment_json, function (error,payment) {

@@ -17,11 +17,8 @@ module.exports = {
     payer: {
       type: 'json'
     },
-    items: {
+    transactions: {
       type: 'array'
-    },
-    amount: {
-      type: 'float'
     }
   }
 };

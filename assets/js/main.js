@@ -166,10 +166,18 @@ $(function() {
         "price": parseFloat($(this).find('h4.co-cart-price').text().replace('$','')).toFixed(2),
         "currency": "USD",
         "quantity": 1,
-
       };
       itemData.push(eachData);
     });
+    var jsonData = [{
+      "item_list": {
+        "items": itemData
+      },
+      "amount": {
+        "currency": "USD",
+        "total": parseFloat($('#checkout-page tfoot td.td-total').text().replace('$','')).toFixed(2)
+      },
+    }];
     let customerEmail = $('#checkout-page input#email').val();
     let customerData = {
       "payment_method": "credit_card",
@@ -186,15 +194,15 @@ $(function() {
             "line1": $('#checkout-page input#address').val(),
             "city": $('#checkout-page input#city').val(),
             "state": $('#checkout-page input#state').val(),
-            "postal_code": $('#checkout-page input#postal').val(),
-            "country_code": 'US'
+            "postal_code": $('#checkout-page input#postalcode').val(),
+            "country_code": "US"
           }
         }
       }],
     };
-    let totalAmount = $('#checkout-page tfoot td.td-total').text().replace('$','');
+    // let totalAmount = parseFloat($('#checkout-page tfoot td.td-total').text().replace('$','')).toFixed(2);
     let step = "payment_method";
-    let data = {sessionId,itemData,customerEmail,customerData,totalAmount,step};
+    let data = {sessionId,jsonData,customerEmail,customerData,step};
 
     socket.post('/cart/checkout',data);
   });
@@ -204,8 +212,8 @@ $(function() {
   });
 
   $('a.btn-checkout-complete').click(function(){
-    let sessionId = window.location.search.split('?sid=')[1];
-    socket.post('cart/complete?sid='+sessionId);
+    let sid = window.location.search.split('?sid=')[1].split('&')[0];
+    socket.post('/cart/complete',{sid:sid});
   });
 
 
