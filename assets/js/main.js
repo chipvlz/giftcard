@@ -184,9 +184,9 @@ $(function() {
       "funding_instruments": [{
         "credit_card": {
           "type": "visa",
-          "number": "4417119669820331",
-          "expire_month": "11",
-          "expire_year": "2018",
+          "number": "4032035278890983",
+          "expire_month": "12",
+          "expire_year": "2021",
           "cvv2": "874",
           "first_name": $('#checkout-page input#firstname').val(),
           "last_name": $('#checkout-page input#lastname').val(),
