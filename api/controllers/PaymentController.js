@@ -197,5 +197,21 @@ module.exports = {
     });
   },
 
+  get: (req,res) => {
+    let params = req.allParams();
+    var paymentId = params.invoice;
+
+    paypal.payment.get(paymentId, function (error, payment) {
+      if (error) {
+        console.log(error);
+        throw error;
+      } else {
+        console.log("Get Payment Response");
+        res.json(JSON.stringify(payment));
+      }
+
+    });
+  }
+
 };
 

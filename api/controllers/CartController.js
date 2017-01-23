@@ -81,6 +81,7 @@ module.exports = {
   complete: (req,res) => {
     let params = req.allParams();
     console.log(params);
+    sails.sockets.join(req,params.sid);
     Checkout.findOne({sid:params.sid}).exec(function(err,foundCheckout){
       if (foundCheckout) {
         var create_payment_json = {
@@ -97,6 +98,7 @@ module.exports = {
           if (error) {
             throw error;
           } else {
+            console.log('payment response',payment.links);
             Invoice.create({
               invoice: payment.id,
               intent: payment.intent,
@@ -104,15 +106,87 @@ module.exports = {
               amount: payment.transactions[0].amount.total,
               items: payment.transactions[0].item_list.items,
               date: payment.create_time,
-              link: payment.links[1].href,
-              pay: payment.links[2].href,
-              codeto: params.codeto
+              link: payment.links[0].href,
+              codeto: foundCheckout.email
             }).exec(function(err,result){
               if (err) return res.negotiate(err);
               else {
-                console.log(result);
-                sails.sockets.broadcast(params.sessionId,'create/invoice',{msg:result.link});
-                // sails.sockets.blast('create/invoice',{msg:result.invoice});
+                // console.log('finding payment value',payment.transactions[0].related_resources[0].sale.transaction_fee.value)
+                //update new record
+                Invoice.update({invoice:payment.id},{
+                  fee: 0,
+                  state: payment.state,
+                  payer: payment.payer.funding_instruments[0].credit_card.number,
+                  status: 'Complete'
+                }).exec(function(err,updateDone){
+                  if (err) { res.json(err) }
+                });
+
+                // Payer.findOne({payerid:payment.payer.payer_info.payer_id}).exec(function(err,foundPayer){
+                //   if (foundPayer) {
+                //     console.log('found payer, no create new')
+                //   } else {
+                //     Payer.create({
+                //       email: foundCheckout.email,
+                //       payerid: 'credit_card',
+                //       name: payment.payer.funding_instruments[0].credit_card.first_name+' '+payment.payer.funding_instruments[0].credit_card.last_name,
+                //       address: payment.payer.payer_info.shipping_address.line1,
+                //       city: payment.payer.payer_info.shipping_address.city,
+                //       state: payment.payer.payer_info.shipping_address.state,
+                //       postal_code: payment.payer.payer_info.shipping_address.postal_code,
+                //       country: payment.payer.payer_info.shipping_address.country_code,
+                //       method: payment.payer.payment_method,
+                //       acc_status: payment.payer.status
+                //     }).exec(function(err){
+                //       if (err) { res.json(err); }
+                //     })
+                //   }
+                // });
+
+                var itemsList = payment.transactions[0].item_list.items;
+                // Each item -> payment.transactions[0].item_list.items
+                for (var i=0;i<itemsList.length;i++) {
+                  let findId = itemsList[i].sku;
+                  // let transactionFee = parseFloat(payment.transactions[0].related_resources[0].sale.transaction_fee.value)/3;
+                  let findPrice = itemsList[i].price;
+
+                  Cart.destroy({pid:findId}).exec(function(err){
+                    if (err) { return res.negotiate(err); }
+                  });
+
+                  Invoice.findOne({invoice:payment.id}).exec(function(err,foundInvoice){
+                    console.log('invoice',foundInvoice);
+                    if (foundInvoice) {
+
+                      Belong.create({pid:findId,bid:foundInvoice.codeto}).exec(function(err,createDone){
+                        console.log('create new belong product',createDone);
+                      })
+                    }
+                  });
+
+                  Product.update({id:findId},{status:'Sold'}).exec(function(err,updateProduct){
+                    sails.sockets.blast('update/product/sold',{msg:updateProduct.id})
+                  });
+
+                  Product.findOne({id:findId}).exec(function(err,foundProduct){
+                    if (foundProduct) {
+                      User.findOne({id:foundProduct.owner}).exec(function(err,foundUser){
+                        if (foundUser) {
+                          let newbalance = parseFloat(foundUser.balance)+parseFloat(findPrice)-0;
+                          User.update({id:foundProduct.owner},{balance:parseFloat(newbalance).toFixed(2)}).exec(function(err,result){
+                            console.log(result);
+                            sails.sockets.blast('update/balance',{msg:result})
+                          })
+                        }
+
+                      })
+                    }
+                  })
+                }
+
+                // Realtime
+                sails.sockets.blast('product/sold',{data:payment});
+                return res.redirect('/payment/success?paymentId='+payment.id);
               }
             })
           }
