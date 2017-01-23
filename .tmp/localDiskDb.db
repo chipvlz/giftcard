@@ -1,36 +1,13 @@
 {
   "data": {
     "promote": [],
-    "belong": [],
+    "belong": [
+
+    ],
     "cart": [
-      {
-        "date": "Sat Jan 21 2017 11:59:30 GMT-0800 (PST)",
-        "pid": 8,
-        "sid": "YTqmwQm-6EApxwjn1kE3qAMznAR5K-xv",
-        "image": "/images/thumbnail/58a881ea-aa87-4739-b83c-b74a039845bd.png",
-        "name": "Best Buy",
-        "type": "Egift",
-        "value": 22,
-        "save": 0.9,
-        "price": 21.8,
-        "createdAt": "2017-01-21T19:59:30.082Z",
-        "updatedAt": "2017-01-21T19:59:30.082Z",
-        "id": 126
-      },
-      {
-        "date": "Sat Jan 21 2017 11:59:30 GMT-0800 (PST)",
-        "pid": 6,
-        "sid": "YTqmwQm-6EApxwjn1kE3qAMznAR5K-xv",
-        "image": "/images/thumbnail/58a881ea-aa87-4739-b83c-b74a039845bd.png",
-        "name": "Best Buy",
-        "type": "Egift",
-        "value": 13,
-        "save": 7.7,
-        "price": 12,
-        "createdAt": "2017-01-21T19:59:30.563Z",
-        "updatedAt": "2017-01-21T19:59:30.563Z",
-        "id": 127
-      }
+
+    ],
+    "checkout": [
     ],
     "giftcard": [
       {
@@ -190,7 +167,8 @@
         "id": 24
       }
     ],
-    "invoice": [],
+    "invoice": [
+    ],
     "payer": [],
     "product": [
       {
@@ -216,9 +194,9 @@
         "price": 12,
         "save": 7.7,
         "quantity": 1,
-        "status": "Active",
+        "status": "Sold",
         "createdAt": "2017-01-18T02:42:42.575Z",
-        "updatedAt": "2017-01-18T02:42:42.575Z",
+        "updatedAt": "2017-01-23T03:17:41.618Z",
         "id": 6
       },
       {
@@ -244,9 +222,9 @@
         "price": 21.8,
         "save": 0.9,
         "quantity": 1,
-        "status": "Active",
+        "status": "Sold",
         "createdAt": "2017-01-18T02:50:40.458Z",
-        "updatedAt": "2017-01-18T02:50:40.458Z",
+        "updatedAt": "2017-01-23T03:17:41.620Z",
         "id": 8
       }
     ],
@@ -276,10 +254,10 @@
         "groupid": 1,
         "avatar": "no-avatar.png",
         "point": 10,
-        "balance": 1234,
+        "balance": 1255.8,
         "about": "viết nội dung giới thiệu về bản thân của bạn",
         "createdAt": "2016-10-03T06:16:12.002Z",
-        "updatedAt": "2016-10-03T06:16:12.002Z",
+        "updatedAt": "2017-01-23T03:17:41.603Z",
         "id": 26
       }
     ],
@@ -377,6 +355,32 @@
       },
       "price": {
         "type": "float"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "checkout": {
+      "sid": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "payer": {
+        "type": "json"
+      },
+      "transactions": {
+        "type": "array"
       },
       "id": {
         "type": "integer",
@@ -723,15 +727,18 @@
       "id": 2
     },
     "cart": {
-      "id": 127
+      "id": 141
     },
     "invoice": {
-      "id": 23
+      "id": 32
     },
     "payer": {},
     "belong": {
-      "id": 2
+      "id": 4
     },
-    "promote": {}
+    "promote": {},
+    "checkout": {
+      "id": 9
+    }
   }
 }
