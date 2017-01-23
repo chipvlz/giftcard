@@ -111,8 +111,7 @@ module.exports = {
             }).exec(function(err,result){
               if (err) return res.negotiate(err);
               else {
-                // console.log('finding payment value',payment.transactions[0].related_resources[0].sale.transaction_fee.value)
-                //update new record
+
                 Invoice.update({invoice:payment.id},{
                   fee: 0,
                   state: payment.state,
@@ -120,31 +119,11 @@ module.exports = {
                   status: 'Complete'
                 }).exec(function(err,updateDone){
                   if (err) { res.json(err) }
+                  else sails.sockets.broadcast(params.sid,'payment/complete',{msg:payment.id});
                 });
 
-                // Payer.findOne({payerid:payment.payer.payer_info.payer_id}).exec(function(err,foundPayer){
-                //   if (foundPayer) {
-                //     console.log('found payer, no create new')
-                //   } else {
-                //     Payer.create({
-                //       email: foundCheckout.email,
-                //       payerid: 'credit_card',
-                //       name: payment.payer.funding_instruments[0].credit_card.first_name+' '+payment.payer.funding_instruments[0].credit_card.last_name,
-                //       address: payment.payer.payer_info.shipping_address.line1,
-                //       city: payment.payer.payer_info.shipping_address.city,
-                //       state: payment.payer.payer_info.shipping_address.state,
-                //       postal_code: payment.payer.payer_info.shipping_address.postal_code,
-                //       country: payment.payer.payer_info.shipping_address.country_code,
-                //       method: payment.payer.payment_method,
-                //       acc_status: payment.payer.status
-                //     }).exec(function(err){
-                //       if (err) { res.json(err); }
-                //     })
-                //   }
-                // });
-
                 var itemsList = payment.transactions[0].item_list.items;
-                // Each item -> payment.transactions[0].item_list.items
+
                 for (var i=0;i<itemsList.length;i++) {
                   let findId = itemsList[i].sku;
                   // let transactionFee = parseFloat(payment.transactions[0].related_resources[0].sale.transaction_fee.value)/3;

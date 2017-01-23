@@ -228,7 +228,7 @@ $(function() {
     window.location = recieve.msg;
   });
 
-  socket.on('creditcard/paid',function(recieve){
+  socket.on('payment/complete',function(recieve){
     window.location = '/payment/success?paymentId='+recieve.msg;
   });
 
