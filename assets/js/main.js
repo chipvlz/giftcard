@@ -612,3 +612,8 @@ function printMyPage() {
   window.print();
 }
 
+// $('#cardnumber').keyup(function(){
+//   if($(this).val().length == 4) {
+//     $(this).val($('#cardnumber').val()+" ")
+//   }
+// })
