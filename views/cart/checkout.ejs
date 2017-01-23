@@ -35,23 +35,46 @@
                 <input type="text" class="input-lg form-control" id="cardnumber">
                 <label for="cardnumber">Card Number</label>
                 <span class="cc-icon">
-                  <i class="fa fa-cc-visa fa-2x"></i>
-                  <i class="fa fa-cc-mastercard fa-2x"></i>
-                  <i class="fa fa-cc-discover fa-2x"></i>
-                  <i class="fa fa-cc-amex fa-2x"></i>
+                  <img class="cc-visa" src="../images/creditcard/visa.png">
+                  <img class="cc-mastercard" src="../images/creditcard/master.png">
+                  <img class="cc-amex" src="../images/creditcard/amex.png">
+                  <img class="cc-discover" src="../images/creditcard/discover.png">
                 </span>
               </fieldset>
             </div>
 
           </div>
-          <div class="card-security col-sm-12">
+          <div class="card-security">
             <div class="form-group">
-              <label for="expiry" class="col-sm-4 control-label">Expiration date:</label>
-              <div class="col-sm-8"><input type="month" class="input-lg form-control" id="expiry"></div>
-            </div>
-            <div class="form-group">
-              <label for="cvv" class="col-sm-4 control-label">Security Code:</label>
-              <div class="col-sm-8"><input type="number" class="input-lg form-control" id="cvv"></div>
+              <div class="col-xs-6 input-left">
+                <div class="select-input dropdown">
+                  <input type="text" class="input-lg form-control dropdown-toggle" data-toggle="dropdown" id="expiry-month">
+                  <div class="left-icon">
+                    <span>EXPIRY MONTH</span>
+                  </div>
+                  <div class="right-icon">
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-xs-6 input-right">
+                <div class="select-input dropdown">
+                  <select class="input-lg form-control" id="expiry-year">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+
+                  </select>
+                  <div class="left-icon">
+                    <span>EXPIRY YEAR</span>
+                  </div>
+                  <div class="right-icon">
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div><hr>
@@ -196,3 +219,17 @@
 
 </div>
 
+<!--<ul class="dropdown-menu">-->
+  <!--<li><a href="#">January<span class="pull-right">1</span></a></li>-->
+  <!--<li><a href="#">February<span class="pull-right">2</span></a></li>-->
+  <!--<li><a href="#">March<span class="pull-right">3</span></a></li>-->
+  <!--<li><a href="#">April<span class="pull-right">4</span></a></li>-->
+  <!--<li><a href="#">May<span class="pull-right">5</span></a></li>-->
+  <!--<li><a href="#">June<span class="pull-right">6</span></a></li>-->
+  <!--<li><a href="#">July<span class="pull-right">7</span></a></li>-->
+  <!--<li><a href="#">August<span class="pull-right">8</span></a></li>-->
+  <!--<li><a href="#">September<span class="pull-right">9</span></a></li>-->
+  <!--<li><a href="#">October<span class="pull-right">10</span></a></li>-->
+  <!--<li><a href="#">November<span class="pull-right">11</span></a></li>-->
+  <!--<li><a href="#">December<span class="pull-right">12</span></a></li>-->
+<!--</ul>-->

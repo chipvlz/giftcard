@@ -416,31 +416,31 @@ $(function() {
       if ($(this).val().length == 1) {
         let firstNumber = $(this).val()[0];
         if (firstNumber == 3) {
-          $('.fa-cc-amex').show('fast');
-          $('.fa-cc-visa').hide('slow');
-          $('.fa-cc-mastercard').hide('slow');
-          $('.fa-cc-discover').hide('slow');
+          $('.cc-amex').show('fast');
+          $('.cc-visa').hide('slow');
+          $('.cc-mastercard').hide('slow');
+          $('.cc-discover').hide('slow');
         } else if (firstNumber == 4) {
-          $('.fa-cc-amex').hide('slow');
-          $('.fa-cc-visa').show('fast');
-          $('.fa-cc-mastercard').hide('slow');
-          $('.fa-cc-discover').hide('slow');
+          $('.cc-amex').hide('slow');
+          $('.cc-visa').show('fast');
+          $('.cc-mastercard').hide('slow');
+          $('.cc-discover').hide('slow');
         } else if (firstNumber == 5) {
-          $('.fa-cc-amex').hide('slow');
-          $('.fa-cc-visa').hide('slow');
-          $('.fa-cc-mastercard').show('fast');
-          $('.fa-cc-discover').hide('slow');
+          $('.cc-amex').hide('slow');
+          $('.cc-visa').hide('slow');
+          $('.cc-mastercard').show('fast');
+          $('.cc-discover').hide('slow');
         } else if (firstNumber == 6) {
-          $('.fa-cc-amex').hide('slow');
-          $('.fa-cc-visa').hide('slow');
-          $('.fa-cc-mastercard').hide('slow');
-          $('.fa-cc-discover').show('fast');
+          $('.cc-amex').hide('slow');
+          $('.cc-visa').hide('slow');
+          $('.cc-mastercard').hide('slow');
+          $('.cc-discover').show('fast');
         }
       } else if ($(this).val().length == 0) {
-        $('.fa-cc-visa').show('fast');
-        $('.fa-cc-mastercard').show('fast');
-        $('.fa-cc-discover').show('fast');
-        $('.fa-cc-amex').show('fast');
+        $('.cc-visa').show('fast');
+        $('.cc-mastercard').show('fast');
+        $('.cc-discover').show('fast');
+        $('.cc-amex').show('fast');
       }
 
       if ($(this).val().length > 16) {

@@ -396,7 +396,7 @@ a.btn-checkout-complete {
     }
   }
   .container {
-    max-width:970px;
+    max-width:1100px;
     .marginAuto;
     height:100%;
   }
@@ -473,6 +473,42 @@ a.btn-checkout-complete {
         font-weight: 300;
         line-height: 30px;
       }
+      span {
+        white-space: normal;
+        font-size:10px;
+      }
+      .left-icon {
+        max-width: 70px;
+        text-align: center;
+        position: absolute;
+        margin-top: -38px;
+        line-height: 1;
+        color: #ababae;
+      }
+      .right-icon {
+        float: right;
+        margin:-37px 15px 0 0;
+        font-size: 20px;
+        color: #ccc;
+      }
+      #expiry-month, #expiry-year {
+        padding: 0 0 0 72px;
+        font-size:20px;
+      }
+      ul.dropdown-menu {
+        width:100%;
+        li {
+          padding:5px;
+          border-bottom:1px solid #efefef;
+          &:hover a {
+            background:#fff;
+          }
+          span {
+            line-height: 20px;
+            font-size:20px;
+          }
+        }
+      }
     }
     .form-section {
       margin-bottom:40px;
@@ -499,6 +535,9 @@ a.btn-checkout-complete {
       color:#464646;
       margin-top:-36px;
       margin-right:10px;
+      img {
+        max-width:37px;
+      }
     }
     fieldset label {
       position: absolute;
@@ -602,6 +641,9 @@ footer {
   }
 }
 @media (max-width: 768px) {
+  #checkout-page .checkout-left {
+    padding:0;
+  }
   #cart-page .cart-detail-side {
     padding:0;
   }
