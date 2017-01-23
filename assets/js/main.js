@@ -212,6 +212,7 @@ $(function() {
   });
 
   $('a.btn-checkout-complete').click(function(){
+    $('div.se-pre-con').removeClass('sr-only');
     let sid = window.location.search.split('?sid=')[1].split('&')[0];
     socket.post('/cart/complete',{sid:sid});
   });
