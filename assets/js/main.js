@@ -132,7 +132,7 @@ $(function() {
     } else {
       $('div.se-pre-con').removeClass('sr-only');
     var jsonData = [];
-    var totalData = parseFloat($('div#checkout-page .media td.td-total').text().replace('$','')).toFixed(2);
+    var totalData = parseFloat($('div#checkout-page tfoot td.td-total').text().replace('$','')).toFixed(2);
     let sessionId = window.location.search.split('?sid=')[1];
 
     $('div#checkout-page .media').each(function(){
@@ -149,6 +149,15 @@ $(function() {
     var data = {totalData,jsonData,sessionId,codeto};
     socket.post('/payment/test',data);
     }
+  });
+
+  $('label.cc-method-input').click(function(){
+    $('#method-pp').collapse('hide');
+    $('#method-cc').collapse('show');
+  });
+  $('label.pp-method-input').click(function(){
+    $('#method-cc').collapse('hide');
+    $('#method-pp').collapse('show');
   });
 
   let subTotal = [];
