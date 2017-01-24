@@ -27,12 +27,11 @@
         </div>
 
         <div class="payment-information">
-          <h4>Payment Information</h4>
-          <p>This is a secure 128-bit SSL Encrypted payment. You're safe</p>
+          <h4>PAYMENT INFORMATION</h4>
           <div class="form-group">
             <div class="col-sm-12">
               <fieldset>
-                <input type="text" class="input-lg form-control" id="cardnumber">
+                <input type="text" class="input-lg form-control" id="cardnumber" maxlength="19">
                 <label for="cardnumber">Card Number</label>
                 <span class="cc-icon">
                   <img class="cc-visa" src="../images/creditcard/visa.png">
@@ -42,38 +41,42 @@
                 </span>
               </fieldset>
             </div>
-
           </div>
+          <p class="text-right" style="color:#00BCD4"><i class="fa fa-lock"></i> Secure 128-bit SSL Encrypted</p>
           <div class="card-security">
             <div class="form-group">
               <div class="col-xs-6 input-left">
-                <div class="select-input dropdown">
-                  <input type="text" class="input-lg form-control dropdown-toggle" data-toggle="dropdown" id="expiry-month">
-                  <div class="left-icon">
-                    <span>EXPIRY MONTH</span>
-                  </div>
-                  <div class="right-icon">
-                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                  </div>
+                <div class="input-group">
+                  <span class="input-group-addon">EXPIRY MONTH</span>
+                  <select id="select-month" class="form-control">
+                    <option value="1">JANUARY</option>
+                    <option value="2">FEBRUARY</option>
+                    <option value="3">MARCH</option>
+                    <option value="4">APRIL</option>
+                    <option value="5">MAY</option>
+                    <option value="6">JUNE</option>
+                    <option value="7">JULY</option>
+                    <option value="8">AUGUST</option>
+                    <option value="9">SEPTEMBER</option>
+                    <option value="10">OCTOBER</option>
+                    <option value="11">NOVEMBER</option>
+                    <option value="12">DECEMBER</option>
 
+                  </select>
+                  <span class="input-group-addon"><i class="fa fa-chevron-down fa-2x"></i></span>
                 </div>
               </div>
               <div class="col-xs-6 input-right">
-                <div class="select-input dropdown">
-                  <select class="input-lg form-control" id="expiry-year">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-
-                  </select>
-                  <div class="left-icon">
-                    <span>EXPIRY YEAR</span>
-                  </div>
-                  <div class="right-icon">
-                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                  </div>
+                <div class="input-group">
+                    <span class="input-group-addon">EXPIRY YEAR</span>
+                      <select id="select-year" class="form-control">
+                        <% for (var i=2017;i<2031;i++) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                        <% } %>
+                      </select>
+                  <span class="input-group-addon"><i class="fa fa-chevron-down fa-2x"></i></span>
                 </div>
+
               </div>
             </div>
           </div>

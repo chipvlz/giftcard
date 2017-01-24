@@ -412,7 +412,20 @@ $(function() {
       $(this).find('i.fa-chevron-right').toggleClass('rotated');
     });
 
+
+
     $('input#cardnumber').keyup(function(){
+
+      if($(this).val().length == 4) {
+        $(this).val($('#cardnumber').val()+" ")
+      }
+      if($(this).val().length == 9) {
+        $(this).val($('#cardnumber').val()+" ")
+      }
+      if($(this).val().length == 14) {
+        $(this).val($('#cardnumber').val()+" ")
+      }
+
       if ($(this).val().length == 1) {
         let firstNumber = $(this).val()[0];
         if (firstNumber == 3) {
@@ -443,12 +456,22 @@ $(function() {
         $('.cc-amex').show('fast');
       }
 
-      if ($(this).val().length > 16) {
-        $(this).css('border','1px solid #e54f5b')
+      if ($(this).val().length == 19) {
+        $(this).css('border','1px solid #00BCD4')
       } else {
-        $(this).css('border','1px solid #e4e4e4')
+        $(this).css('border','1px solid #ccc')
       }
-    })
+    });
+
+    $('#checkout-page .input-group').each(function(){
+      $(this).click(function(){
+          $(this).css('border','1px solid #f0ad4e');
+        $(this).find('select.form-control').on("change");
+      });
+      $(this).focusout(function(){
+        $(this).css('border','1px solid #ccc');
+      })
+    });
 
     $('fieldset .form-control').each(function(){
       $(this).focus(function(){
@@ -470,7 +493,9 @@ $(function() {
           $(this).css('padding-top','10px');
         }
       })
-    })
+    });
+
+
   });
 
   socket.on('live/search',function(recieve){
@@ -611,9 +636,3 @@ function goBack() {
 function printMyPage() {
   window.print();
 }
-
-// $('#cardnumber').keyup(function(){
-//   if($(this).val().length == 4) {
-//     $(this).val($('#cardnumber').val()+" ")
-//   }
-// })
