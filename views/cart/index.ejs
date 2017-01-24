@@ -6,34 +6,34 @@
     <li><a href="#" onclick="goBack()"><i class="fa fa-shopping-cart"></i> Continue Shopping</a></li>
 
   </ol>
-  <% if (req.session.user_id) { %>
-  <div class="find-email alert alert-success sr-only">
-    <strong>Notice!</strong> We'll send gift card code to email <span class="set-email"><%= req.session.user.email %></span>.
-  </div>
-  <% } else { %>
-  <div class="find-email alert alert-warning" style="margin:15px">
-    <strong>Warning!</strong> Please Log in your account before checkout for sending code to.<a href="/login"> [Log in]</a><span class="sr-only set-email">no-email</span>.
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="setEmailModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header panel-red">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">WARNING!</h4>
-        </div>
-        <div class="modal-body">
-          <p>Please Log in your account before checkout for sending code to.</p>
-          <!--<input type="email" class="form-control input-lg" id="enter-email">-->
-        </div>
-        <div class="modal-footer">
-          <!--<button type="button" class="enter-email btn btn-primary">Enter Email</button>-->
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% } %>
+  <!--<% if (req.session.user_id) { %>-->
+  <!--<div class="find-email alert alert-success sr-only">-->
+    <!--<strong>Notice!</strong> We'll send gift card code to email <span class="set-email"><%= req.session.user.email %></span>.-->
+  <!--</div>-->
+  <!--<% } else { %>-->
+  <!--<div class="find-email alert alert-warning" style="margin:15px">-->
+    <!--<strong>Warning!</strong> Please Log in your account before checkout for sending code to.<a href="/login"> [Log in]</a><span class="sr-only set-email">no-email</span>.-->
+  <!--</div>-->
+  <!--&lt;!&ndash; Modal &ndash;&gt;-->
+  <!--<div class="modal fade" id="setEmailModal" role="dialog">-->
+    <!--<div class="modal-dialog modal-sm">-->
+      <!--<div class="modal-content">-->
+        <!--<div class="modal-header panel-red">-->
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <!--<h4 class="modal-title">WARNING!</h4>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+          <!--<p>Please Log in your account before checkout for sending code to.</p>-->
+          <!--&lt;!&ndash;<input type="email" class="form-control input-lg" id="enter-email">&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+          <!--&lt;!&ndash;<button type="button" class="enter-email btn btn-primary">Enter Email</button>&ndash;&gt;-->
+          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<% } %>-->
 
   <div class="container">
     <div class="col-sm-8 col-xs-12 cart-detail-side">

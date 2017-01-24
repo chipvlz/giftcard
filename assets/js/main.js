@@ -61,12 +61,13 @@ $(function() {
       var setID = $(this).closest('tr.tr-product').find('td.td-id').text();
       var setNAME = $(this).closest('tr.tr-product').find('td.card-name').text();
       var setIMG = $(this).closest('tr.tr-product').find('img').attr("src");
-      var setTYPE = $(this).closest('tr.tr-product').find('td.card-type').text();
+      var setVALUE = $(this).closest('tr.tr-product').find('td.product-value').text();
+      var setSAVE = $(this).closest('tr.tr-product').find('td.product-save').text();
       var setPRICE = parseFloat($(this).closest('tr.tr-product').find('td.product-price').text().replace('$',''));
       $('#cartModal div.modal-body').append('<div class="media"><span class="sr-only have-cart">'+setID+'</span>' +
         '<div class="media-left"><img src="'+setIMG+'" class="media-object" style="width:80px"></div>' +
-        '<div class="media-body"><h5 class="media-heading">'+setNAME+'</h5><p><span class="badge">'+setTYPE+'</span></p></div>' +
-        '<div class="media-right"><h5>$'+setPRICE+'</h5></div></div>');
+        '<div class="media-body"><h5 class="media-heading">'+setNAME+'</h5><p>'+setVALUE+' - '+setSAVE+' off</p></div>' +
+        '<div class="media-right"><h4>$'+setPRICE+'</h4></div></div>');
       $('p.no-item').addClass('sr-only');
 
       let cartData = {
@@ -90,8 +91,14 @@ $(function() {
     let findNumber = parseInt($('span.total-cart').text())+1;
     $('span.total-cart').text(findNumber);
     if ($('#cartModal .modal-footer a.view-cart').text() !== 'Checkout') {
-      $('#cartModal .modal-footer').append('<a href="/cart/view?sid='+recieve.msg.sid+'" type="button" class="view-cart btn">Checkout</a>');
+      $('#cartModal .modal-footer').append('<a href="/cart/view?sid='+recieve.msg.sid+'" type="button" class="view-cart btn">Checkout</a>' +
+        '<span class="pull-right total-value">TOTAL <strong style="font-size:16px">$'+recieve.msg.price+'</strong></span>');
       $('#cartModal .modal-footer').find('button.btn').addClass('sr-only');
+    }
+    else if (($('#cartModal .modal-footer a.view-cart').text() == 'Checkout')) {
+      let currentPrice = parseFloat($('#cartModal .modal-footer span strong').text().replace('$',''));
+      let newPrice = parseFloat(recieve.msg.price + currentPrice).toFixed(2);
+      $('#cartModal .modal-footer span strong').text('$'+newPrice)
     }
   });
 
@@ -125,14 +132,14 @@ $(function() {
     } else {
       $('div.se-pre-con').removeClass('sr-only');
     var jsonData = [];
-    var totalData = parseFloat($('td.td-total').text().replace('$',''));
+    var totalData = parseFloat($('div#checkout-page .media td.td-total').text().replace('$','')).toFixed(2);
     let sessionId = window.location.search.split('?sid=')[1];
 
-    $('div.view-cart-item').each(function(){
+    $('div#checkout-page .media').each(function(){
       var eachData = {
-        name : $(this).find('span.cart-name').text(),
-        sku : $(this).find('span.cart-pid').text(),
-        price : parseFloat($(this).find('h3.cart-item-price').text().replace('$','')),
+        name : $(this).find('h4.co-cart-name').text(),
+        sku : $(this).find('span.co-cart-pid').text(),
+        price : parseFloat($(this).find('h4.co-cart-price').text().replace('$','')).toFixed(2),
         currency : 'USD',
         quantity : 1
 
