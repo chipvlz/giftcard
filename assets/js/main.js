@@ -455,7 +455,11 @@ $(function() {
         $('.cc-discover').show('fast');
         $('.cc-amex').show('fast');
       }
-
+      if ($(this).val().length == 16 && $(this).val().match(/\s/g) == null) {
+        let str = $(this).val();
+        let str1 = str[0]+str[1]+str[2]+str[3]+' '+str[4]+str[5]+str[6]+str[7]+' '+str[8]+str[9]+str[10]+str[11]+' '+str[12]+str[13]+str[14]+str[15];
+        $(this).val(str1);
+      }
       if ($(this).val().length == 19) {
         $(this).css('border','1px solid #00BCD4')
       } else {
